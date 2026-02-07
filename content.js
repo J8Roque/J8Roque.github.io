@@ -167,15 +167,17 @@ export const content = {
       tags: ["Linux", "DIY", "Troubleshooting"],
       links: [{ label: "Photos", href: "PASTE_PHOTOS_LINK" }]
     },
-    {
-      title: "NAS Setup Notes and Backup Plan",
-      category: "DIY",
-      role: "Builder",
-      dates: "2026",
-      summary:
-        "Set up storage and basic organization, then documented a simple backup approach I can maintain long term.",
-      tags: ["Storage", "Backups", "DIY"],
-      links: [{ label: "Write up", href: "PASTE_WRITEUP_LINK" }]
+  {
+  title: "Analyzing Types of Web Application Attacks (Lab Report)",
+  category: "Security",
+  role: "Student / Analyst",
+  dates: "2025",
+  summary:
+    "Lab report analyzing common web application attack patterns using safe training environments. Documented observations, traffic behavior, and key security takeaways with clear notes and screenshots.",
+  tags: ["Web Security", "Lab", "HTTP", "Security Fundamentals"],
+  links: [
+    { label: "PDF Report", href: "./analyzing-types-of-web-application-attacks.pdf" }
+  ]
     },
     {
       title: "Phishing Awareness Mini Presentation",
