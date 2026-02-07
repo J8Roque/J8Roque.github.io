@@ -11,7 +11,7 @@ export const content = {
       "Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows",
       "Security minded habits: MFA, least privilege, patch hygiene, phishing awareness"
     ],
-    profileImage: "./images/profile.jpg",
+    profileImage: "./cat2.jpg",
     quickCards: [
       { key: "Degree path", value: "BS Information Technology (in progress)" },
       { key: "Background", value: "AS IT and AS Cybersecurity" },
