@@ -1,6 +1,13 @@
+<!-- ================================
+     FILE: index.html
+     NOTES: Section labels for fast edits
+================================== -->
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ================================
+         HEAD: meta, title, css
+    ================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>IT Portfolio</title>
@@ -9,15 +16,27 @@
   </head>
 
   <body>
+    <!-- ================================
+         A11Y: skip link
+    ================================== -->
     <a class="skip-link" href="#main">Skip to content</a>
 
+    <!-- ================================
+         HEADER: sticky topbar
+    ================================== -->
     <header class="topbar" id="top">
       <div class="container topbar-inner">
+        <!-- ================================
+             BRAND: name + dot
+        ================================== -->
         <a class="brand" href="#home" aria-label="Go to home">
           <span class="brand-dot" aria-hidden="true"></span>
           <span id="brandName">Your Name</span>
         </a>
 
+        <!-- ================================
+             NAV: desktop links
+        ================================== -->
         <nav class="nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -28,6 +47,9 @@
           <a href="#contact">Contact</a>
         </nav>
 
+        <!-- ================================
+             HEADER ACTIONS: theme + mobile menu
+        ================================== -->
         <div class="topbar-actions">
           <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
             Theme
@@ -38,6 +60,9 @@
         </div>
       </div>
 
+      <!-- ================================
+           MOBILE NAV: panel
+      ================================== -->
       <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <div class="container mobile-nav-inner">
           <div class="mobile-nav-head">
@@ -60,26 +85,37 @@
       </div>
     </header>
 
+    <!-- ================================
+         MAIN CONTENT WRAPPER
+    ================================== -->
     <main id="main">
+      <!-- ================================
+           HERO SECTION: intro + avatar
+      ================================== -->
       <section class="hero" id="home">
         <div class="container hero-grid">
           <div class="hero-left">
             <div class="badge" id="heroBadge">IT Portfolio</div>
             <h1 class="hero-title" id="heroTitle">Hi, I am Your Name</h1>
             <p class="hero-subtitle" id="heroSubtitle"></p>
+
             <ul class="bullets" id="heroBullets"></ul>
+
             <div class="cta-row" id="heroLinks"></div>
           </div>
 
           <div class="hero-right">
             <div class="avatar">
-              <img id="profileImage" alt="Profile photo" />
+              <img id="profileImage" alt="Profile photo" loading="lazy" />
             </div>
             <div class="quick-cards" id="quickCards"></div>
           </div>
         </div>
       </section>
 
+      <!-- ================================
+           ABOUT SECTION
+      ================================== -->
       <section class="section" id="about">
         <div class="container">
           <h2>About</h2>
@@ -87,9 +123,13 @@
         </div>
       </section>
 
+      <!-- ================================
+           SKILLS SECTION: aside + grid
+      ================================== -->
       <section class="section" id="skills">
         <div class="container">
           <h2>Skills</h2>
+
           <div class="skills-layout">
             <aside class="card skills-aside" id="skillsAside"></aside>
             <div class="skills-grid" id="skillsGrid"></div>
@@ -97,6 +137,9 @@
         </div>
       </section>
 
+      <!-- ================================
+           EXPERIENCE SECTION
+      ================================== -->
       <section class="section" id="experience">
         <div class="container">
           <h2>Experience</h2>
@@ -104,6 +147,9 @@
         </div>
       </section>
 
+      <!-- ================================
+           EDUCATION SECTION
+      ================================== -->
       <section class="section" id="education">
         <div class="container">
           <h2>Education</h2>
@@ -111,12 +157,16 @@
         </div>
       </section>
 
+      <!-- ================================
+           PROJECTS SECTION: tabs + search + cards
+      ================================== -->
       <section class="section" id="projects">
         <div class="container">
           <div class="section-head">
             <h2>Projects</h2>
 
             <div class="project-controls">
+              <!-- Project filter pills (rendered by app.js) -->
               <div
                 class="filters filterTabs"
                 id="projectFilters"
@@ -124,19 +174,25 @@
                 aria-label="Project filters"
               ></div>
 
+              <!-- Project search -->
               <label class="search">
                 <span class="sr-only">Search projects</span>
                 <input id="projectSearch" type="search" placeholder="Search projects" />
               </label>
             </div>
 
+            <!-- Project count (rendered by app.js) -->
             <div class="muted small" id="projectCount" aria-live="polite"></div>
           </div>
 
+          <!-- Projects grid (rendered by app.js) -->
           <div class="grid" id="projectsGrid"></div>
         </div>
       </section>
 
+      <!-- ================================
+           ARTICLES SECTION
+      ================================== -->
       <section class="section" id="articles">
         <div class="container">
           <h2>Articles</h2>
@@ -144,6 +200,9 @@
         </div>
       </section>
 
+      <!-- ================================
+           CONTACT SECTION
+      ================================== -->
       <section class="section" id="contact">
         <div class="container">
           <h2>Contact</h2>
@@ -152,6 +211,9 @@
       </section>
     </main>
 
+    <!-- ================================
+         FOOTER
+    ================================== -->
     <footer class="footer">
       <div class="container footer-inner">
         <span id="footerText">© Your Name</span>
@@ -159,6 +221,9 @@
       </div>
     </footer>
 
+    <!-- ================================
+         SCRIPTS
+    ================================== -->
     <script type="module" src="./app.js"></script>
   </body>
 </html>
