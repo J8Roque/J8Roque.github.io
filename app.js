@@ -29,17 +29,16 @@ function renderHero() {
 
   const bullets = $("heroBullets");
   bullets.innerHTML = "";
-  for (const b of content.site.bullets) {
-    const li = document.createElement("li");
-    li.textContent = b;
-    bullets.appendChild(li);
+  for (const b of content.site.bullets || []) {
+    bullets.appendChild(createEl("li", "", b));
   }
 
   const links = $("heroLinks");
   links.innerHTML = "";
-  for (const l of content.site.links) {
+  for (const l of content.site.links || []) {
     const a = document.createElement("a");
-    a.className = `btn ${l.style === "primary" ? "" : "ghost"}`.trim();
+    const isPrimary = l.style === "primary";
+    a.className = `btn ${isPrimary ? "" : "ghost"}`.trim();
     a.textContent = l.label;
 
     const href = safeLink(l.href);
@@ -62,7 +61,7 @@ function renderHero() {
 
   const quick = $("quickCards");
   quick.innerHTML = "";
-  for (const c of content.site.quickCards) {
+  for (const c of content.site.quickCards || []) {
     const card = createEl("div", "quick-card");
     card.appendChild(createEl("div", "k", c.key));
     card.appendChild(createEl("div", "v", c.value));
@@ -74,7 +73,7 @@ function renderAbout() {
   const wrap = $("aboutCard");
   wrap.innerHTML = "";
 
-  for (const p of content.about.paragraphs) {
+  for (const p of content.about?.paragraphs || []) {
     wrap.appendChild(createEl("p", "item-text", p));
   }
 
@@ -85,7 +84,7 @@ function renderAbout() {
   wrap.appendChild(hr);
 
   const pills = createEl("div", "pill-row");
-  for (const h of content.about.highlights) {
+  for (const h of content.about?.highlights || []) {
     pills.appendChild(createEl("span", "pill", h));
   }
   wrap.appendChild(pills);
@@ -98,16 +97,16 @@ function renderSkills() {
   aside.innerHTML = "";
   grid.innerHTML = "";
 
-  aside.appendChild(createEl("div", "item-title", content.skills.introTitle));
-  aside.appendChild(createEl("p", "item-text", content.skills.introText));
+  aside.appendChild(createEl("div", "item-title", content.skills?.introTitle || "Skills"));
+  aside.appendChild(createEl("p", "item-text", content.skills?.introText || ""));
 
   const featuredWrap = createEl("div", "pill-row");
-  for (const s of content.skills.featured) {
-    featuredWrap.appendChild(createEl("span", "pill", s.name));
+  for (const s of content.skills?.featured || []) {
+    featuredWrap.appendChild(createEl("span", "pill", s.name || s));
   }
   aside.appendChild(featuredWrap);
 
-  for (const group of content.skills.groups) {
+  for (const group of content.skills?.groups || []) {
     const card = createEl("div", "card");
 
     const head = createEl("div", "skill-group-title");
@@ -116,8 +115,8 @@ function renderSkills() {
     card.appendChild(head);
 
     const list = createEl("div", "skill-items");
-    for (const item of group.items) {
-      list.appendChild(createEl("div", "skill-item", item.name));
+    for (const item of group.items || []) {
+      list.appendChild(createEl("div", "skill-item", item.name || item));
     }
     card.appendChild(list);
 
@@ -129,12 +128,12 @@ function renderExperience() {
   const stack = $("experienceStack");
   stack.innerHTML = "";
 
-  for (const exp of content.experience) {
+  for (const exp of content.experience || []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", exp.org));
     card.appendChild(createEl("div", "item-meta", `${exp.dates} • ${exp.location}`));
 
-    for (const role of exp.roles) {
+    for (const role of exp.roles || []) {
       const roleTitle = createEl("div", "item-title", role.title);
       roleTitle.style.marginTop = "12px";
       roleTitle.style.fontSize = "16px";
@@ -144,7 +143,7 @@ function renderExperience() {
 
       const ul = document.createElement("ul");
       ul.className = "bullets";
-      for (const b of role.bullets) ul.appendChild(createEl("li", "", b));
+      for (const b of role.bullets || []) ul.appendChild(createEl("li", "", b));
       card.appendChild(ul);
     }
 
@@ -156,7 +155,7 @@ function renderEducation() {
   const stack = $("educationStack");
   stack.innerHTML = "";
 
-  for (const ed of content.education) {
+  for (const ed of content.education || []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", ed.school));
     card.appendChild(createEl("div", "item-meta", ed.dates));
@@ -180,12 +179,13 @@ function projectCard(p) {
   card.appendChild(createEl("p", "item-text", p.summary));
 
   const pills = createEl("div", "pill-row");
-  for (const t of p.tags ?? []) pills.appendChild(createEl("span", "pill", t));
+  for (const t of p.tags || []) pills.appendChild(createEl("span", "pill", t));
   card.appendChild(pills);
 
   const links = createEl("div", "cta-row");
   links.style.marginTop = "12px";
-  for (const l of p.links ?? []) {
+
+  for (const l of p.links || []) {
     const a = createEl("a", "btn ghost", l.label);
     const href = safeLink(l.href);
     a.href = href ?? "#";
@@ -195,8 +195,8 @@ function projectCard(p) {
     }
     links.appendChild(a);
   }
-  card.appendChild(links);
 
+  card.appendChild(links);
   return card;
 }
 
@@ -204,14 +204,22 @@ function renderProjects() {
   const filters = $("projectFilters");
   const grid = $("projectsGrid");
   const search = $("projectSearch");
+  const count = $("projectCount");
 
   let active = "All";
   let query = "";
 
+  const categories = (() => {
+    const provided = content.projectCategories?.slice?.() || [];
+    const fromProjects = [...new Set((content.projects || []).map((p) => p.category).filter(Boolean))];
+    const base = provided.length ? provided : fromProjects;
+    const list = base.includes("All") ? base : ["All", ...base];
+    return list;
+  })();
+
   function matches(p) {
     const inCat = active === "All" ? true : p.category === active;
     if (!inCat) return false;
-
     if (!query) return true;
 
     const q = query.toLowerCase();
@@ -221,7 +229,7 @@ function renderProjects() {
       p.role,
       p.dates,
       p.summary,
-      ...(p.tags ?? [])
+      ...(p.tags || [])
     ]
       .filter(Boolean)
       .join(" ")
@@ -232,22 +240,66 @@ function renderProjects() {
 
   function paint() {
     grid.innerHTML = "";
-    const list = content.projects.filter(matches);
+    const list = (content.projects || []).filter(matches);
+
     for (const p of list) grid.appendChild(projectCard(p));
+
+    if (count) {
+      const label = list.length === 1 ? "project" : "projects";
+      count.textContent = `Showing ${list.length} ${label}`;
+    }
+  }
+
+  function setActive(cat) {
+    active = cat;
+
+    const tabs = [...filters.querySelectorAll("button.filterTab")];
+    for (const b of tabs) {
+      const isOn = b.textContent === active;
+      b.classList.toggle("isActive", isOn);
+      b.setAttribute("aria-selected", isOn ? "true" : "false");
+      b.tabIndex = isOn ? 0 : -1;
+    }
+
+    paint();
   }
 
   filters.innerHTML = "";
-  for (const cat of content.projectCategories) {
-    const btn = createEl("button", "filter-btn", cat);
+  for (const cat of categories) {
+    const btn = createEl("button", "filterTab", cat);
     btn.type = "button";
-    btn.setAttribute("aria-pressed", cat === active ? "true" : "false");
-    btn.addEventListener("click", () => {
-      active = cat;
-      [...filters.querySelectorAll("button")].forEach((b) =>
-        b.setAttribute("aria-pressed", b.textContent === active ? "true" : "false")
-      );
-      paint();
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-selected", cat === active ? "true" : "false");
+    btn.tabIndex = cat === active ? 0 : -1;
+
+    btn.addEventListener("click", () => setActive(cat));
+
+    btn.addEventListener("keydown", (e) => {
+      const tabs = [...filters.querySelectorAll("button.filterTab")];
+      const i = tabs.indexOf(btn);
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        tabs[(i + 1) % tabs.length].focus();
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        tabs[(i - 1 + tabs.length) % tabs.length].focus();
+      }
+      if (e.key === "Home") {
+        e.preventDefault();
+        tabs[0].focus();
+      }
+      if (e.key === "End") {
+        e.preventDefault();
+        tabs[tabs.length - 1].focus();
+      }
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setActive(btn.textContent);
+      }
     });
+
     filters.appendChild(btn);
   }
 
@@ -256,21 +308,21 @@ function renderProjects() {
     paint();
   });
 
-  paint();
+  setActive(active);
 }
 
 function renderArticles() {
   const grid = $("articlesGrid");
   grid.innerHTML = "";
 
-  for (const a of content.articles) {
+  for (const a of content.articles || []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", a.title));
     card.appendChild(createEl("div", "item-meta", `${a.source} • ${a.date} • ${a.readTime}`));
     card.appendChild(createEl("p", "item-text", a.summary));
 
     const pills = createEl("div", "pill-row");
-    for (const t of a.tags ?? []) pills.appendChild(createEl("span", "pill", t));
+    for (const t of a.tags || []) pills.appendChild(createEl("span", "pill", t));
     card.appendChild(pills);
 
     const href = safeLink(a.href);
@@ -298,11 +350,11 @@ function renderContact() {
   const ul = document.createElement("ul");
   ul.className = "bullets";
 
-  if (content.contact.email) ul.appendChild(createEl("li", "", `Email: ${content.contact.email}`));
-  ul.appendChild(createEl("li", "", `GitHub: ${content.contact.github}`));
-  ul.appendChild(createEl("li", "", `LinkedIn: ${content.contact.linkedin}`));
+  if (content.contact?.email) ul.appendChild(createEl("li", "", `Email: ${content.contact.email}`));
+  if (content.contact?.github) ul.appendChild(createEl("li", "", `GitHub: ${content.contact.github}`));
+  if (content.contact?.linkedin) ul.appendChild(createEl("li", "", `LinkedIn: ${content.contact.linkedin}`));
 
-  for (const o of content.contact.other ?? []) {
+  for (const o of content.contact?.other || []) {
     ul.appendChild(createEl("li", "", `${o.label}: ${o.href}`));
   }
 
@@ -320,11 +372,19 @@ function initTheme() {
     document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
   }
 
+  function syncLabel() {
+    const current = document.documentElement.getAttribute("data-theme") || "light";
+    btn.textContent = current === "dark" ? "Light" : "Dark";
+  }
+
+  syncLabel();
+
   btn.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme") || "light";
     const next = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
+    syncLabel();
   });
 }
 
@@ -336,11 +396,13 @@ function initMobileNav() {
   function openMenu() {
     document.body.setAttribute("data-menu-open", "true");
     mobileNav.setAttribute("aria-hidden", "false");
+    closeBtn.focus();
   }
 
   function closeMenu() {
     document.body.setAttribute("data-menu-open", "false");
     mobileNav.setAttribute("aria-hidden", "true");
+    openBtn.focus();
   }
 
   openBtn.addEventListener("click", () => {
