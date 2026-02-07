@@ -1,5 +1,13 @@
+// ===================================
+// FILE: app.js
+// NOTES: Labeled sections for future edits
+// ===================================
+
 import { content } from "./content.js";
 
+// ================================
+// Helpers: DOM + text + links
+// ================================
 const $ = (id) => document.getElementById(id);
 
 function setText(id, value) {
@@ -15,10 +23,97 @@ function createEl(tag, className, text) {
 }
 
 function safeLink(href) {
-  if (!href || href === "#") return null;
-  return href;
+  if (!href) return null;
+  const v = String(href).trim();
+  if (!v || v === "#") return null;
+  if (v.toUpperCase().includes("PASTE_")) return null;
+  return v;
 }
 
+function isExternal(href) {
+  return /^https?:\/\//i.test(href);
+}
+
+function applyLinkTarget(a, href) {
+  if (href && isExternal(href)) {
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  }
+}
+
+// ================================
+// Copy helper: Contact buttons
+// ================================
+function copyText(text) {
+  const v = String(text || "").trim();
+  if (!v) return Promise.reject(new Error("Nothing to copy"));
+
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(v);
+
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement("textarea");
+    ta.value = v;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      resolve();
+    } catch (e) {
+      document.body.removeChild(ta);
+      reject(e);
+    }
+  });
+}
+
+function prettyHost(url) {
+  try {
+    const u = new URL(url);
+    return u.hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+// ================================
+// Icons: Contact tiles
+// ================================
+function iconSvg(kind) {
+  if (kind === "email") {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="1.8" />
+        <path d="M4.5 7l7.5 6 7.5-6" stroke="currentColor" stroke-width="1.8" />
+      </svg>`;
+  }
+  if (kind === "github") {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2.5c-5.25 0-9.5 4.2-9.5 9.4 0 4.14 2.7 7.65 6.44 8.89.47.08.64-.2.64-.46v-1.6c-2.62.56-3.17-1.1-3.17-1.1-.43-1.08-1.04-1.37-1.04-1.37-.85-.57.06-.56.06-.56.94.06 1.43.95 1.43.95.84 1.41 2.2 1.01 2.73.77.09-.6.33-1.01.6-1.24-2.1-.23-4.3-1.03-4.3-4.57 0-1.01.37-1.84.97-2.49-.1-.23-.42-1.17.09-2.44 0 0 .79-.25 2.6.95.75-.2 1.56-.3 2.36-.3.8 0 1.61.1 2.36.3 1.81-1.2 2.6-.95 2.6-.95.51 1.27.19 2.21.09 2.44.6.65.97 1.48.97 2.49 0 3.55-2.2 4.34-4.31 4.57.34.29.64.85.64 1.72v2.55c0 .26.17.55.65.46A9.43 9.43 0 0 0 21.5 11.9c0-5.2-4.25-9.4-9.5-9.4Z" fill="currentColor"/>
+      </svg>`;
+  }
+  if (kind === "linkedin") {
+    return `
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 9.5V19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M6.5 6.8h0.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M10.2 19v-5.2c0-1.8 1-3 2.7-3 1.7 0 2.6 1.2 2.6 3V19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M10.2 9.5V19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>`;
+  }
+  return `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M10 14a4 4 0 0 1 0-6l1.2-1.2a4 4 0 0 1 5.6 5.6L16 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M14 10a4 4 0 0 1 0 6L12.8 17.2a4 4 0 0 1-5.6-5.6L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>`;
+}
+
+// ================================
+// Render: HERO
+// ================================
 function renderHero() {
   setText("brandName", content.site.name);
   setText("mobileBrand", content.site.name);
@@ -43,10 +138,14 @@ function renderHero() {
 
     const href = safeLink(l.href);
     a.href = href ?? "#";
-    if (href) {
-      a.target = "_blank";
-      a.rel = "noreferrer";
+    applyLinkTarget(a, href);
+
+    if (!href) {
+      a.setAttribute("aria-disabled", "true");
+      a.style.opacity = "0.55";
+      a.style.pointerEvents = "none";
     }
+
     links.appendChild(a);
   }
 
@@ -69,6 +168,9 @@ function renderHero() {
   }
 }
 
+// ================================
+// Render: ABOUT
+// ================================
 function renderAbout() {
   const wrap = $("aboutCard");
   wrap.innerHTML = "";
@@ -90,6 +192,9 @@ function renderAbout() {
   wrap.appendChild(pills);
 }
 
+// ================================
+// Render: SKILLS
+// ================================
 function renderSkills() {
   const aside = $("skillsAside");
   const grid = $("skillsGrid");
@@ -97,7 +202,7 @@ function renderSkills() {
   aside.innerHTML = "";
   grid.innerHTML = "";
 
-  aside.appendChild(createEl("div", "item-title", content.skills?.introTitle || "Skills"));
+  aside.appendChild(createEl("div", "item-title", content.skills?.introTitle || "Core strengths"));
   aside.appendChild(createEl("p", "item-text", content.skills?.introText || ""));
 
   const featuredWrap = createEl("div", "pill-row");
@@ -124,6 +229,9 @@ function renderSkills() {
   }
 }
 
+// ================================
+// Render: EXPERIENCE
+// ================================
 function renderExperience() {
   const stack = $("experienceStack");
   stack.innerHTML = "";
@@ -151,6 +259,9 @@ function renderExperience() {
   }
 }
 
+// ================================
+// Render: EDUCATION
+// ================================
 function renderEducation() {
   const stack = $("educationStack");
   stack.innerHTML = "";
@@ -172,6 +283,9 @@ function renderEducation() {
   }
 }
 
+// ================================
+// Projects: card builder
+// ================================
 function projectCard(p) {
   const card = createEl("div", "card");
   card.appendChild(createEl("div", "item-title", p.title));
@@ -185,21 +299,22 @@ function projectCard(p) {
   const links = createEl("div", "cta-row");
   links.style.marginTop = "12px";
 
-  for (const l of p.links || []) {
+  const validLinks = (p.links || []).filter((l) => safeLink(l.href));
+  for (const l of validLinks) {
     const a = createEl("a", "btn ghost", l.label);
     const href = safeLink(l.href);
     a.href = href ?? "#";
-    if (href) {
-      a.target = "_blank";
-      a.rel = "noreferrer";
-    }
+    applyLinkTarget(a, href);
     links.appendChild(a);
   }
 
-  card.appendChild(links);
+  if (validLinks.length) card.appendChild(links);
   return card;
 }
 
+// ================================
+// Render: PROJECTS (tabs + search)
+// ================================
 function renderProjects() {
   const filters = $("projectFilters");
   const grid = $("projectsGrid");
@@ -210,10 +325,8 @@ function renderProjects() {
   let query = "";
 
   const categories = (() => {
-    const provided = content.projectCategories?.slice?.() || [];
-    const fromProjects = [...new Set((content.projects || []).map((p) => p.category).filter(Boolean))];
-    const base = provided.length ? provided : fromProjects;
-    const list = base.includes("All") ? base : ["All", ...base];
+    const list = content.projectCategories?.slice?.() || [];
+    if (!list.includes("All")) list.unshift("All");
     return list;
   })();
 
@@ -311,6 +424,9 @@ function renderProjects() {
   setActive(active);
 }
 
+// ================================
+// Render: ARTICLES
+// ================================
 function renderArticles() {
   const grid = $("articlesGrid");
   grid.innerHTML = "";
@@ -331,8 +447,12 @@ function renderArticles() {
       linkRow.style.marginTop = "12px";
       const link = createEl("a", "btn ghost", "Read");
       link.href = href;
-      link.target = a.target ?? "_blank";
-      link.rel = a.rel ?? "noreferrer";
+
+      if (isExternal(href)) {
+        link.target = a.target ?? "_blank";
+        link.rel = a.rel ?? "noopener noreferrer";
+      }
+
       linkRow.appendChild(link);
       card.appendChild(linkRow);
     }
@@ -341,26 +461,135 @@ function renderArticles() {
   }
 }
 
+// ================================
+// Render: CONTACT (interactive tiles + copy)
+// ================================
 function renderContact() {
   const card = $("contactCard");
   card.innerHTML = "";
 
-  card.appendChild(createEl("p", "item-text", "Best ways to reach me:"));
+  const wrap = createEl("div", "contact-wrap");
+  const hint = createEl("div", "contact-hint", "Quick actions: open or copy a link.");
+  wrap.appendChild(hint);
 
-  const ul = document.createElement("ul");
-  ul.className = "bullets";
+  const grid = createEl("div", "contact-grid");
 
-  if (content.contact?.email) ul.appendChild(createEl("li", "", `Email: ${content.contact.email}`));
-  if (content.contact?.github) ul.appendChild(createEl("li", "", `GitHub: ${content.contact.github}`));
-  if (content.contact?.linkedin) ul.appendChild(createEl("li", "", `LinkedIn: ${content.contact.linkedin}`));
+  const items = [];
 
-  for (const o of content.contact?.other || []) {
-    ul.appendChild(createEl("li", "", `${o.label}: ${o.href}`));
+  if (content.contact?.email) {
+    items.push({
+      kind: "email",
+      label: "Email",
+      value: content.contact.email,
+      href: `mailto:${content.contact.email}?subject=Hello%20J%20Roque`
+    });
   }
 
-  card.appendChild(ul);
+  if (content.contact?.github) {
+    items.push({
+      kind: "github",
+      label: "GitHub",
+      value: prettyHost(content.contact.github),
+      href: content.contact.github
+    });
+  }
+
+  if (content.contact?.linkedin) {
+    items.push({
+      kind: "linkedin",
+      label: "LinkedIn",
+      value: prettyHost(content.contact.linkedin),
+      href: content.contact.linkedin
+    });
+  }
+
+  for (const o of content.contact?.other || []) {
+    if (o?.label && o?.href) {
+      items.push({
+        kind: "link",
+        label: o.label,
+        value: prettyHost(o.href),
+        href: o.href
+      });
+    }
+  }
+
+  for (const it of items) {
+    const tile = createEl("div", "contact-item");
+
+    const top = createEl("div", "contact-top");
+    const icon = createEl("div", "contact-icon");
+    icon.innerHTML = iconSvg(it.kind);
+    top.appendChild(icon);
+
+    const meta = createEl("div", "contact-meta");
+    meta.appendChild(createEl("div", "contact-label", it.label));
+    meta.appendChild(createEl("div", "contact-value", it.value));
+    top.appendChild(meta);
+
+    tile.appendChild(top);
+
+    const actions = createEl("div", "contact-actions");
+
+    const open = createEl("a", "btn small", "Open");
+    open.href = it.href;
+    open.target = "_blank";
+    open.rel = "noopener noreferrer";
+    actions.appendChild(open);
+
+    const copyBtn = createEl("button", "btn ghost small", "Copy");
+    copyBtn.type = "button";
+    copyBtn.dataset.copy = it.href;
+    actions.appendChild(copyBtn);
+
+    tile.appendChild(actions);
+
+    const toast = createEl("div", "contact-toast");
+    toast.setAttribute("aria-live", "polite");
+    tile.appendChild(toast);
+
+    copyBtn.addEventListener("click", async () => {
+      toast.textContent = "Copying...";
+      try {
+        await copyText(copyBtn.dataset.copy);
+        toast.textContent = "Copied!";
+        setTimeout(() => (toast.textContent = ""), 1200);
+      } catch {
+        toast.textContent = "Copy failed";
+        setTimeout(() => (toast.textContent = ""), 1200);
+      }
+    });
+
+    grid.appendChild(tile);
+  }
+
+  const allLinks = items.map((x) => `${x.label}: ${x.href}`).join("\n");
+  const footerActions = createEl("div", "contact-actions");
+
+  const copyAll = createEl("button", "btn ghost small", "Copy all");
+  copyAll.type = "button";
+  copyAll.addEventListener("click", async () => {
+    hint.textContent = "Copying all links...";
+    try {
+      await copyText(allLinks);
+      hint.textContent = "Copied all links.";
+      setTimeout(() => (hint.textContent = "Quick actions: open or copy a link."), 1400);
+    } catch {
+      hint.textContent = "Copy failed.";
+      setTimeout(() => (hint.textContent = "Quick actions: open or copy a link."), 1400);
+    }
+  });
+
+  footerActions.appendChild(copyAll);
+
+  wrap.appendChild(grid);
+  wrap.appendChild(footerActions);
+  card.appendChild(wrap);
 }
 
+// ================================
+// Theme: toggle light/dark
+// ================================
 function initTheme() {
   const btn = $("themeToggle");
   const saved = localStorage.getItem("theme");
@@ -388,6 +617,9 @@ function initTheme() {
   });
 }
 
+// ================================
+// Mobile nav: open/close
+// ================================
 function initMobileNav() {
   const openBtn = $("navToggle");
   const closeBtn = $("navClose");
@@ -423,6 +655,9 @@ function initMobileNav() {
   });
 }
 
+// ================================
+// App boot: run all renders + inits
+// ================================
 renderHero();
 renderAbout();
 renderSkills();
