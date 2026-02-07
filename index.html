@@ -67,9 +67,7 @@
             <div class="badge" id="heroBadge">IT Portfolio</div>
             <h1 class="hero-title" id="heroTitle">Hi, I am Your Name</h1>
             <p class="hero-subtitle" id="heroSubtitle"></p>
-
             <ul class="bullets" id="heroBullets"></ul>
-
             <div class="cta-row" id="heroLinks"></div>
           </div>
 
@@ -92,7 +90,6 @@
       <section class="section" id="skills">
         <div class="container">
           <h2>Skills</h2>
-
           <div class="skills-layout">
             <aside class="card skills-aside" id="skillsAside"></aside>
             <div class="skills-grid" id="skillsGrid"></div>
@@ -120,9 +117,8 @@
             <h2>Projects</h2>
 
             <div class="project-controls">
-              <!-- UPDATED: add pill tab container classes + tablist semantics -->
               <div
-                class="filters filterTabs project-tabs"
+                class="filters filterTabs"
                 id="projectFilters"
                 role="tablist"
                 aria-label="Project filters"
@@ -133,6 +129,8 @@
                 <input id="projectSearch" type="search" placeholder="Search projects" />
               </label>
             </div>
+
+            <div class="muted small" id="projectCount" aria-live="polite"></div>
           </div>
 
           <div class="grid" id="projectsGrid"></div>
