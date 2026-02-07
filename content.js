@@ -119,25 +119,26 @@ export const content = {
       ]
     }
   ],
-
+  
   education: [
-    {
-      school: "Arizona State University",
-      dates: "In progress",
-      program: "Bachelor of Science in Information Technology",
-      notes: [
+  { school: "Arizona State University",
+    dates: "In progress",
+    program: "Bachelor of Science in Information Technology",
+    notes: [
+        "ASU Online, Ira A. Fulton Schools of Engineering",
         "Focus: systems, networking, security fundamentals",
-        "Update with your expected graduation date when ready"
-      ]
+        "Expected graduation: 2027 (estimate, 4 classes per semester)",
+        "Coursework highlights: OS Architecture, Networking, System Security, UNIX Utilities, Java, Information Modeling and Retrieval" ]
     },
     {
-      school: "Coastline College",
-      dates: "Completed",
-      program: "Associate of Science in Information Technology and Associate of Science in Cybersecurity",
-      notes: [
-        "Hands on labs and technical coursework",
-        "Update this line if you want specific classes listed" ]
-    }
+  school: "Coastline College",
+  dates: "Completed (2025)",
+  program: "Associate of Science in Information Technology and Associate of Science in Cybersecurity",
+  notes: [
+    "Hands on labs and technical coursework",
+    "Focused on IT support fundamentals, networking, Windows and Linux basics, and security awareness",
+    "Built repeatable lab reports with screenshots, troubleshooting steps, and clear ticket style documentation" ]
+}
   ],
 
   projectCategories: ["All", "IT Support", "Systems", "Security", "Database", "DIY"],
@@ -213,15 +214,15 @@ export const content = {
   ],
   
   articles: [
-    {
-      title: "My Troubleshooting Checklist for Common IT Issues",
-      source: "Portfolio",
-      date: "2026",
-      readTime: "3 min",
-      summary:
-        "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket.",
-      tags: ["IT Support", "Basics"],
-      href: "PASTE_ARTICLE_LINK"
+   {
+     title: "My Troubleshooting Checklist for Common IT Issues",
+     category: "IT Support",
+     role: "Author",
+     dates: "Feb 2026",
+     summary:
+    "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket for clean handoffs.",
+    tags: ["IT Support", "Troubleshooting", "Documentation", "Workflow"],
+    links: [{ label: "PDF Checklist", href: "./My_Troubleshooting_Checklist_Portfolio_2026.pdf" }]
     },
     {
       title: "What I Learned Setting Up a Home Lab",
