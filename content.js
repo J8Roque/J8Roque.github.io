@@ -25,23 +25,6 @@ export const content = {
     footerText: "© J Roque"
   },
 
-  sectionText: {
-    about:
-      "Short and practical background, focused on real work and documentation.",
-    skills:
-      "Grouped skills with simple levels so it is easy to scan.",
-    experience:
-      "Work and simulations that show how I think and communicate.",
-    education:
-      "Degree path and key coursework that supports IT support and systems roles.",
-    projects:
-      "Hands on projects with links to guides and reports.",
-    articles:
-      "Short write ups and checklists focused on real support habits.",
-    contact:
-      "Fast ways to reach me and view my work."
-  },
-
   about: {
     paragraphs: [
       "Hi, I’m J Roque. I’m building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.",
@@ -62,57 +45,57 @@ export const content = {
     introText:
       "I focus on repeatable fundamentals: clear troubleshooting steps, clean ticket notes, and safe habits. I keep everything simple and practical.",
     featured: [
-      { name: "Troubleshooting workflow", level: 4 },
-      { name: "Windows fundamentals", level: 4 },
-      { name: "Linux fundamentals", level: 3 },
-      { name: "Networking basics", level: 3 },
-      { name: "Security awareness", level: 3 }
+      { name: "Troubleshooting workflow" },
+      { name: "Windows fundamentals" },
+      { name: "Linux fundamentals" },
+      { name: "Networking basics" },
+      { name: "Security awareness" }
     ],
     groups: [
       {
         title: "IT Support and Systems",
         caption: "Support habits and OS fundamentals",
         items: [
-          { name: "Troubleshooting workflow", level: 4 },
-          { name: "Ticket notes and documentation", level: 4 },
-          { name: "Windows basics", level: 4 },
-          { name: "Linux basics", level: 3 },
-          { name: "Remote support habits", level: 3 },
-          { name: "User communication", level: 4 }
+          { name: "Troubleshooting workflow" },
+          { name: "Ticket notes and documentation" },
+          { name: "Windows basics" },
+          { name: "Linux basics" },
+          { name: "Remote support habits" },
+          { name: "User communication" }
         ]
       },
       {
         title: "Networking Fundamentals",
         caption: "Home and small network basics",
         items: [
-          { name: "IP basics", level: 3 },
-          { name: "DNS and DHCP basics", level: 3 },
-          { name: "WiFi troubleshooting", level: 4 },
-          { name: "Basic home network setup", level: 3 },
-          { name: "Switch and router basics", level: 2 }
+          { name: "IP basics" },
+          { name: "DNS and DHCP basics" },
+          { name: "WiFi troubleshooting" },
+          { name: "Basic home network setup" },
+          { name: "Switch and router basics" }
         ]
       },
       {
         title: "Security Fundamentals",
         caption: "Safe habits and mindset",
         items: [
-          { name: "MFA", level: 4 },
-          { name: "Least privilege", level: 3 },
-          { name: "Patch hygiene", level: 3 },
-          { name: "Phishing awareness", level: 4 },
-          { name: "Basic incident mindset", level: 2 }
+          { name: "MFA" },
+          { name: "Least privilege" },
+          { name: "Patch hygiene" },
+          { name: "Phishing awareness" },
+          { name: "Basic incident mindset" }
         ]
       },
       {
         title: "Tools and Learning",
         caption: "Hands on practice tools",
         items: [
-          { name: "Hyper V labs", level: 3 },
-          { name: "PowerShell basics", level: 2 },
-          { name: "Python basics", level: 2 },
-          { name: "Bash basics", level: 2 },
-          { name: "SQL basics", level: 3 },
-          { name: "GitHub basics", level: 3 }
+          { name: "Hyper V labs" },
+          { name: "PowerShell basics" },
+          { name: "Python basics" },
+          { name: "Bash basics" },
+          { name: "SQL basics" },
+          { name: "GitHub basics" }
         ]
       }
     ]
