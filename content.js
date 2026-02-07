@@ -1,4 +1,12 @@
+// ===================================
+// FILE: content.js
+// NOTES: Labeled data blocks for fast updates
+// ===================================
+
 export const content = {
+  // ================================
+  // SITE: header + hero + footer
+  // ================================
   site: {
     name: "J Roque",
     badge: "My Portfolio",
@@ -25,6 +33,9 @@ export const content = {
     footerText: "© J Roque"
   },
 
+  // ================================
+  // ABOUT: paragraphs + highlights pills
+  // ================================
   about: {
     paragraphs: [
       "Hi, I’m J Roque. I’m building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.",
@@ -40,6 +51,9 @@ export const content = {
     ]
   },
 
+  // ================================
+  // SKILLS: intro + featured + grouped lists
+  // ================================
   skills: {
     introTitle: "Core strengths",
     introText:
@@ -101,6 +115,9 @@ export const content = {
     ]
   },
 
+  // ================================
+  // EXPERIENCE: orgs + roles + bullets
+  // ================================
   experience: [
     {
       org: "Academic and Home Lab Projects",
@@ -136,6 +153,9 @@ export const content = {
     }
   ],
 
+  // ================================
+  // EDUCATION: schools + notes
+  // ================================
   education: [
     {
       school: "Arizona State University",
@@ -160,6 +180,9 @@ export const content = {
     }
   ],
 
+  // ================================
+  // PROJECTS: categories + project cards
+  // ================================
   projectCategories: ["All", "IT Support", "Systems", "Security", "Database"],
 
   projects: [
@@ -228,6 +251,9 @@ export const content = {
     }
   ],
 
+  // ================================
+  // ARTICLES: portfolio writing cards
+  // ================================
   articles: [
     {
       title: "My Troubleshooting Checklist for Common IT Issues",
@@ -267,6 +293,9 @@ export const content = {
     }
   ],
 
+  // ================================
+  // CONTACT: links used by Contact section
+  // ================================
   contact: {
     email: "",
     github: "https://github.com/J8Roque",
