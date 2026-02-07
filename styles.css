@@ -1,3 +1,6 @@
+/* ================================
+   THEME TOKENS (LIGHT + DARK)
+================================ */
 :root {
   --bg: #f5f5f7;
   --surface: #ffffff;
@@ -27,6 +30,9 @@
   color-scheme: light;
 }
 
+/* ================================
+   DARK THEME OVERRIDES
+================================ */
 :root[data-theme="dark"] {
   --bg: #0b0b0f;
   --surface: rgba(255, 255, 255, 0.06);
@@ -38,6 +44,7 @@
 
   --shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
 
+  /* Tabs */
   --tab-bg: rgba(255, 255, 255, 0.06);
   --tab-border: rgba(255, 255, 255, 0.14);
   --tab-hover: rgba(255, 255, 255, 0.10);
@@ -48,8 +55,13 @@
   color-scheme: dark;
 }
 
+/* ================================
+   BASE RESET + DEFAULTS
+================================ */
 * { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -59,8 +71,12 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
+
 img { display: block; max-width: 100%; }
 
+/* ================================
+   LAYOUT CONTAINERS
+================================ */
 .container {
   width: 100%;
   max-width: var(--max);
@@ -68,6 +84,9 @@ img { display: block; max-width: 100%; }
   padding: 0 18px;
 }
 
+/* ================================
+   ACCESSIBILITY HELPERS
+================================ */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -81,8 +100,12 @@ img { display: block; max-width: 100%; }
 }
 
 .small { font-size: 13px; }
+
 .muted { color: var(--muted); }
 
+/* ================================
+   SKIP LINK
+================================ */
 .skip-link {
   position: absolute;
   left: 12px;
@@ -97,6 +120,9 @@ img { display: block; max-width: 100%; }
 }
 .skip-link:focus { transform: translateY(0); }
 
+/* ================================
+   TOPBAR (STICKY HEADER)
+================================ */
 .topbar {
   position: sticky;
   top: 0;
@@ -105,7 +131,9 @@ img { display: block; max-width: 100%; }
   background: rgba(245, 245, 247, 0.78);
   backdrop-filter: blur(14px);
 }
-:root[data-theme="dark"] .topbar { background: rgba(11, 11, 15, 0.70); }
+:root[data-theme="dark"] .topbar {
+  background: rgba(11, 11, 15, 0.70);
+}
 
 .topbar-inner {
   display: flex;
@@ -115,6 +143,9 @@ img { display: block; max-width: 100%; }
   padding: 12px 0;
 }
 
+/* ================================
+   BRAND
+================================ */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -130,6 +161,9 @@ img { display: block; max-width: 100%; }
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
 }
 
+/* ================================
+   DESKTOP NAV
+================================ */
 .nav {
   display: flex;
   gap: 10px;
@@ -142,18 +176,28 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
   transition: background 150ms ease, color 150ms ease;
 }
+
 .nav a:hover {
   background: rgba(0, 0, 0, 0.04);
   color: var(--text);
 }
-:root[data-theme="dark"] .nav a:hover { background: var(--surface-2); }
 
+:root[data-theme="dark"] .nav a:hover {
+  background: var(--surface-2);
+}
+
+/* ================================
+   HEADER ACTIONS (THEME + MENU BUTTONS)
+================================ */
 .topbar-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* ================================
+   BUTTONS
+================================ */
 .btn {
   border: 1px solid var(--border);
   background: var(--surface);
@@ -168,7 +212,12 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   min-height: 38px;
 }
-.btn:hover { transform: translateY(-1px); background: var(--surface-2); }
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: var(--surface-2);
+}
+
 .btn.ghost { background: transparent; }
 
 .btn:focus-visible {
@@ -178,12 +227,17 @@ img { display: block; max-width: 100%; }
 
 .nav-toggle { display: none; }
 
+/* ================================
+   MOBILE NAV MENU
+================================ */
 .mobile-nav {
   display: none;
   border-top: 1px solid var(--border);
   background: rgba(245, 245, 247, 0.92);
 }
-:root[data-theme="dark"] .mobile-nav { background: rgba(11, 11, 15, 0.92); }
+:root[data-theme="dark"] .mobile-nav {
+  background: rgba(11, 11, 15, 0.92);
+}
 
 .mobile-nav-inner { padding: 12px 18px 16px 18px; }
 
@@ -212,6 +266,9 @@ img { display: block; max-width: 100%; }
 
 body[data-menu-open="true"] .mobile-nav { display: block; }
 
+/* ================================
+   HERO SECTION
+================================ */
 .hero { padding: 44px 0 14px 0; }
 
 .hero-grid {
@@ -259,6 +316,9 @@ body[data-menu-open="true"] .mobile-nav { display: block; }
   margin-top: 16px;
 }
 
+/* ================================
+   CARD (BASE)
+================================ */
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -267,6 +327,9 @@ body[data-menu-open="true"] .mobile-nav { display: block; }
   box-shadow: var(--shadow);
 }
 
+/* ================================
+   AVATAR
+================================ */
 .avatar {
   border-radius: calc(var(--radius) + 6px);
   border: 1px solid var(--border);
@@ -283,6 +346,9 @@ body[data-menu-open="true"] .mobile-nav { display: block; }
   border: 1px solid var(--border);
 }
 
+/* ================================
+   QUICK CARDS
+================================ */
 .quick-cards {
   margin-top: 14px;
   display: grid;
@@ -295,6 +361,7 @@ body[data-menu-open="true"] .mobile-nav { display: block; }
   background: var(--surface);
   padding: 12px;
 }
+
 .quick-card .k {
   color: var(--muted);
   font-weight: 740;
@@ -302,11 +369,15 @@ body[data-menu-open="true"] .mobile-nav { display: block; }
   text-transform: uppercase;
   letter-spacing: 0.2px;
 }
+
 .quick-card .v {
   margin-top: 4px;
   font-weight: 760;
 }
 
+/* ================================
+   SECTIONS + HEADERS
+================================ */
 .section { padding: 26px 0; }
 
 h2 {
@@ -322,12 +393,23 @@ h2 {
   margin-bottom: 12px;
 }
 
-.stack { display: grid; gap: var(--gap); }
+/* ================================
+   STACK (VERTICAL CARD LISTS)
+================================ */
+.stack {
+  display: grid;
+  gap: var(--gap);
+}
 
 .item-title { font-weight: 820; margin-bottom: 6px; }
+
 .item-meta { color: var(--muted); font-weight: 680; font-size: 13px; }
+
 .item-text { color: var(--muted); margin: 10px 0 0 0; }
 
+/* ================================
+   PILLS (TAGS + HIGHLIGHTS)
+================================ */
 .pill-row {
   display: flex;
   flex-wrap: wrap;
@@ -345,13 +427,21 @@ h2 {
   font-size: 13px;
 }
 
+/* ================================
+   SKILLS LAYOUT
+================================ */
 .skills-layout {
   display: grid;
   grid-template-columns: minmax(280px, 360px) 1fr;
   gap: var(--gap);
   align-items: stretch;
 }
-.skills-aside { height: 100%; display: flex; flex-direction: column; }
+
+.skills-aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .skills-grid {
   display: grid;
@@ -388,7 +478,9 @@ h2 {
   font-size: 13px;
 }
 
-/* Projects controls */
+/* ================================
+   PROJECT CONTROLS (FILTERS + SEARCH)
+================================ */
 .project-controls {
   display: flex;
   align-items: center;
@@ -397,7 +489,9 @@ h2 {
   flex-wrap: wrap;
 }
 
-/* Improved pill tabs */
+/* ================================
+   PROJECT FILTER TABS
+================================ */
 .filterTabs {
   display: flex;
   gap: 8px;
@@ -450,12 +544,15 @@ h2 {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.20);
 }
 
-/* Search */
+/* ================================
+   PROJECT SEARCH
+================================ */
 .search {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
+
 .search input {
   width: min(320px, 80vw);
   min-height: 38px;
@@ -466,24 +563,37 @@ h2 {
   color: var(--text);
   outline: none;
 }
+
 .search input::placeholder { color: var(--muted); }
+
 .search input:focus-visible {
   outline: 2px solid var(--tab-focus);
   outline-offset: 2px;
 }
 
-/* Grids */
+/* ================================
+   GRID (PROJECTS + ARTICLES)
+================================ */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap);
 }
 
-/* Footer */
+/* ================================
+   CONTACT: interactive cards
+   Paste the contact CSS here if you add it
+================================ */
+/* (empty on purpose until you paste contact block) */
+
+/* ================================
+   FOOTER
+================================ */
 .footer {
   padding: 22px 0 34px 0;
   border-top: 1px solid var(--border);
 }
+
 .footer-inner {
   display: flex;
   align-items: center;
@@ -491,7 +601,9 @@ h2 {
   gap: 12px;
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE BREAKPOINTS
+================================ */
 @media (max-width: 900px) {
   .nav { display: none; }
   .nav-toggle { display: inline-flex; }
