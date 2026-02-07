@@ -198,16 +198,18 @@ export const content = {
     links: [
     { label: "PDF Lab", href: "./pizza-ordering-system.pdf" } ]
     },
-    {
-      title: "No Code AI App Concept: Email and Message Writer",
-      category: "IT Support",
-      role: "Builder",
-      dates: "2025 to 2026",
-      summary:
-        "Started a simple no code tool idea to help write clear support emails and messages with consistent tone and structure.",
-      tags: ["Productivity", "Documentation", "AI tools"],
-      links: [{ label: "Demo", href: "PASTE_DEMO_LINK" }]
-    }
+  {
+  title: "IT Message Writer",
+  category: "IT Support",
+  role: "Builder",
+  dates: "2026",
+  summary:
+    "A simple web tool that creates clean support emails, chats, and ticket updates you can copy. It also generates an optional AI prompt for polishing without sharing sensitive data.",
+  tags: ["JavaScript", "HTML", "CSS", "IT Support"],
+  links: [
+    { label: "Live tool", href: "https://j8roque.github.io/it-message-writer/" },
+    { label: "Repo", href: "https://github.com/J8Roque/it-message-writer" }]
+  }
   ],
   
   articles: [
