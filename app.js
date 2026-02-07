@@ -28,7 +28,7 @@ function renderHero() {
 
   const bullets = $("heroBullets");
   bullets.innerHTML = "";
-  for (const b of content.site.bullets) {
+  for (const b of content.site.bullets ?? []) {
     const li = document.createElement("li");
     li.textContent = b;
     bullets.appendChild(li);
@@ -36,10 +36,11 @@ function renderHero() {
 
   const links = $("heroLinks");
   links.innerHTML = "";
-  for (const l of content.site.links) {
+  for (const l of content.site.links ?? []) {
     const a = document.createElement("a");
     a.className = `btn ${l.style === "primary" ? "primary" : ""}`.trim();
     a.textContent = l.label;
+
     const href = safeLink(l.href);
     a.href = href ?? "#";
     if (href) {
@@ -53,14 +54,14 @@ function renderHero() {
   img.src = content.site.profileImage;
   img.onerror = () => {
     img.removeAttribute("src");
-    img.alt = "Add your photo in images/profile.jpg";
+    img.alt = "Add your photo, for example ./cat2.jpg";
     img.style.display = "block";
     img.style.padding = "18px";
   };
 
   const quick = $("quickCards");
   quick.innerHTML = "";
-  for (const c of content.site.quickCards) {
+  for (const c of content.site.quickCards ?? []) {
     const card = createEl("div", "quick-card");
     card.appendChild(createEl("div", "k", c.key));
     card.appendChild(createEl("div", "v", c.value));
@@ -72,9 +73,8 @@ function renderAbout() {
   const wrap = $("aboutCard");
   wrap.innerHTML = "";
 
-  for (const p of content.about.paragraphs) {
-    const para = createEl("p", "item-text", p);
-    wrap.appendChild(para);
+  for (const p of content.about.paragraphs ?? []) {
+    wrap.appendChild(createEl("p", "item-text", p));
   }
 
   const hr = document.createElement("hr");
@@ -84,7 +84,7 @@ function renderAbout() {
   wrap.appendChild(hr);
 
   const pills = createEl("div", "pill-row");
-  for (const h of content.about.highlights) {
+  for (const h of content.about.highlights ?? []) {
     pills.appendChild(createEl("span", "pill", h));
   }
   wrap.appendChild(pills);
@@ -94,12 +94,12 @@ function renderSkills() {
   const grid = $("skillsGrid");
   grid.innerHTML = "";
 
-  for (const block of content.skills) {
+  for (const block of content.skills ?? []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", block.title));
 
     const pillRow = createEl("div", "pill-row");
-    for (const s of block.items) pillRow.appendChild(createEl("span", "pill", s));
+    for (const s of block.items ?? []) pillRow.appendChild(createEl("span", "pill", s));
     card.appendChild(pillRow);
 
     grid.appendChild(card);
@@ -110,12 +110,12 @@ function renderExperience() {
   const stack = $("experienceStack");
   stack.innerHTML = "";
 
-  for (const exp of content.experience) {
+  for (const exp of content.experience ?? []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", exp.org));
     card.appendChild(createEl("div", "item-meta", `${exp.dates} • ${exp.location}`));
 
-    for (const role of exp.roles) {
+    for (const role of exp.roles ?? []) {
       const roleTitle = createEl("div", "item-title", role.title);
       roleTitle.style.marginTop = "12px";
       roleTitle.style.fontSize = "16px";
@@ -125,7 +125,7 @@ function renderExperience() {
 
       const ul = document.createElement("ul");
       ul.className = "bullets";
-      for (const b of role.bullets) ul.appendChild(createEl("li", "", b));
+      for (const b of role.bullets ?? []) ul.appendChild(createEl("li", "", b));
       card.appendChild(ul);
     }
 
@@ -137,7 +137,7 @@ function renderEducation() {
   const stack = $("educationStack");
   stack.innerHTML = "";
 
-  for (const ed of content.education) {
+  for (const ed of content.education ?? []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", ed.school));
     card.appendChild(createEl("div", "item-meta", ed.dates));
@@ -166,17 +166,21 @@ function projectCard(p) {
 
   const links = createEl("div", "cta-row");
   links.style.marginTop = "12px";
-  for (const l of p.links ?? []) {
-    const a = createEl("a", "btn ghost", l.label);
-    const href = safeLink(l.href);
-    a.href = href ?? "#";
-    if (href) {
+
+  const hasAnyLink = (p.links ?? []).some((l) => safeLink(l.href));
+  if (hasAnyLink) {
+    for (const l of p.links ?? []) {
+      const href = safeLink(l.href);
+      if (!href) continue;
+
+      const a = createEl("a", "btn ghost", l.label);
+      a.href = href;
       a.target = "_blank";
       a.rel = "noreferrer";
+      links.appendChild(a);
     }
-    links.appendChild(a);
+    card.appendChild(links);
   }
-  card.appendChild(links);
 
   return card;
 }
@@ -191,14 +195,14 @@ function renderProjects() {
     grid.innerHTML = "";
     const list =
       active === "All"
-        ? content.projects
-        : content.projects.filter((p) => p.category === active);
+        ? content.projects ?? []
+        : (content.projects ?? []).filter((p) => p.category === active);
 
     for (const p of list) grid.appendChild(projectCard(p));
   }
 
   filters.innerHTML = "";
-  for (const cat of content.projectCategories) {
+  for (const cat of content.projectCategories ?? ["All"]) {
     const btn = createEl("button", "filter-btn", cat);
     btn.type = "button";
     btn.setAttribute("aria-pressed", cat === active ? "true" : "false");
@@ -219,7 +223,7 @@ function renderArticles() {
   const grid = $("articlesGrid");
   grid.innerHTML = "";
 
-  for (const a of content.articles) {
+  for (const a of content.articles ?? []) {
     const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", a.title));
     card.appendChild(createEl("div", "item-meta", `${a.source} • ${a.date} • ${a.readTime}`));
@@ -235,37 +239,8 @@ function renderArticles() {
       linkRow.style.marginTop = "12px";
       const link = createEl("a", "btn ghost", "Read");
       link.href = href;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-      linkRow.appendChild(link);
-      card.appendChild(linkRow);
-    }
-
-    grid.appendChild(card);
-  }
-}
-
-function renderDIY() {
-  const grid = $("diyGrid");
-  grid.innerHTML = "";
-
-  for (const d of content.diy) {
-    const card = createEl("div", "card");
-    card.appendChild(createEl("div", "item-title", d.title));
-    card.appendChild(createEl("p", "item-text", d.summary));
-
-    const pills = createEl("div", "pill-row");
-    for (const t of d.tags ?? []) pills.appendChild(createEl("span", "pill", t));
-    card.appendChild(pills);
-
-    const href = safeLink(d.href);
-    if (href) {
-      const linkRow = createEl("div", "cta-row");
-      linkRow.style.marginTop = "12px";
-      const link = createEl("a", "btn ghost", "Open");
-      link.href = href;
-      link.target = "_blank";
-      link.rel = "noreferrer";
+      link.target = a.target ?? "_blank";
+      link.rel = a.rel ?? "noreferrer";
       linkRow.appendChild(link);
       card.appendChild(linkRow);
     }
@@ -278,17 +253,16 @@ function renderContact() {
   const card = $("contactCard");
   card.innerHTML = "";
 
-  const p = createEl("p", "item-text", "Best ways to reach me:");
-  card.appendChild(p);
+  card.appendChild(createEl("p", "item-text", "Best ways to reach me:"));
 
   const ul = document.createElement("ul");
   ul.className = "bullets";
 
-  ul.appendChild(createEl("li", "", `Email: ${content.contact.email}`));
-  ul.appendChild(createEl("li", "", `GitHub: ${content.contact.github}`));
-  ul.appendChild(createEl("li", "", `LinkedIn: ${content.contact.linkedin}`));
+  if (content.contact?.email) ul.appendChild(createEl("li", "", `Email: ${content.contact.email}`));
+  if (content.contact?.github) ul.appendChild(createEl("li", "", `GitHub: ${content.contact.github}`));
+  if (content.contact?.linkedin) ul.appendChild(createEl("li", "", `LinkedIn: ${content.contact.linkedin}`));
 
-  for (const o of content.contact.other ?? []) {
+  for (const o of content.contact?.other ?? []) {
     ul.appendChild(createEl("li", "", `${o.label}: ${o.href}`));
   }
 
@@ -315,6 +289,5 @@ renderExperience();
 renderEducation();
 renderProjects();
 renderArticles();
-renderDIY();
 renderContact();
 initTheme();
