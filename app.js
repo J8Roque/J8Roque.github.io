@@ -5,9 +5,9 @@
 
 import { content } from "./content.js";
 
-// ================================
-// Helpers: DOM + text + links
-// ================================
+/* ================================
+   Helpers: DOM + text + links
+================================ */
 const $ = (id) => document.getElementById(id);
 
 function setText(id, value) {
@@ -41,9 +41,9 @@ function applyLinkTarget(a, href) {
   }
 }
 
-// ================================
-// Copy helper: Contact buttons
-// ================================
+/* ================================
+   Copy helper: Contact buttons
+================================ */
 function copyText(text) {
   const v = String(text || "").trim();
   if (!v) return Promise.reject(new Error("Nothing to copy"));
@@ -69,22 +69,23 @@ function copyText(text) {
   });
 }
 
+/* ================================
+   URL label: show host + short path
+================================ */
 function prettyUrlLabel(url) {
   try {
     const u = new URL(url);
     const host = u.hostname.replace(/^www\./, "");
     const path = (u.pathname || "/").replace(/\/$/, "");
-    // Keep it short and readable
     return path && path !== "" ? `${host}${path}` : host;
   } catch {
     return url;
   }
 }
 
-
-// ================================
-// Icons: Contact tiles
-// ================================
+/* ================================
+   Icons: Contact tiles
+================================ */
 function iconSvg(kind) {
   if (kind === "email") {
     return `
@@ -115,9 +116,9 @@ function iconSvg(kind) {
     </svg>`;
 }
 
-// ================================
-// Render: HERO
-// ================================
+/* ================================
+   Render: HERO
+================================ */
 function renderHero() {
   setText("brandName", content.site.name);
   setText("mobileBrand", content.site.name);
@@ -172,9 +173,9 @@ function renderHero() {
   }
 }
 
-// ================================
-// Render: ABOUT
-// ================================
+/* ================================
+   Render: ABOUT
+================================ */
 function renderAbout() {
   const wrap = $("aboutCard");
   wrap.innerHTML = "";
@@ -196,9 +197,9 @@ function renderAbout() {
   wrap.appendChild(pills);
 }
 
-// ================================
-// Render: SKILLS
-// ================================
+/* ================================
+   Render: SKILLS
+================================ */
 function renderSkills() {
   const aside = $("skillsAside");
   const grid = $("skillsGrid");
@@ -233,9 +234,9 @@ function renderSkills() {
   }
 }
 
-// ================================
-// Render: EXPERIENCE
-// ================================
+/* ================================
+   Render: EXPERIENCE
+================================ */
 function renderExperience() {
   const stack = $("experienceStack");
   stack.innerHTML = "";
@@ -263,9 +264,9 @@ function renderExperience() {
   }
 }
 
-// ================================
-// Render: EDUCATION
-// ================================
+/* ================================
+   Render: EDUCATION
+================================ */
 function renderEducation() {
   const stack = $("educationStack");
   stack.innerHTML = "";
@@ -287,9 +288,9 @@ function renderEducation() {
   }
 }
 
-// ================================
-// Projects: card builder
-// ================================
+/* ================================
+   Projects: card builder
+================================ */
 function projectCard(p) {
   const card = createEl("div", "card");
   card.appendChild(createEl("div", "item-title", p.title));
@@ -316,9 +317,9 @@ function projectCard(p) {
   return card;
 }
 
-// ================================
-// Render: PROJECTS (tabs + search)
-// ================================
+/* ================================
+   Render: PROJECTS (tabs + search)
+================================ */
 function renderProjects() {
   const filters = $("projectFilters");
   const grid = $("projectsGrid");
@@ -428,9 +429,9 @@ function renderProjects() {
   setActive(active);
 }
 
-// ================================
-// Render: ARTICLES
-// ================================
+/* ================================
+   Render: ARTICLES
+================================ */
 function renderArticles() {
   const grid = $("articlesGrid");
   grid.innerHTML = "";
@@ -465,9 +466,9 @@ function renderArticles() {
   }
 }
 
-// ================================
-// Render: CONTACT (interactive tiles + copy)
-// ================================
+/* ================================
+   Render: CONTACT (interactive premium cards)
+================================ */
 function renderContact() {
   const card = $("contactCard");
   card.innerHTML = "";
@@ -502,7 +503,7 @@ function renderContact() {
     items.push({
       kind: "linkedin",
       label: "LinkedIn",
-      value: prettyHost(content.contact.linkedin),
+      value: prettyUrlLabel(content.contact.linkedin),
       href: content.contact.linkedin
     });
   }
@@ -512,7 +513,7 @@ function renderContact() {
       items.push({
         kind: "link",
         label: o.label,
-        value: prettyHost(o.href),
+        value: prettyUrlLabel(o.href),
         href: o.href
       });
     }
@@ -568,8 +569,8 @@ function renderContact() {
   }
 
   const allLinks = items.map((x) => `${x.label}: ${x.href}`).join("\n");
-  const footerActions = createEl("div", "contact-footer");
 
+  const footerActions = createEl("div", "contact-footer");
   const copyAll = createEl("button", "btn ghost small", "Copy all");
   copyAll.type = "button";
   copyAll.addEventListener("click", async () => {
@@ -591,9 +592,9 @@ function renderContact() {
   card.appendChild(wrap);
 }
 
-// ================================
-// Theme: toggle light/dark
-// ================================
+/* ================================
+   Theme: toggle light/dark
+================================ */
 function initTheme() {
   const btn = $("themeToggle");
   const saved = localStorage.getItem("theme");
@@ -621,9 +622,9 @@ function initTheme() {
   });
 }
 
-// ================================
-// Mobile nav: open/close
-// ================================
+/* ================================
+   Mobile nav: open/close
+================================ */
 function initMobileNav() {
   const openBtn = $("navToggle");
   const closeBtn = $("navClose");
@@ -659,9 +660,9 @@ function initMobileNav() {
   });
 }
 
-// ================================
-// App boot: run all renders + inits
-// ================================
+/* ================================
+   App boot: run all renders + inits
+================================ */
 renderHero();
 renderAbout();
 renderSkills();
