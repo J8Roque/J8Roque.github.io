@@ -153,9 +153,9 @@ export const content = {
     "Created a Windows 11 Generation 2 VM in Hyper-V, configured an external virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, and disk inside the VM.",
   tags: ["Hyper-V", "Windows 11", "Virtualization", "Networking"],
   links: [
-    { label: "PDF Guide", href: "./Hyper V-windows11-vm-guide.pdf.pdf" }
+  { label: "PDF Guide", href: "./Hyper V-windows11-vm-guide.pdf.pdf" }
   ]
-},
+ },
 
     {
       title: "Raspberry Pi Build and Boot Troubleshooting Notes",
