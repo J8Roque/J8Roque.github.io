@@ -69,14 +69,18 @@ function copyText(text) {
   });
 }
 
-function prettyHost(url) {
+function prettyUrlLabel(url) {
   try {
     const u = new URL(url);
-    return u.hostname.replace(/^www\./, "");
+    const host = u.hostname.replace(/^www\./, "");
+    const path = (u.pathname || "/").replace(/\/$/, "");
+    // Keep it short and readable
+    return path && path !== "" ? `${host}${path}` : host;
   } catch {
     return url;
   }
 }
+
 
 // ================================
 // Icons: Contact tiles
@@ -489,7 +493,7 @@ function renderContact() {
     items.push({
       kind: "github",
       label: "GitHub",
-      value: prettyHost(content.contact.github),
+      value: prettyUrlLabel(content.contact.github),
       href: content.contact.github
     });
   }
@@ -564,7 +568,7 @@ function renderContact() {
   }
 
   const allLinks = items.map((x) => `${x.label}: ${x.href}`).join("\n");
-  const footerActions = createEl("div", "contact-actions");
+  const footerActions = createEl("div", "contact-footer");
 
   const copyAll = createEl("button", "btn ghost small", "Copy all");
   copyAll.type = "button";
