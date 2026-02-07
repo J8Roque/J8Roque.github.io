@@ -252,31 +252,6 @@ export const content = {
   }
 ],
 
-
-  diy: [
-    {
-      title: "Raspberry Pi Storage Setup",
-      summary:
-        "Notes on storage choices, boot behavior, and fixes I used when something would not start correctly.",
-      tags: ["DIY", "Linux", "Storage"],
-      href: "PASTE_DIY_LINK"
-    },
-    {
-      title: "Home NAS Organization and Backups",
-      summary:
-        "How I organized folders, users, and a simple backup routine that is realistic to keep doing.",
-      tags: ["DIY", "Backups"],
-      href: "PASTE_DIY_LINK"
-    },
-    {
-      title: "Basic Home Network Cleanup",
-      summary:
-        "Small changes that improved reliability like checking DNS settings, reboot order, and documenting devices.",
-      tags: ["DIY", "Networking"],
-      href: "PASTE_DIY_LINK"
-    }
-  ],
-
   contact: {
     github: "https://github.com/J8Roque",
     linkedin: "https://www.linkedin.com/in/jemmyroque/",
