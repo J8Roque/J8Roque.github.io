@@ -19,17 +19,7 @@ function safeLink(href) {
   return href;
 }
 
-function clampLevel(level) {
-  const n = Number(level);
-  if (Number.isNaN(n)) return 0;
-  return Math.max(0, Math.min(5, n));
-}
-
-function levelToPercent(level) {
-  return `${(clampLevel(level) / 5) * 100}%`;
-}
-
-function renderTopText() {
+function renderHero() {
   setText("brandName", content.site.name);
   setText("mobileBrand", content.site.name);
   setText("heroBadge", content.site.badge);
@@ -37,16 +27,6 @@ function renderTopText() {
   setText("heroSubtitle", content.site.subtitle);
   setText("footerText", content.site.footerText);
 
-  setText("aboutSubtitle", content.sectionText?.about ?? "");
-  setText("skillsSubtitle", content.sectionText?.skills ?? "");
-  setText("experienceSubtitle", content.sectionText?.experience ?? "");
-  setText("educationSubtitle", content.sectionText?.education ?? "");
-  setText("projectsSubtitle", content.sectionText?.projects ?? "");
-  setText("articlesSubtitle", content.sectionText?.articles ?? "");
-  setText("contactSubtitle", content.sectionText?.contact ?? "");
-}
-
-function renderHero() {
   const bullets = $("heroBullets");
   bullets.innerHTML = "";
   for (const b of content.site.bullets) {
@@ -59,7 +39,7 @@ function renderHero() {
   links.innerHTML = "";
   for (const l of content.site.links) {
     const a = document.createElement("a");
-    a.className = `btn ${l.style === "primary" ? "primary" : ""}`.trim();
+    a.className = `btn ${l.style === "primary" ? "" : "ghost"}`.trim();
     a.textContent = l.label;
 
     const href = safeLink(l.href);
@@ -75,7 +55,7 @@ function renderHero() {
   img.src = content.site.profileImage;
   img.onerror = () => {
     img.removeAttribute("src");
-    img.alt = "Add your photo to the project folder and update content.site.profileImage";
+    img.alt = "Add your photo and update content.site.profileImage";
     img.style.display = "block";
     img.style.padding = "18px";
   };
@@ -88,17 +68,6 @@ function renderHero() {
     card.appendChild(createEl("div", "v", c.value));
     quick.appendChild(card);
   }
-
-  const mini = $("heroMini");
-  mini.innerHTML = "";
-  const strong = createEl("strong", "", "Quick note: ");
-  const span = createEl(
-    "span",
-    "",
-    "Everything here is built to be easy to scan, easy to read, and focused on real IT work."
-  );
-  mini.appendChild(strong);
-  mini.appendChild(span);
 }
 
 function renderAbout() {
@@ -129,44 +98,29 @@ function renderSkills() {
   aside.innerHTML = "";
   grid.innerHTML = "";
 
-  aside.appendChild(createEl("h3", "", content.skills.introTitle));
+  aside.appendChild(createEl("div", "item-title", content.skills.introTitle));
   aside.appendChild(createEl("p", "item-text", content.skills.introText));
 
   const featuredWrap = createEl("div", "pill-row");
   for (const s of content.skills.featured) {
-    const level = clampLevel(s.level);
-    const pill = createEl("span", `pill ${level >= 4 ? "strong" : ""}`, s.name);
-    featuredWrap.appendChild(pill);
+    featuredWrap.appendChild(createEl("span", "pill", s.name));
   }
   aside.appendChild(featuredWrap);
 
   for (const group of content.skills.groups) {
-    const card = createEl("div", "card reveal");
+    const card = createEl("div", "card");
 
     const head = createEl("div", "skill-group-title");
     head.appendChild(createEl("div", "item-title", group.title));
     head.appendChild(createEl("span", "", group.caption ?? ""));
     card.appendChild(head);
 
-    const row = createEl("div", "pill-row");
+    const list = createEl("div", "skill-items");
     for (const item of group.items) {
-      const chip = createEl("span", "skill-chip");
-      const dot = createEl("i", "skill-dot");
-      dot.setAttribute("aria-hidden", "true");
-      chip.appendChild(dot);
-
-      chip.appendChild(createEl("span", "", item.name));
-
-      const meter = createEl("span", "meter");
-      const fill = document.createElement("i");
-      fill.style.width = levelToPercent(item.level);
-      meter.appendChild(fill);
-      chip.appendChild(meter);
-
-      row.appendChild(chip);
+      list.appendChild(createEl("div", "skill-item", item.name));
     }
+    card.appendChild(list);
 
-    card.appendChild(row);
     grid.appendChild(card);
   }
 }
@@ -176,7 +130,7 @@ function renderExperience() {
   stack.innerHTML = "";
 
   for (const exp of content.experience) {
-    const card = createEl("div", "card reveal");
+    const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", exp.org));
     card.appendChild(createEl("div", "item-meta", `${exp.dates} • ${exp.location}`));
 
@@ -203,7 +157,7 @@ function renderEducation() {
   stack.innerHTML = "";
 
   for (const ed of content.education) {
-    const card = createEl("div", "card reveal");
+    const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", ed.school));
     card.appendChild(createEl("div", "item-meta", ed.dates));
     card.appendChild(createEl("div", "item-text", ed.program));
@@ -220,7 +174,7 @@ function renderEducation() {
 }
 
 function projectCard(p) {
-  const card = createEl("div", "card reveal");
+  const card = createEl("div", "card");
   card.appendChild(createEl("div", "item-title", p.title));
   card.appendChild(createEl("div", "item-meta", `${p.category} • ${p.role} • ${p.dates}`));
   card.appendChild(createEl("p", "item-text", p.summary));
@@ -259,6 +213,7 @@ function renderProjects() {
     if (!inCat) return false;
 
     if (!query) return true;
+
     const q = query.toLowerCase();
     const blob = [
       p.title,
@@ -292,7 +247,6 @@ function renderProjects() {
         b.setAttribute("aria-pressed", b.textContent === active ? "true" : "false")
       );
       paint();
-      revealNow();
     });
     filters.appendChild(btn);
   }
@@ -300,7 +254,6 @@ function renderProjects() {
   search.addEventListener("input", (e) => {
     query = e.target.value.trim();
     paint();
-    revealNow();
   });
 
   paint();
@@ -311,7 +264,7 @@ function renderArticles() {
   grid.innerHTML = "";
 
   for (const a of content.articles) {
-    const card = createEl("div", "card reveal");
+    const card = createEl("div", "card");
     card.appendChild(createEl("div", "item-title", a.title));
     card.appendChild(createEl("div", "item-meta", `${a.source} • ${a.date} • ${a.readTime}`));
     card.appendChild(createEl("p", "item-text", a.summary));
@@ -358,13 +311,17 @@ function renderContact() {
 
 function initTheme() {
   const btn = $("themeToggle");
-
   const saved = localStorage.getItem("theme");
-  const initial = saved || "dark";
-  document.documentElement.setAttribute("data-theme", initial);
+
+  if (saved) {
+    document.documentElement.setAttribute("data-theme", saved);
+  } else {
+    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+    document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+  }
 
   btn.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") || "dark";
+    const current = document.documentElement.getAttribute("data-theme") || "light";
     const next = current === "dark" ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
@@ -379,13 +336,11 @@ function initMobileNav() {
   function openMenu() {
     document.body.setAttribute("data-menu-open", "true");
     mobileNav.setAttribute("aria-hidden", "false");
-    openBtn.setAttribute("aria-label", "Menu open");
   }
 
   function closeMenu() {
     document.body.setAttribute("data-menu-open", "false");
     mobileNav.setAttribute("aria-hidden", "true");
-    openBtn.setAttribute("aria-label", "Open menu");
   }
 
   openBtn.addEventListener("click", () => {
@@ -406,35 +361,6 @@ function initMobileNav() {
   });
 }
 
-let observer;
-
-function initReveal() {
-  const items = document.querySelectorAll(".reveal");
-  if (!items.length) return;
-
-  if (observer) observer.disconnect();
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) entry.target.classList.add("is-visible");
-      }
-    },
-    { root: null, threshold: 0.12 }
-  );
-
-  items.forEach((el) => observer.observe(el));
-}
-
-function revealNow() {
-  const items = document.querySelectorAll(".reveal");
-  items.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.92) el.classList.add("is-visible");
-  });
-}
-
-renderTopText();
 renderHero();
 renderAbout();
 renderSkills();
@@ -445,5 +371,3 @@ renderArticles();
 renderContact();
 initTheme();
 initMobileNav();
-initReveal();
-revealNow();
