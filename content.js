@@ -213,38 +213,45 @@ export const content = {
   }
   ],
   
-  articles: [
-   {
-     title: "My Troubleshooting Checklist for Common IT Issues",
-     category: "IT Support",
-     role: "Author",
-     dates: "Feb 2026",
-     summary:
-    "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket for clean handoffs.",
+ articles: [
+  {
+    title: "My Troubleshooting Checklist for Common IT Issues",
+    source: "Portfolio",
+    date: "2026",
+    readTime: "3 min",
+    summary:
+      "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket.",
     tags: ["IT Support", "Troubleshooting", "Documentation", "Workflow"],
-    links: [{ label: "PDF Checklist", href: "./My_Troubleshooting_Checklist_Portfolio_2026.pdf" }]
-    },
-    {
-      title: "What I Learned Setting Up a Home Lab",
-      source: "Portfolio",
-      date: "2026",
-      readTime: "4 min",
-      summary:
-        "How I set up my lab environment, what I tested first, and the small habits that saved me time later.",
-      tags: ["Systems", "Learning"],
-      href: "PASTE_ARTICLE_LINK"
-    },
-    {
-      title: "Phishing Red Flags I Watch For",
-      source: "Portfolio",
-      date: "2025",
-      readTime: "3 min",
-      summary:
-        "A short guide to common phishing patterns and what actions reduce risk quickly.",
-      tags: ["Security", "Awareness"],
-      href: "PASTE_ARTICLE_LINK"
-    }
-  ],
+    href: "/My_Troubleshooting_Checklist_Portfolio_2026.pdf",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  },
+  {
+    title: "What I Learned Setting Up a Home Lab",
+    source: "Portfolio",
+    date: "2026",
+    readTime: "4 min",
+    summary:
+      "How I set up my lab environment, what I tested first, and the small habits that saved me time later.",
+    tags: ["Systems", "Learning"],
+    href: "PASTE_ARTICLE_LINK",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  },
+  {
+    title: "Phishing Red Flags I Watch For",
+    source: "Portfolio",
+    date: "2025",
+    readTime: "3 min",
+    summary:
+      "A short guide to common phishing patterns and what actions reduce risk quickly.",
+    tags: ["Security", "Awareness"],
+    href: "PASTE_ARTICLE_LINK",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }
+],
+
 
   diy: [
     {
