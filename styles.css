@@ -585,6 +585,114 @@ h2 {
    Paste the contact CSS here if you add it
 ================================ */
 /* (empty on purpose until you paste contact block) */
+/* ================================
+   CONTACT: interactive cards
+================================ */
+.contact-wrap {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.contact-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+  background: var(--surface-2);
+}
+
+.contact-item:focus-within {
+  outline: 2px solid var(--tab-focus);
+  outline-offset: 2px;
+}
+
+.contact-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* FIX: keep icons small */
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  flex: 0 0 40px;
+  overflow: hidden;
+  color: var(--text);
+}
+
+/* FIX: hard cap svg size */
+.contact-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  max-width: 18px;
+  max-height: 18px;
+}
+
+.contact-meta { min-width: 0; }
+
+.contact-label {
+  font-weight: 820;
+  line-height: 1.2;
+}
+
+.contact-value {
+  color: var(--muted);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn.small {
+  padding: 8px 10px;
+  border-radius: 12px;
+  min-height: 34px;
+  font-size: 13px;
+}
+
+.contact-hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.contact-toast {
+  color: var(--muted);
+  font-size: 13px;
+  min-height: 18px;
+}
+
+
+/* Contact responsive */
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
 
 /* ================================
    FOOTER
