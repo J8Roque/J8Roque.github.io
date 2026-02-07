@@ -19,8 +19,8 @@ export const content = {
     ],
     links: [
       { label: "GitHub", href: "https://github.com/J8Roque", style: "primary" },
-      { label: "LinkedIn", href: "PASTE_YOUR_LINKEDIN_HERE", style: "default" },
-      { label: "Resume", href: "PASTE_YOUR_RESUME_LINK_HERE", style: "default" }
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/jemmyroque/", style: "default" },
+      { label: "Credly", href: "https://www.credly.com/users/jemmyroque", style: "default" }
     ],
     footerText: "© J Roque"
   },
