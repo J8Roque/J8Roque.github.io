@@ -2,7 +2,7 @@ export const content = {
   site: {
     name: "J Roque",
     badge: "IT Portfolio",
-    title: "Hi, I am J Roque",
+    title: "Hi, I am Jemmy Roque",
     subtitle: "IT projects, photos, articles, and DIY builds.",
     bullets: [
       "IT support focused: troubleshooting, documentation, and customer service",
@@ -25,16 +25,20 @@ export const content = {
   },
 
   about: {
-    paragraphs: [
-      "Replace this with a short paragraph about who you are and what you build in IT.",
-      "Add what you are currently learning and what roles you are aiming for."
-    ],
-    highlights: [
-      "Reliable and patient with users",
-      "Clear documentation and ticket notes",
-      "Fast learner with new tools"
-    ]
-  },
+  paragraphs: [
+    "Hi, I’m J Roque. I’m building my portfolio to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care a lot about being clear, calm, and helpful when a user is stressed.",
+    "I completed an Associate degree in Information Technology and Cybersecurity at Coastline College, and I’m currently working on my BS in Information Technology at Arizona State University. I’m focused on IT support and systems work, especially the kind of work that builds strong fundamentals like networking, operating systems, security, and clean documentation.",
+    "Most of my learning happens through labs and DIY builds. I practice with Windows and Linux, set up virtual machines in Hyper V, and work on projects like Raspberry Pi builds, NAS setup, and small database and SQL work. This site is where I keep everything organized so employers can quickly see what I can actually do."
+  ],
+  highlights: [
+    "Strong troubleshooting process and patience with users",
+    "Clear ticket notes and step by step documentation",
+    "Hands on lab experience with Windows and Linux",
+    "Security minded habits like MFA and least privilege",
+    "Consistent learner building projects weekly"
+  ]
+},
+
 
   skills: [
     {
@@ -118,9 +122,8 @@ export const content = {
   ],
 
   contact: {
-    email: "youremail@example.com",
     github: "https://github.com/J8Roque",
-    linkedin: "https://www.linkedin.com/in/YOURPROFILE",
-    other: []
+    linkedin: "https://www.linkedin.com/in/jemmyroque/",
+    credly: "https://www.credly.com/users/jemmyroque",
   }
 };
