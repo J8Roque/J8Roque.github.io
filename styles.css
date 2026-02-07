@@ -100,7 +100,6 @@ img { display: block; max-width: 100%; }
 }
 
 .small { font-size: 13px; }
-
 .muted { color: var(--muted); }
 
 /* ================================
@@ -181,13 +180,12 @@ img { display: block; max-width: 100%; }
   background: rgba(0, 0, 0, 0.04);
   color: var(--text);
 }
-
 :root[data-theme="dark"] .nav a:hover {
   background: var(--surface-2);
 }
 
 /* ================================
-   HEADER ACTIONS (THEME + MENU BUTTONS)
+   HEADER ACTIONS
 ================================ */
 .topbar-actions {
   display: flex;
@@ -402,9 +400,7 @@ h2 {
 }
 
 .item-title { font-weight: 820; margin-bottom: 6px; }
-
 .item-meta { color: var(--muted); font-weight: 680; font-size: 13px; }
-
 .item-text { color: var(--muted); margin: 10px 0 0 0; }
 
 /* ================================
@@ -581,11 +577,6 @@ h2 {
 }
 
 /* ================================
-   CONTACT: interactive cards
-   Paste the contact CSS here if you add it
-================================ */
-
-/* ================================
    CONTACT: interactive cards (premium)
 ================================ */
 .contact-wrap {
@@ -598,7 +589,6 @@ h2 {
   font-size: 13px;
 }
 
-/* Balanced grid */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -690,7 +680,7 @@ h2 {
   flex-wrap: wrap;
 }
 
-/* Make the buttons feel cleaner inside cards */
+/* Make buttons inside cards feel cleaner */
 .contact-item .btn {
   box-shadow: none;
 }
@@ -702,17 +692,11 @@ h2 {
   font-size: 13px;
 }
 
-/* Footer area inside Contact card (Copy all aligned right) */
+/* Footer area inside Contact card */
 .contact-footer {
   display: flex;
   justify-content: flex-end;
 }
-
-/* Mobile */
-@media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; }
-}
-
 
 /* ================================
    FOOTER
@@ -740,6 +724,9 @@ h2 {
   .skills-layout { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .grid { grid-template-columns: 1fr; }
+
+  /* Contact: mobile layout */
+  .contact-grid { grid-template-columns: 1fr; }
 
   .mobile-links { grid-template-columns: 1fr; }
 }
