@@ -144,19 +144,19 @@ export const content = {
   projectCategories: ["All", "IT Support", "Systems", "Security", "Database", "DIY"],
 
   projects: [
-    {
-      title: "Home Lab: Hyper V Virtual Machines",
-      category: "Systems",
-      role: "Builder",
-      dates: "2026",
-      summary:
-        "Built a home lab using Hyper V to practice OS installs, snapshots, updates, and basic networking checks.",
-      tags: ["Windows", "Virtualization", "Troubleshooting"],
-      links: [
-        { label: "Repo", href: "PASTE_REPO_LINK" },
-        { label: "Write up", href: "PASTE_WRITEUP_LINK" }
-      ]
-    },
+   {
+  title: "Hyper-V Windows 11 VM Build Guide (Apporto Lab)",
+  category: "Systems",
+  role: "Builder / Author",
+  dates: "Jan 2026",
+  summary:
+    "Created a Windows 11 Generation 2 VM in Hyper-V, configured an external virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, and disk inside the VM.",
+  tags: ["Hyper-V", "Windows 11", "Virtualization", "Networking"],
+  links: [
+    { label: "PDF Guide", href: "./Hyperv-windows11-vm-guide.pdf" }
+  ]
+},
+
     {
       title: "Raspberry Pi Build and Boot Troubleshooting Notes",
       category: "DIY",
