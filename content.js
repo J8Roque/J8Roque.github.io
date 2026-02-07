@@ -267,11 +267,10 @@ export const content = {
   ],
 
   contact: {
-    email: "PASTE_YOUR_EMAIL_HERE",
     github: "https://github.com/J8Roque",
-    linkedin: "PASTE_YOUR_LINKEDIN_HERE",
+    linkedin: "https://www.linkedin.com/in/jemmyroque/",
     other: [
-      { label: "Credly", href: "PASTE_CREDLY_LINK_HERE" }
+      { label: "Credly", href: "https://www.credly.com/users/jemmyroque" }
     ]
   }
 };
