@@ -584,19 +584,31 @@ h2 {
    CONTACT: interactive cards
    Paste the contact CSS here if you add it
 ================================ */
-/* (empty on purpose until you paste contact block) */
+
 /* ================================
-   CONTACT: interactive cards
+   CONTACT: interactive cards (premium)
 ================================ */
 .contact-wrap {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 
+.contact-hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Balanced grid */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap);
+  align-items: stretch;
+}
+
+/* If there is an odd number of items, make the last one full width */
+.contact-grid > .contact-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .contact-item {
@@ -604,15 +616,21 @@ h2 {
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
-  padding: 14px;
+  padding: 16px;
   display: grid;
-  gap: 10px;
-  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  min-height: 132px;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
 .contact-item:hover {
   transform: translateY(-2px);
   background: var(--surface-2);
+}
+
+.contact-item:active {
+  transform: translateY(-1px);
 }
 
 .contact-item:focus-within {
@@ -623,24 +641,23 @@ h2 {
 .contact-top {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* FIX: keep icons small */
 .contact-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--surface-2);
   display: grid;
   place-items: center;
-  flex: 0 0 40px;
+  flex: 0 0 42px;
   overflow: hidden;
   color: var(--text);
 }
 
-/* FIX: hard cap svg size */
+/* Keep icons small always */
 .contact-icon svg {
   width: 18px;
   height: 18px;
@@ -653,10 +670,13 @@ h2 {
 
 .contact-label {
   font-weight: 820;
-  line-height: 1.2;
+  font-size: 15px;
+  line-height: 1.15;
+  letter-spacing: -0.2px;
 }
 
 .contact-value {
+  margin-top: 2px;
   color: var(--muted);
   font-size: 13px;
   overflow: hidden;
@@ -666,8 +686,13 @@ h2 {
 
 .contact-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Make the buttons feel cleaner inside cards */
+.contact-item .btn {
+  box-shadow: none;
 }
 
 .btn.small {
@@ -677,22 +702,17 @@ h2 {
   font-size: 13px;
 }
 
-.contact-hint {
-  color: var(--muted);
-  font-size: 13px;
+/* Footer area inside Contact card (Copy all aligned right) */
+.contact-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.contact-toast {
-  color: var(--muted);
-  font-size: 13px;
-  min-height: 18px;
-}
-
-
-/* Contact responsive */
+/* Mobile */
 @media (max-width: 900px) {
   .contact-grid { grid-template-columns: 1fr; }
 }
+
 
 /* ================================
    FOOTER
