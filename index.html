@@ -120,7 +120,14 @@
             <h2>Projects</h2>
 
             <div class="project-controls">
-              <div class="filters" id="projectFilters"></div>
+              <!-- UPDATED: add pill tab container classes + tablist semantics -->
+              <div
+                class="filters filterTabs project-tabs"
+                id="projectFilters"
+                role="tablist"
+                aria-label="Project filters"
+              ></div>
+
               <label class="search">
                 <span class="sr-only">Search projects</span>
                 <input id="projectSearch" type="search" placeholder="Search projects" />
