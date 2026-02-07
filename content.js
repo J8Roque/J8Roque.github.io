@@ -136,8 +136,7 @@ export const content = {
       program: "Associate of Science in Information Technology and Associate of Science in Cybersecurity",
       notes: [
         "Hands on labs and technical coursework",
-        "Update this line if you want specific classes listed"
-      ]
+        "Update this line if you want specific classes listed" ]
     }
   ],
 
@@ -153,20 +152,19 @@ export const content = {
     "Created a Windows 11 Generation 2 VM in Hyper-V, configured an external virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, and disk inside the VM.",
   tags: ["Hyper-V", "Windows 11", "Virtualization", "Networking"],
   links: [
-  { label: "PDF Guide", href: "./Hyper V-windows11-vm-guide.pdf.pdf" }
-  ]
- },
-
-    {
-      title: "Raspberry Pi Build and Boot Troubleshooting Notes",
-      category: "DIY",
-      role: "Builder",
-      dates: "2026",
-      summary:
-        "Documented setup steps and common boot and storage issues, including what I tried, what failed, and what fixed it.",
-      tags: ["Linux", "DIY", "Troubleshooting"],
-      links: [{ label: "Photos", href: "PASTE_PHOTOS_LINK" }]
-    },
+  { label: "PDF Guide", href: "./Hyper V-windows11-vm-guide.pdf.pdf" }]
+  },
+  {
+  title: "TryHackMe Labs: PyRat, Mr Robot, and Publisher",
+  category: "Security",
+  role: "Student",
+  dates: "Oct 2025",
+  summary:
+    "Completed three legal training labs in TryHackMe to practice reconnaissance, web enumeration, credential discovery, post exploitation, and privilege escalation. Wrote a clear report with screenshots and lessons learned.",
+  tags: ["TryHackMe", "Web Security", "Linux", "Enumeration", "Privilege Escalation"],
+  links: [
+    { label: "PDF Write up", href: "./PyRat-Mr-Robot-Publisher-THM.pdf" }]
+  },
   {
   title: "Analyzing Types of Web Application Attacks (Lab Report)",
   category: "Security",
@@ -210,7 +208,7 @@ export const content = {
       links: [{ label: "Demo", href: "PASTE_DEMO_LINK" }]
     }
   ],
-
+  
   articles: [
     {
       title: "My Troubleshooting Checklist for Common IT Issues",
