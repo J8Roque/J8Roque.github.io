@@ -1,7 +1,7 @@
 export const content = {
   site: {
     name: "J Roque",
-    badge: "IT Portfolio",
+    badge: "My Portfolio",
     title: "Hi, I am J Roque",
     subtitle:
       "I build hands on IT projects, write clear documentation, and share real lab and DIY work.",
@@ -183,19 +183,20 @@ export const content = {
       role: "Creator",
       dates: "2025",
       summary:
-        "Created a short security awareness presentation focused on spotting phishing patterns and safer habits.",
+      "Created a short security awareness presentation focused on spotting phishing patterns and safer habits.",
       tags: ["Security", "Awareness", "Communication"],
       links: [{ label: "Slides", href: "PASTE_SLIDES_LINK" }]
     },
-    {
-      title: "SQL and Data Modeling Practice",
-      category: "Database",
-      role: "Student",
-      dates: "2025 to 2026",
-      summary:
-        "Designed a simple schema and wrote queries to support common scenarios like search, reporting, and updates.",
-      tags: ["SQL", "Data modeling"],
-      links: [{ label: "Repo", href: "PASTE_REPO_LINK" }]
+   {
+    title: "Pizza Ordering SQL Database (MySQL Lab)",
+    category: "Database",
+    role: "Student / Developer",
+    dates: "Feb 2026",
+    summary:
+    "Designed and built a relational database for a pizza ordering system, created tables with keys and constraints, and practiced real CRUD operations including inserts, updates, and deletes. Documented results with screenshots and query outputs.",
+    tags: ["MySQL", "SQL", "Database Design", "CRUD", "Foreign Keys"],
+    links: [
+    { label: "PDF Lab", href: "./pizza-ordering-system.pdf" } ]
     },
     {
       title: "No Code AI App Concept: Email and Message Writer",
