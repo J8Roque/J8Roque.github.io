@@ -1,33 +1,46 @@
 <!-- ================================
      FILE: index.html
-     NOTES: Section labels for fast edits
+     PURPOSE: Main page shell (HTML only)
+     NOTE: After moving files into /src and /assets, update the paths below.
 ================================== -->
 <!doctype html>
 <html lang="en">
   <head>
     <!-- ================================
          HEAD: meta, title, css
+         IMPORTANT UPDATE:
+         - styles.css moved to /src
+         - change href from "./styles.css" to "./src/styles.css"
     ================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- NOTE: Change title anytime -->
     <title>IT Portfolio</title>
+
+    <!-- NOTE: Helps SEO and link previews -->
     <meta name="description" content="IT projects, documentation, and lab work." />
-    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- ✅ UPDATED PATH: CSS is now in /src -->
+    <link rel="stylesheet" href="./src/styles.css" />
   </head>
 
   <body>
     <!-- ================================
          A11Y: skip link
+         NOTE: Helps keyboard users jump to main content
     ================================== -->
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ================================
          HEADER: sticky topbar
+         NOTE: app.js injects your name into #brandName and #mobileBrand
     ================================== -->
     <header class="topbar" id="top">
       <div class="container topbar-inner">
         <!-- ================================
              BRAND: name + dot
+             NOTE: #brandName is filled by app.js using content.site.name
         ================================== -->
         <a class="brand" href="#home" aria-label="Go to home">
           <span class="brand-dot" aria-hidden="true"></span>
@@ -36,6 +49,7 @@
 
         <!-- ================================
              NAV: desktop links
+             NOTE: These are anchor links to sections on the page
         ================================== -->
         <nav class="nav" aria-label="Primary">
           <a href="#about">About</a>
@@ -49,6 +63,9 @@
 
         <!-- ================================
              HEADER ACTIONS: theme + mobile menu
+             NOTE:
+             - #themeToggle is used by app.js (initTheme)
+             - #navToggle opens the mobile menu (initMobileNav)
         ================================== -->
         <div class="topbar-actions">
           <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
@@ -62,10 +79,15 @@
 
       <!-- ================================
            MOBILE NAV: panel
+           NOTE:
+           - #mobileNav is shown/hidden by app.js
+           - #navClose closes the panel
+           - links have data-close so clicking closes menu
       ================================== -->
       <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <div class="container mobile-nav-inner">
           <div class="mobile-nav-head">
+            <!-- NOTE: #mobileBrand is filled by app.js using content.site.name -->
             <span class="mobile-brand" id="mobileBrand">Your Name</span>
             <button class="btn ghost" id="navClose" type="button" aria-label="Close menu">
               Close
@@ -87,10 +109,17 @@
 
     <!-- ================================
          MAIN CONTENT WRAPPER
+         NOTE: Skip link jumps here (#main)
     ================================== -->
     <main id="main">
       <!-- ================================
            HERO SECTION: intro + avatar
+           NOTE: app.js fills:
+           - #heroBadge, #heroTitle, #heroSubtitle
+           - #heroBullets list items
+           - #heroLinks buttons
+           - #profileImage src (from content.site.profileImage)
+           - #quickCards mini cards
       ================================== -->
       <section class="hero" id="home">
         <div class="container hero-grid">
@@ -106,8 +135,16 @@
 
           <div class="hero-right">
             <div class="avatar">
+              <!-- NOTE:
+                   app.js sets img.src = content.site.profileImage
+                   IMPORTANT UPDATE:
+                   if you moved cat2.jpg to /assets/img,
+                   update content.js profileImage to "./assets/img/cat2.jpg"
+              -->
               <img id="profileImage" alt="Profile photo" loading="lazy" />
             </div>
+
+            <!-- NOTE: Filled by app.js from content.site.quickCards -->
             <div class="quick-cards" id="quickCards"></div>
           </div>
         </div>
@@ -115,6 +152,7 @@
 
       <!-- ================================
            ABOUT SECTION
+           NOTE: Filled by app.js from content.about
       ================================== -->
       <section class="section" id="about">
         <div class="container">
@@ -125,13 +163,17 @@
 
       <!-- ================================
            SKILLS SECTION: aside + grid
+           NOTE: Filled by app.js from content.skills
       ================================== -->
       <section class="section" id="skills">
         <div class="container">
           <h2>Skills</h2>
 
           <div class="skills-layout">
+            <!-- NOTE: Aside intro + featured pills -->
             <aside class="card skills-aside" id="skillsAside"></aside>
+
+            <!-- NOTE: Skill group cards grid -->
             <div class="skills-grid" id="skillsGrid"></div>
           </div>
         </div>
@@ -139,6 +181,7 @@
 
       <!-- ================================
            EXPERIENCE SECTION
+           NOTE: Filled by app.js from content.experience
       ================================== -->
       <section class="section" id="experience">
         <div class="container">
@@ -149,6 +192,7 @@
 
       <!-- ================================
            EDUCATION SECTION
+           NOTE: Filled by app.js from content.education
       ================================== -->
       <section class="section" id="education">
         <div class="container">
@@ -159,6 +203,11 @@
 
       <!-- ================================
            PROJECTS SECTION: tabs + search + cards
+           NOTE: app.js controls:
+           - #projectFilters (tabs)
+           - #projectSearch (search input)
+           - #projectCount (showing count)
+           - #projectsGrid (cards)
       ================================== -->
       <section class="section" id="projects">
         <div class="container">
@@ -166,7 +215,7 @@
             <h2>Projects</h2>
 
             <div class="project-controls">
-              <!-- Project filter tabs (rendered by app.js) -->
+              <!-- NOTE: Rendered by app.js -->
               <div
                 class="filters filterTabs"
                 id="projectFilters"
@@ -174,24 +223,25 @@
                 aria-label="Project filters"
               ></div>
 
-              <!-- Project search -->
+              <!-- NOTE: app.js listens to input on #projectSearch -->
               <label class="search">
                 <span class="sr-only">Search projects</span>
                 <input id="projectSearch" type="search" placeholder="Search projects" />
               </label>
             </div>
 
-            <!-- Project count (rendered by app.js) -->
+            <!-- NOTE: Rendered by app.js -->
             <div class="muted small" id="projectCount" aria-live="polite"></div>
           </div>
 
-          <!-- Projects grid (rendered by app.js) -->
+          <!-- NOTE: Rendered by app.js -->
           <div class="grid" id="projectsGrid"></div>
         </div>
       </section>
 
       <!-- ================================
            ARTICLES SECTION
+           NOTE: Filled by app.js from content.articles
       ================================== -->
       <section class="section" id="articles">
         <div class="container">
@@ -202,6 +252,7 @@
 
       <!-- ================================
            CONTACT SECTION
+           NOTE: Filled by app.js from content.contact
       ================================== -->
       <section class="section" id="contact">
         <div class="container">
@@ -213,6 +264,7 @@
 
     <!-- ================================
          FOOTER
+         NOTE: #footerText is filled by app.js using content.site.footerText
     ================================== -->
     <footer class="footer">
       <div class="container footer-inner">
@@ -223,7 +275,12 @@
 
     <!-- ================================
          SCRIPTS
+         IMPORTANT UPDATE:
+         - app.js moved to /src
+         - change src from "./app.js" to "./src/app.js"
+         NOTE:
+         - type="module" is required because app.js uses ES module imports
     ================================== -->
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./src/app.js"></script>
   </body>
 </html>
