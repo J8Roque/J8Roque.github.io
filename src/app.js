@@ -1,12 +1,16 @@
 // ===================================
-// FILE: app.js
-// NOTES: Labeled sections for future edits
+// FILE: src/app.js
+// NOTES:
+// - Must be loaded from index.html as: <script type="module" src="./src/app.js"></script>
+// - content.js must be in the SAME folder as this file (src/content.js)
+// - Images and PDFs are referenced inside content.js (assets/img and assets/pdf)
 // ===================================
 
 import { content } from "./content.js";
 
 /* ================================
    Helpers: DOM + text + links
+   NOTE: $() returns null if id not found
 ================================ */
 const $ = (id) => document.getElementById(id);
 
@@ -128,48 +132,54 @@ function renderHero() {
   setText("footerText", content.site.footerText);
 
   const bullets = $("heroBullets");
-  bullets.innerHTML = "";
-  for (const b of content.site.bullets || []) {
-    bullets.appendChild(createEl("li", "", b));
+  if (bullets) {
+    bullets.innerHTML = "";
+    for (const b of content.site.bullets || []) bullets.appendChild(createEl("li", "", b));
   }
 
   const links = $("heroLinks");
-  links.innerHTML = "";
-  for (const l of content.site.links || []) {
-    const a = document.createElement("a");
-    const isPrimary = l.style === "primary";
-    a.className = `btn ${isPrimary ? "" : "ghost"}`.trim();
-    a.textContent = l.label;
+  if (links) {
+    links.innerHTML = "";
+    for (const l of content.site.links || []) {
+      const a = document.createElement("a");
+      const isPrimary = l.style === "primary";
+      a.className = `btn ${isPrimary ? "" : "ghost"}`.trim();
+      a.textContent = l.label;
 
-    const href = safeLink(l.href);
-    a.href = href ?? "#";
-    applyLinkTarget(a, href);
+      const href = safeLink(l.href);
+      a.href = href ?? "#";
+      applyLinkTarget(a, href);
 
-    if (!href) {
-      a.setAttribute("aria-disabled", "true");
-      a.style.opacity = "0.55";
-      a.style.pointerEvents = "none";
+      if (!href) {
+        a.setAttribute("aria-disabled", "true");
+        a.style.opacity = "0.55";
+        a.style.pointerEvents = "none";
+      }
+
+      links.appendChild(a);
     }
-
-    links.appendChild(a);
   }
 
   const img = $("profileImage");
-  img.src = content.site.profileImage;
-  img.onerror = () => {
-    img.removeAttribute("src");
-    img.alt = "Add your photo and update content.site.profileImage";
-    img.style.display = "block";
-    img.style.padding = "18px";
-  };
+  if (img) {
+    img.src = content.site.profileImage;
+    img.onerror = () => {
+      img.removeAttribute("src");
+      img.alt = "Add your photo and update content.site.profileImage";
+      img.style.display = "block";
+      img.style.padding = "18px";
+    };
+  }
 
   const quick = $("quickCards");
-  quick.innerHTML = "";
-  for (const c of content.site.quickCards || []) {
-    const card = createEl("div", "quick-card");
-    card.appendChild(createEl("div", "k", c.key));
-    card.appendChild(createEl("div", "v", c.value));
-    quick.appendChild(card);
+  if (quick) {
+    quick.innerHTML = "";
+    for (const c of content.site.quickCards || []) {
+      const card = createEl("div", "quick-card");
+      card.appendChild(createEl("div", "k", c.key));
+      card.appendChild(createEl("div", "v", c.value));
+      quick.appendChild(card);
+    }
   }
 }
 
@@ -178,11 +188,10 @@ function renderHero() {
 ================================ */
 function renderAbout() {
   const wrap = $("aboutCard");
+  if (!wrap) return;
   wrap.innerHTML = "";
 
-  for (const p of content.about?.paragraphs || []) {
-    wrap.appendChild(createEl("p", "item-text", p));
-  }
+  for (const p of content.about?.paragraphs || []) wrap.appendChild(createEl("p", "item-text", p));
 
   const hr = document.createElement("hr");
   hr.style.border = "none";
@@ -191,9 +200,7 @@ function renderAbout() {
   wrap.appendChild(hr);
 
   const pills = createEl("div", "pill-row");
-  for (const h of content.about?.highlights || []) {
-    pills.appendChild(createEl("span", "pill", h));
-  }
+  for (const h of content.about?.highlights || []) pills.appendChild(createEl("span", "pill", h));
   wrap.appendChild(pills);
 }
 
@@ -203,6 +210,7 @@ function renderAbout() {
 function renderSkills() {
   const aside = $("skillsAside");
   const grid = $("skillsGrid");
+  if (!aside || !grid) return;
 
   aside.innerHTML = "";
   grid.innerHTML = "";
@@ -211,9 +219,7 @@ function renderSkills() {
   aside.appendChild(createEl("p", "item-text", content.skills?.introText || ""));
 
   const featuredWrap = createEl("div", "pill-row");
-  for (const s of content.skills?.featured || []) {
-    featuredWrap.appendChild(createEl("span", "pill", s.name || s));
-  }
+  for (const s of content.skills?.featured || []) featuredWrap.appendChild(createEl("span", "pill", s.name || s));
   aside.appendChild(featuredWrap);
 
   for (const group of content.skills?.groups || []) {
@@ -225,9 +231,7 @@ function renderSkills() {
     card.appendChild(head);
 
     const list = createEl("div", "skill-items");
-    for (const item of group.items || []) {
-      list.appendChild(createEl("div", "skill-item", item.name || item));
-    }
+    for (const item of group.items || []) list.appendChild(createEl("div", "skill-item", item.name || item));
     card.appendChild(list);
 
     grid.appendChild(card);
@@ -239,6 +243,7 @@ function renderSkills() {
 ================================ */
 function renderExperience() {
   const stack = $("experienceStack");
+  if (!stack) return;
   stack.innerHTML = "";
 
   for (const exp of content.experience || []) {
@@ -269,6 +274,7 @@ function renderExperience() {
 ================================ */
 function renderEducation() {
   const stack = $("educationStack");
+  if (!stack) return;
   stack.innerHTML = "";
 
   for (const ed of content.education || []) {
@@ -325,6 +331,7 @@ function renderProjects() {
   const grid = $("projectsGrid");
   const search = $("projectSearch");
   const count = $("projectCount");
+  if (!filters || !grid || !search) return;
 
   let active = "All";
   let query = "";
@@ -341,14 +348,7 @@ function renderProjects() {
     if (!query) return true;
 
     const q = query.toLowerCase();
-    const blob = [
-      p.title,
-      p.category,
-      p.role,
-      p.dates,
-      p.summary,
-      ...(p.tags || [])
-    ]
+    const blob = [p.title, p.category, p.role, p.dates, p.summary, ...(p.tags || [])]
       .filter(Boolean)
       .join(" ")
       .toLowerCase();
@@ -359,7 +359,6 @@ function renderProjects() {
   function paint() {
     grid.innerHTML = "";
     const list = (content.projects || []).filter(matches);
-
     for (const p of list) grid.appendChild(projectCard(p));
 
     if (count) {
@@ -434,6 +433,7 @@ function renderProjects() {
 ================================ */
 function renderArticles() {
   const grid = $("articlesGrid");
+  if (!grid) return;
   grid.innerHTML = "";
 
   for (const a of content.articles || []) {
@@ -467,10 +467,11 @@ function renderArticles() {
 }
 
 /* ================================
-   Render: CONTACT (interactive premium cards)
+   Render: CONTACT (interactive cards)
 ================================ */
 function renderContact() {
   const card = $("contactCard");
+  if (!card) return;
   card.innerHTML = "";
 
   const wrap = createEl("div", "contact-wrap");
@@ -544,6 +545,7 @@ function renderContact() {
 
     const copyBtn = createEl("button", "btn ghost small", "Copy");
     copyBtn.type = "button";
+    // NOTE: Copy the actual URL string
     copyBtn.dataset.copy = it.href;
     actions.appendChild(copyBtn);
 
@@ -597,6 +599,8 @@ function renderContact() {
 ================================ */
 function initTheme() {
   const btn = $("themeToggle");
+  if (!btn) return;
+
   const saved = localStorage.getItem("theme");
 
   if (saved) {
@@ -629,6 +633,7 @@ function initMobileNav() {
   const openBtn = $("navToggle");
   const closeBtn = $("navClose");
   const mobileNav = $("mobileNav");
+  if (!openBtn || !closeBtn || !mobileNav) return;
 
   function openMenu() {
     document.body.setAttribute("data-menu-open", "true");
@@ -662,6 +667,7 @@ function initMobileNav() {
 
 /* ================================
    App boot: run all renders + inits
+   NOTE: If something is missing in HTML, the guards above prevent crashes.
 ================================ */
 renderHero();
 renderAbout();
