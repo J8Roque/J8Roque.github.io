@@ -1,11 +1,19 @@
 // ===================================
 // FILE: content.js
-// NOTES: Labeled data blocks for fast updates
+// PURPOSE: All portfolio data lives here (text, links, PDFs, image paths)
+// IMPORTANT:
+// - After reorganizing your repo, update paths for images + PDFs.
+// - Your app reads this file and renders everything automatically.
 // ===================================
 
 export const content = {
   /* ================================
      SITE: header + hero + footer
+     NOTES:
+     - name shows in top left + mobile header
+     - badge/title/subtitle show in hero
+     - bullets become the hero bullet list
+     - profileImage MUST match your new /assets/img location
   ================================ */
   site: {
     name: "J Roque",
@@ -13,28 +21,42 @@ export const content = {
     title: "Hi, I am J Roque",
     subtitle:
       "I build hands on IT projects, write clear documentation, and share real lab work.",
+
+    // NOTE: Hero bullet list
     bullets: [
       "IT student focused on support, systems, networking, and security fundamentals",
       "I learn by doing: labs, home projects, and step by step write ups",
       "Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows",
       "Security minded habits: MFA, least privilege, patch hygiene, phishing awareness"
     ],
-    profileImage: "./cat2.jpg",
+
+    // ✅ UPDATED IMAGE PATH (you moved cat2.jpg into /assets/img)
+    // If you rename cat2.jpg, update the filename here too.
+    profileImage: "./assets/img/cat2.jpg",
+
+    // NOTE: These show as the small “quick cards” in the hero section
     quickCards: [
       { key: "Degree path", value: "BS Information Technology (in progress)" },
       { key: "Background", value: "AS Information Technology and AS Cybersecurity" },
       { key: "Goal", value: "Entry level IT support and systems roles" }
     ],
+
+    // NOTE: These become hero buttons
+    // TIP: keep your main 2–3 links here
     links: [
       { label: "GitHub", href: "https://github.com/J8Roque", style: "primary" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/jemmyroque/", style: "default" },
       { label: "Credly", href: "https://www.credly.com/users/jemmyroque", style: "default" }
     ],
+
     footerText: "© J Roque"
   },
 
   /* ================================
-     ABOUT: paragraphs + highlights pills
+     ABOUT: paragraphs + highlight pills
+     NOTES:
+     - paragraphs render as text blocks in About
+     - highlights render as “pill” tags
   ================================ */
   about: {
     paragraphs: [
@@ -53,6 +75,9 @@ export const content = {
 
   /* ================================
      SKILLS: intro + featured + grouped lists
+     NOTES:
+     - featured shows as top “pill” row in the Skills aside
+     - groups become skill cards in the Skills grid
   ================================ */
   skills: {
     introTitle: "Core strengths",
@@ -117,6 +142,9 @@ export const content = {
 
   /* ================================
      EXPERIENCE: orgs + roles + bullets
+     NOTES:
+     - Each item becomes one experience card
+     - roles is a list inside each org card
   ================================ */
   experience: [
     {
@@ -155,6 +183,8 @@ export const content = {
 
   /* ================================
      EDUCATION: schools + notes
+     NOTES:
+     - Each item becomes one education card
   ================================ */
   education: [
     {
@@ -182,20 +212,28 @@ export const content = {
 
   /* ================================
      PROJECTS: categories + project cards
+     IMPORTANT:
+     - Every PDF you moved into /assets/pdf must use the new path:
+       "./assets/pdf/<filename>.pdf"
+     - Remove any ".pdf.pdf" in the hrefs.
   ================================ */
   projectCategories: ["All", "IT Support", "Systems", "Security", "Database"],
 
   projects: [
     {
-  title: "Active Directory Home Lab: Domain Controller, DNS, Domain Join, and File Sharing",
-  category: "Systems",
-  role: "Windows System Lab Builder",
-  dates: "Feb 2026",
-  summary:
-    "Built an Active Directory lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role based SMB shares using NTFS and share permissions.",
-  tags: ["Windows Server", "Active Directory", "DNS", "VirtualBox", "Domain Join", "NTFS", "SMB"],
-  links: [{ label: "PDF Lab Report", href: "./active-directory-home-lab.pdf.pdf" }]
-  },
+      title: "Active Directory Home Lab: Domain Controller, DNS, Domain Join, and File Sharing",
+      category: "Systems",
+      role: "Windows System Lab Builder",
+      dates: "Feb 2026",
+      summary:
+        "Built an Active Directory lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role based SMB shares using NTFS and share permissions.",
+      tags: ["Windows Server", "Active Directory", "DNS", "VirtualBox", "Domain Join", "NTFS", "SMB"],
+
+      // ✅ UPDATED PDF PATH:
+      // Old: "./active-directory-home-lab.pdf.pdf"
+      // New: "./assets/pdf/active-directory-home-lab.pdf"
+      links: [{ label: "PDF Lab Report", href: "./assets/pdf/active-directory-home-lab.pdf" }]
+    },
     {
       title: "Hyper V Windows 11 VM Build Guide (Apporto Lab)",
       category: "Systems",
@@ -204,7 +242,11 @@ export const content = {
       summary:
         "Created a Windows 11 Generation 2 VM in Hyper V, configured an external virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, and disk inside the VM.",
       tags: ["Hyper V", "Windows 11", "Virtualization", "Networking"],
-      links: [{ label: "PDF Guide", href: "./Hyper V-windows11-vm-guide.pdf.pdf" }]
+
+      // ✅ UPDATED PDF PATH:
+      // Make sure your actual PDF file name matches exactly.
+      // Recommended rename: "hyperv-windows11-vm-guide.pdf"
+      links: [{ label: "PDF Guide", href: "./assets/pdf/hyperv-windows11-vm-guide.pdf" }]
     },
     {
       title: "TryHackMe Labs: PyRat, Mr Robot, and Publisher",
@@ -214,7 +256,11 @@ export const content = {
       summary:
         "Completed three legal training labs in TryHackMe to practice reconnaissance, web enumeration, credential discovery, post exploitation, and privilege escalation. Wrote a clear report with screenshots and lessons learned.",
       tags: ["TryHackMe", "Web Security", "Linux", "Enumeration", "Privilege Escalation"],
-      links: [{ label: "PDF Write up", href: "./PyRat-Mr-Robot-Publisher-THM.pdf" }]
+
+      // NOTE:
+      // If you have this PDF in your repo, move it to /assets/pdf and update the path.
+      // If you do NOT have it in the repo yet, keep it as-is until you upload it.
+      links: [{ label: "PDF Write up", href: "./assets/pdf/PyRat-Mr-Robot-Publisher-THM.pdf" }]
     },
     {
       title: "Analyzing Types of Web Application Attacks (Lab Report)",
@@ -224,7 +270,11 @@ export const content = {
       summary:
         "Lab report analyzing common web application attack patterns using safe training environments. Documented observations, traffic behavior, and key security takeaways with clear notes and screenshots.",
       tags: ["Web Security", "Lab", "HTTP", "Security Fundamentals"],
-      links: [{ label: "PDF Report", href: "./analyzing-types-of-web-application-attacks.pdf" }]
+
+      // ✅ UPDATED PDF PATH:
+      links: [
+        { label: "PDF Report", href: "./assets/pdf/analyzing-types-of-web-application-attacks.pdf" }
+      ]
     },
     {
       title: "Phishing Awareness Mini Presentation",
@@ -234,6 +284,10 @@ export const content = {
       summary:
         "Created a short security awareness presentation focused on spotting phishing patterns and safer habits.",
       tags: ["Security", "Awareness", "Communication"],
+
+      // NOTE:
+      // "PASTE_SLIDES_LINK" disables the button (your app.js blocks placeholder links).
+      // Replace with an actual Google Slides link or a PDF in /assets/pdf.
       links: [{ label: "Slides", href: "PASTE_SLIDES_LINK" }]
     },
     {
@@ -244,7 +298,9 @@ export const content = {
       summary:
         "Designed and built a relational database for a pizza ordering system, created tables with keys and constraints, and practiced CRUD operations. Documented results with screenshots and query outputs.",
       tags: ["MySQL", "SQL", "Database Design", "CRUD", "Foreign Keys"],
-      links: [{ label: "PDF Lab", href: "./pizza-ordering-system.pdf" }]
+
+      // ✅ UPDATED PDF PATH:
+      links: [{ label: "PDF Lab", href: "./assets/pdf/pizza-ordering-system.pdf" }]
     },
     {
       title: "IT Message Writer",
@@ -263,6 +319,9 @@ export const content = {
 
   /* ================================
      ARTICLES: portfolio writing cards
+     IMPORTANT:
+     - If the article is a PDF in your repo, point to /assets/pdf.
+     - If it is a blog post, use the full https link.
   ================================ */
   articles: [
     {
@@ -273,7 +332,10 @@ export const content = {
       summary:
         "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket.",
       tags: ["IT Support", "Troubleshooting", "Documentation", "Workflow"],
-      href: "./My_Troubleshooting_Checklist_Portfolio_2026.pdf",
+
+      // ✅ UPDATED PDF PATH:
+      // Recommended rename: "my-troubleshooting-checklist-portfolio-2026.pdf"
+      href: "./assets/pdf/my-troubleshooting-checklist-portfolio-2026.pdf",
       target: "_blank",
       rel: "noopener noreferrer"
     },
@@ -285,6 +347,9 @@ export const content = {
       summary:
         "How I set up my lab environment, what I tested first, and the small habits that saved me time later.",
       tags: ["Systems", "Learning"],
+
+      // NOTE:
+      // This button is disabled until you paste a real link (your app.js blocks placeholder links).
       href: "PASTE_ARTICLE_LINK",
       target: "_blank",
       rel: "noopener noreferrer"
@@ -297,6 +362,8 @@ export const content = {
       summary:
         "A short guide to common phishing patterns and what actions reduce risk quickly.",
       tags: ["Security", "Awareness"],
+
+      // NOTE: Replace with a real blog link or PDF in /assets/pdf.
       href: "PASTE_ARTICLE_LINK",
       target: "_blank",
       rel: "noopener noreferrer"
@@ -304,12 +371,27 @@ export const content = {
   ],
 
   /* ================================
-     CONTACT: links used by Contact section
+     CONTACT: used by Contact section
+     NOTES:
+     - If email is empty, Email tile will not show.
+     - other[] adds extra tiles (Credly etc).
   ================================ */
   contact: {
+    // NOTE: Add your email if you want the Email tile to appear
     email: "",
     github: "https://github.com/J8Roque",
     linkedin: "https://www.linkedin.com/in/jemmyroque/",
     other: [{ label: "Credly", href: "https://www.credly.com/users/jemmyroque" }]
   }
 };
+
+/* ================================
+   FINAL CHECKLIST (after edits)
+   1) index.html points to:
+      - ./src/styles.css
+      - ./src/app.js
+   2) content.js points to:
+      - ./assets/img/cat2.jpg
+      - ./assets/pdf/<your pdf files>
+   3) Filenames in href MUST match exactly (case + spaces).
+================================ */
