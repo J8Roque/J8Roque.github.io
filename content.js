@@ -187,6 +187,16 @@ export const content = {
 
   projects: [
     {
+  title: "Active Directory Home Lab: Domain Controller, DNS, Domain Join, and File Sharing",
+  category: "Systems",
+  role: "Windows System Lab Builder",
+  dates: "Feb 2026",
+  summary:
+    "Built an Active Directory lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role based SMB shares using NTFS and share permissions.",
+  tags: ["Windows Server", "Active Directory", "DNS", "VirtualBox", "Domain Join", "NTFS", "SMB"],
+  links: [{ label: "PDF Lab Report", href: "./active-directory-home-lab.pdf.pdf" }]
+  },
+    {
       title: "Hyper V Windows 11 VM Build Guide (Apporto Lab)",
       category: "Systems",
       role: "Builder / Author",
