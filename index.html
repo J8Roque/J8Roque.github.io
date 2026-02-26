@@ -1,56 +1,23 @@
-<!-- ================================
-     FILE: index.html
-     PURPOSE: Main page shell (HTML only)
-     NOTE: After moving files into /src and /assets, update the paths below.
-================================== -->
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- ================================
-         HEAD: meta, title, css
-         IMPORTANT UPDATE:
-         - styles.css moved to /src
-         - change href from "./styles.css" to "./src/styles.css"
-    ================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- NOTE: Change title anytime -->
     <title>IT Portfolio</title>
-
-    <!-- NOTE: Helps SEO and link previews -->
     <meta name="description" content="IT projects, documentation, and lab work." />
-
-    <!-- ✅ UPDATED PATH: CSS is now in /src -->
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
 
   <body>
-    <!-- ================================
-         A11Y: skip link
-         NOTE: Helps keyboard users jump to main content
-    ================================== -->
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- ================================
-         HEADER: sticky topbar
-         NOTE: app.js injects your name into #brandName and #mobileBrand
-    ================================== -->
     <header class="topbar" id="top">
       <div class="container topbar-inner">
-        <!-- ================================
-             BRAND: name + dot
-             NOTE: #brandName is filled by app.js using content.site.name
-        ================================== -->
         <a class="brand" href="#home" aria-label="Go to home">
           <span class="brand-dot" aria-hidden="true"></span>
-          <span id="brandName">Your Name</span>
+          <span id="brandName">J Roque</span>
         </a>
 
-        <!-- ================================
-             NAV: desktop links
-             NOTE: These are anchor links to sections on the page
-        ================================== -->
         <nav class="nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -61,15 +28,9 @@
           <a href="#contact">Contact</a>
         </nav>
 
-        <!-- ================================
-             HEADER ACTIONS: theme + mobile menu
-             NOTE:
-             - #themeToggle is used by app.js (initTheme)
-             - #navToggle opens the mobile menu (initMobileNav)
-        ================================== -->
         <div class="topbar-actions">
           <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
-            Theme
+            Light
           </button>
           <button class="btn ghost nav-toggle" id="navToggle" type="button" aria-label="Open menu">
             Menu
@@ -77,23 +38,14 @@
         </div>
       </div>
 
-      <!-- ================================
-           MOBILE NAV: panel
-           NOTE:
-           - #mobileNav is shown/hidden by app.js
-           - #navClose closes the panel
-           - links have data-close so clicking closes menu
-      ================================== -->
       <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <div class="container mobile-nav-inner">
           <div class="mobile-nav-head">
-            <!-- NOTE: #mobileBrand is filled by app.js using content.site.name -->
-            <span class="mobile-brand" id="mobileBrand">Your Name</span>
+            <span class="mobile-brand" id="mobileBrand">J Roque</span>
             <button class="btn ghost" id="navClose" type="button" aria-label="Close menu">
               Close
             </button>
           </div>
-
           <div class="mobile-links">
             <a href="#about" data-close>About</a>
             <a href="#skills" data-close>Skills</a>
@@ -107,82 +59,92 @@
       </div>
     </header>
 
-    <!-- ================================
-         MAIN CONTENT WRAPPER
-         NOTE: Skip link jumps here (#main)
-    ================================== -->
     <main id="main">
-      <!-- ================================
-           HERO SECTION: intro + avatar
-           NOTE: app.js fills:
-           - #heroBadge, #heroTitle, #heroSubtitle
-           - #heroBullets list items
-           - #heroLinks buttons
-           - #profileImage src (from content.site.profileImage)
-           - #quickCards mini cards
-      ================================== -->
+      <!-- HERO SECTION -->
       <section class="hero" id="home">
         <div class="container hero-grid">
           <div class="hero-left">
-            <div class="badge" id="heroBadge">IT Portfolio</div>
-            <h1 class="hero-title" id="heroTitle">Hi, I am Your Name</h1>
-            <p class="hero-subtitle" id="heroSubtitle"></p>
+            <div class="badge" id="heroBadge">My Portfolio</div>
+            <h1 class="hero-title" id="heroTitle">Hi, I am J Roque</h1>
+            <p class="hero-subtitle" id="heroSubtitle">I build hands on IT projects, write clear documentation, and share real lab work.</p>
 
-            <ul class="bullets" id="heroBullets"></ul>
+            <ul class="bullets" id="heroBullets">
+              <li>IT student focused on support, systems, networking, and security fundamentals</li>
+              <li>I learn by doing: labs, home projects, and step by step write ups</li>
+              <li>Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows</li>
+              <li>Security minded habits: MFA, least privilege, patch hygiene, phishing awareness</li>
+            </ul>
 
-            <div class="cta-row" id="heroLinks"></div>
+            <div class="cta-row" id="heroLinks">
+              <a href="#" class="btn">GitHub</a>
+              <a href="#" class="btn">LinkedIn</a>
+              <a href="#" class="btn">Credly</a>
+            </div>
           </div>
 
           <div class="hero-right">
             <div class="avatar">
-              <!-- NOTE:
-                   app.js sets img.src = content.site.profileImage
-                   IMPORTANT UPDATE:
-                   if you moved cat2.jpg to /assets/img,
-                   update content.js profileImage to "./assets/img/cat2.jpg"
-              -->
-              <img id="profileImage" alt="Profile photo" loading="lazy" />
+              <img id="profileImage" src="./assets/img/cat2.jpg" alt="Profile photo" loading="lazy" />
             </div>
 
-            <!-- NOTE: Filled by app.js from content.site.quickCards -->
-            <div class="quick-cards" id="quickCards"></div>
+            <div class="quick-cards" id="quickCards">
+              <div class="quick-card">
+                <div class="k">Degree Path</div>
+                <div class="v">BS Information Technology (in progress)</div>
+              </div>
+              <div class="quick-card">
+                <div class="k">Background</div>
+                <div class="v">AS Information Technology and AS Cybersecurity</div>
+              </div>
+              <div class="quick-card">
+                <div class="k">Goal</div>
+                <div class="v">Entry level IT support and systems roles</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ================================
-           ABOUT SECTION
-           NOTE: Filled by app.js from content.about
-      ================================== -->
+      <!-- ABOUT SECTION -->
       <section class="section" id="about">
         <div class="container">
           <h2>About</h2>
-          <div class="card" id="aboutCard"></div>
-        </div>
-      </section>
-
-      <!-- ================================
-           SKILLS SECTION: aside + grid
-           NOTE: Filled by app.js from content.skills
-      ================================== -->
-      <section class="section" id="skills">
-        <div class="container">
-          <h2>Skills</h2>
-
-          <div class="skills-layout">
-            <!-- NOTE: Aside intro + featured pills -->
-            <aside class="card skills-aside" id="skillsAside"></aside>
-
-            <!-- NOTE: Skill group cards grid -->
-            <div class="skills-grid" id="skillsGrid"></div>
+          <div class="card about-card" id="aboutCard">
+            <p>Hi, I'm J Roque. I'm building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.</p>
+            <p>My background includes Information Technology and Cybersecurity coursework, and I'm currently working toward a BS in Information Technology. I'm focused on strong fundamentals: operating systems, networking, security basics, and clean documentation that another tech can follow without guessing.</p>
+            <p>Most of my learning happens through labs and builds. I practice Windows and Linux skills, set up virtual machines, work through database and SQL exercises, and document projects like Raspberry Pi and storage builds. Everything here is meant to be practical and easy to review.</p>
+            <div class="pill-row">
+              <span class="pill">Clear step by step documentation</span>
+              <span class="pill">Patient user focused troubleshooting</span>
+              <span class="pill">Windows and Linux fundamentals</span>
+              <span class="pill">Virtualization and home lab practice</span>
+              <span class="pill">Security awareness and safe habits</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ================================
-           EXPERIENCE SECTION
-           NOTE: Filled by app.js from content.experience
-      ================================== -->
+      <!-- SKILLS SECTION -->
+      <section class="section" id="skills">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="skills-layout">
+            <aside class="card skills-aside" id="skillsAside">
+              <p>Hands-on skills developed through coursework, labs, and personal projects.</p>
+              <div class="pill-row">
+                <span class="pill">Active Directory</span>
+                <span class="pill">Linux Administration</span>
+                <span class="pill">Network Security</span>
+              </div>
+            </aside>
+            <div class="skills-grid" id="skillsGrid">
+              <!-- Skill groups injected by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
       <section class="section" id="experience">
         <div class="container">
           <h2>Experience</h2>
@@ -190,10 +152,7 @@
         </div>
       </section>
 
-      <!-- ================================
-           EDUCATION SECTION
-           NOTE: Filled by app.js from content.education
-      ================================== -->
+      <!-- EDUCATION SECTION -->
       <section class="section" id="education">
         <div class="container">
           <h2>Education</h2>
@@ -201,48 +160,25 @@
         </div>
       </section>
 
-      <!-- ================================
-           PROJECTS SECTION: tabs + search + cards
-           NOTE: app.js controls:
-           - #projectFilters (tabs)
-           - #projectSearch (search input)
-           - #projectCount (showing count)
-           - #projectsGrid (cards)
-      ================================== -->
+      <!-- PROJECTS SECTION -->
       <section class="section" id="projects">
         <div class="container">
           <div class="section-head">
             <h2>Projects</h2>
-
             <div class="project-controls">
-              <!-- NOTE: Rendered by app.js -->
-              <div
-                class="filters filterTabs"
-                id="projectFilters"
-                role="tablist"
-                aria-label="Project filters"
-              ></div>
-
-              <!-- NOTE: app.js listens to input on #projectSearch -->
+              <div class="filters filterTabs" id="projectFilters" role="tablist" aria-label="Project filters"></div>
               <label class="search">
                 <span class="sr-only">Search projects</span>
                 <input id="projectSearch" type="search" placeholder="Search projects" />
               </label>
             </div>
-
-            <!-- NOTE: Rendered by app.js -->
             <div class="muted small" id="projectCount" aria-live="polite"></div>
           </div>
-
-          <!-- NOTE: Rendered by app.js -->
           <div class="grid" id="projectsGrid"></div>
         </div>
       </section>
 
-      <!-- ================================
-           ARTICLES SECTION
-           NOTE: Filled by app.js from content.articles
-      ================================== -->
+      <!-- ARTICLES SECTION -->
       <section class="section" id="articles">
         <div class="container">
           <h2>Articles</h2>
@@ -250,10 +186,7 @@
         </div>
       </section>
 
-      <!-- ================================
-           CONTACT SECTION
-           NOTE: Filled by app.js from content.contact
-      ================================== -->
+      <!-- CONTACT SECTION -->
       <section class="section" id="contact">
         <div class="container">
           <h2>Contact</h2>
@@ -262,25 +195,13 @@
       </section>
     </main>
 
-    <!-- ================================
-         FOOTER
-         NOTE: #footerText is filled by app.js using content.site.footerText
-    ================================== -->
     <footer class="footer">
       <div class="container footer-inner">
-        <span id="footerText">© Your Name</span>
+        <span id="footerText">© J Roque</span>
         <a class="muted" href="#top">Back to top</a>
       </div>
     </footer>
 
-    <!-- ================================
-         SCRIPTS
-         IMPORTANT UPDATE:
-         - app.js moved to /src
-         - change src from "./app.js" to "./src/app.js"
-         NOTE:
-         - type="module" is required because app.js uses ES module imports
-    ================================== -->
     <script type="module" src="./src/app.js"></script>
   </body>
 </html>
