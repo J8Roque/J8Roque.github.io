@@ -249,6 +249,16 @@ export const content = {
       links: [{ label: "PDF Guide", href: "./assets/pdf/hyperv-windows11-vm-guide.pdf" }]
     },
     {
+  title: "Cisco Packet Tracer VoIP Network Setup",
+  category: "Networking",
+  role: "Network Lab Builder / Author",
+  dates: "2026",
+  summary:
+    "Built and documented a small company VoIP network in Cisco Packet Tracer using Router0, Switch0, Cisco 7960 IP phones, DHCP Option 150, Voice VLAN 10, and CallManager Express. The lab shows how two IP phones register and call each other using extensions 1001 and 1002.",
+  tags: ["Cisco Packet Tracer", "VoIP", "DHCP", "Voice VLAN", "CallManager Express", "IP Phones"],
+  links: [{ label: "PDF Guide", href: "./assets/pdf/voip-network-setup.pdf" }]
+},
+    {
       title: "TryHackMe Labs: PyRat, Mr Robot, and Publisher",
       category: "Security",
       role: "Student",
