@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>IT Portfolio</title>
-    <meta name="description" content="IT projects, documentation, and lab work." />
-    <link rel="stylesheet" href="./src/styles.css" />
+
+    <title>J Roque | IT Portfolio</title>
+    <meta
+      name="description"
+      content="J Roque's IT portfolio featuring hands-on projects, lab write ups, networking, systems, security, and troubleshooting documentation."
+    />
+
+    <meta name="theme-color" content="#08111f" />
+
+    <!-- Force GitHub Pages/browser to load the newest CSS -->
+    <link rel="stylesheet" href="./src/styles.css?v=20260501-2" />
   </head>
 
   <body>
@@ -18,7 +26,7 @@
           <span id="brandName">J Roque</span>
         </a>
 
-        <nav class="nav" aria-label="Primary">
+        <nav class="nav" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#experience">Experience</a>
@@ -32,6 +40,7 @@
           <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
             Light
           </button>
+
           <button class="btn ghost nav-toggle" id="navToggle" type="button" aria-label="Open menu">
             Menu
           </button>
@@ -42,10 +51,12 @@
         <div class="container mobile-nav-inner">
           <div class="mobile-nav-head">
             <span class="mobile-brand" id="mobileBrand">J Roque</span>
+
             <button class="btn ghost" id="navClose" type="button" aria-label="Close menu">
               Close
             </button>
           </div>
+
           <div class="mobile-links">
             <a href="#about" data-close>About</a>
             <a href="#skills" data-close>Skills</a>
@@ -65,37 +76,64 @@
         <div class="container hero-grid">
           <div class="hero-left">
             <div class="badge" id="heroBadge">My Portfolio</div>
+
             <h1 class="hero-title" id="heroTitle">Hi, I am J Roque</h1>
-            <p class="hero-subtitle" id="heroSubtitle">I build hands on IT projects, write clear documentation, and share real lab work.</p>
+
+            <p class="hero-subtitle" id="heroSubtitle">
+              I build hands-on IT projects, write clear documentation, and share real lab work.
+            </p>
 
             <ul class="bullets" id="heroBullets">
               <li>IT student focused on support, systems, networking, and security fundamentals</li>
-              <li>I learn by doing: labs, home projects, and step by step write ups</li>
+              <li>I learn by doing: labs, home projects, and step-by-step write ups</li>
               <li>Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows</li>
-              <li>Security minded habits: MFA, least privilege, patch hygiene, phishing awareness</li>
+              <li>Security-minded habits: MFA, least privilege, patch hygiene, and phishing awareness</li>
             </ul>
 
             <div class="cta-row" id="heroLinks">
-              <a href="#" class="btn">GitHub</a>
-              <a href="#" class="btn">LinkedIn</a>
-              <a href="#" class="btn">Credly</a>
+              <a href="https://github.com/J8Roque" class="btn" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jemmyroque/"
+                class="btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://www.credly.com/users/jemmyroque"
+                class="btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Credly
+              </a>
             </div>
           </div>
 
           <div class="hero-right">
             <div class="avatar">
-              <img id="profileImage" src="./assets/img/cat2.jpg" alt="Profile photo" loading="lazy" />
+              <img
+                id="profileImage"
+                src="./assets/img/cat2.jpg"
+                alt="Profile image"
+                loading="lazy"
+              />
             </div>
 
             <div class="quick-cards" id="quickCards">
               <div class="quick-card">
                 <div class="k">Degree Path</div>
-                <div class="v">BS Information Technology (in progress)</div>
+                <div class="v">BS Information Technology in progress</div>
               </div>
+
               <div class="quick-card">
                 <div class="k">Background</div>
                 <div class="v">AS Information Technology and AS Cybersecurity</div>
               </div>
+
               <div class="quick-card">
                 <div class="k">Goal</div>
                 <div class="v">Entry level IT support and systems roles</div>
@@ -109,15 +147,33 @@
       <section class="section" id="about">
         <div class="container">
           <h2>About</h2>
+
           <div class="card about-card" id="aboutCard">
-            <p>Hi, I'm J Roque. I'm building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.</p>
-            <p>My background includes Information Technology and Cybersecurity coursework, and I'm currently working toward a BS in Information Technology. I'm focused on strong fundamentals: operating systems, networking, security basics, and clean documentation that another tech can follow without guessing.</p>
-            <p>Most of my learning happens through labs and builds. I practice Windows and Linux skills, set up virtual machines, work through database and SQL exercises, and document projects like Raspberry Pi and storage builds. Everything here is meant to be practical and easy to review.</p>
+            <p>
+              Hi, I'm J Roque. I'm building this site to show real hands-on IT work, not just class titles.
+              I like troubleshooting because it feels like solving a puzzle, and I care about staying calm
+              and clear when someone is stressed and needs help fast.
+            </p>
+
+            <p>
+              My background includes Information Technology and Cybersecurity coursework, and I'm currently
+              working toward a BS in Information Technology. I'm focused on strong fundamentals: operating
+              systems, networking, security basics, and clean documentation that another tech can follow
+              without guessing.
+            </p>
+
+            <p>
+              Most of my learning happens through labs and builds. I practice Windows and Linux skills, set up
+              virtual machines, work through database and SQL exercises, and document projects like Cisco Packet
+              Tracer, Active Directory, Hyper V, and SQL database labs.
+            </p>
+
             <div class="pill-row">
-              <span class="pill">Clear step by step documentation</span>
-              <span class="pill">Patient user focused troubleshooting</span>
+              <span class="pill">Clear step-by-step documentation</span>
+              <span class="pill">Patient user-focused troubleshooting</span>
               <span class="pill">Windows and Linux fundamentals</span>
               <span class="pill">Virtualization and home lab practice</span>
+              <span class="pill">Networking and VoIP lab practice</span>
               <span class="pill">Security awareness and safe habits</span>
             </div>
           </div>
@@ -128,17 +184,23 @@
       <section class="section" id="skills">
         <div class="container">
           <h2>Skills</h2>
+
           <div class="skills-layout">
             <aside class="card skills-aside" id="skillsAside">
-              <p>Hands-on skills developed through coursework, labs, and personal projects.</p>
+              <p>
+                Hands-on skills developed through coursework, labs, personal projects, and technical documentation.
+              </p>
+
               <div class="pill-row">
                 <span class="pill">Active Directory</span>
                 <span class="pill">Linux Administration</span>
-                <span class="pill">Network Security</span>
+                <span class="pill">Networking Basics</span>
+                <span class="pill">Security Awareness</span>
               </div>
             </aside>
+
             <div class="skills-grid" id="skillsGrid">
-              <!-- Skill groups injected by JS -->
+              <!-- Skill groups injected by app.js -->
             </div>
           </div>
         </div>
@@ -165,15 +227,24 @@
         <div class="container">
           <div class="section-head">
             <h2>Projects</h2>
+
             <div class="project-controls">
-              <div class="filters filterTabs" id="projectFilters" role="tablist" aria-label="Project filters"></div>
+              <div
+                class="filters filterTabs"
+                id="projectFilters"
+                role="tablist"
+                aria-label="Project filters"
+              ></div>
+
               <label class="search">
                 <span class="sr-only">Search projects</span>
                 <input id="projectSearch" type="search" placeholder="Search projects" />
               </label>
             </div>
+
             <div class="muted small" id="projectCount" aria-live="polite"></div>
           </div>
+
           <div class="grid" id="projectsGrid"></div>
         </div>
       </section>
@@ -202,6 +273,7 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/app.js"></script>
+    <!-- Force GitHub Pages/browser to load the newest JS -->
+    <script type="module" src="./src/app.js?v=20260501-2"></script>
   </body>
 </html>
