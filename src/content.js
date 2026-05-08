@@ -204,7 +204,7 @@ export const content = {
       links: [
         {
           label: "PDF Lab Report",
-          href: "./assets/pdf/active-directory-home-lab.pdf"
+          href: "./assets/pdf/active-directory-home-lab.pdf.pdf"
         }
       ]
     },
