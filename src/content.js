@@ -1,9 +1,12 @@
+// PDF names must match assets/pdf exactly, including capitals and extensions.
 // ===================================
 // FILE: content.js
 // PURPOSE: All portfolio data lives here
 // ===================================
 
 export const content = {
+  // DATA 01 / LEGACY SITE SETTINGS
+  // Retained from your original portfolio. This redesigned app does not render content.site. Edit the hero, logo, profile panel, navigation, and footer directly in index.html.
   site: {
     name: "J Roque",
     badge: "My Portfolio",
@@ -35,6 +38,8 @@ export const content = {
     footerText: "© J Roque"
   },
 
+  // DATA 02 / LEGACY ABOUT TEXT
+  // Retained original data, not rendered by this redesigned app. Edit visible About paragraphs inside index.html section id="about".
   about: {
     paragraphs: [
       "Hi, I’m J Roque. I’m building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.",
@@ -51,6 +56,8 @@ export const content = {
     ]
   },
 
+  // DATA 03 / SKILLS
+  // Visible cards use skills.groups below. Each title becomes h3, caption becomes p, and items become li. introTitle, introText, and featured are retained original fields that this app does not render.
   skills: {
     introTitle: "Core strengths",
     introText:
@@ -116,6 +123,8 @@ export const content = {
     ]
   },
 
+  // DATA 04 / EXPERIENCE
+  // org is the organization; roles.title becomes h3; roles.bullets become list items. Rendered by app.js JS 09.
   experience: [
     {
       org: "Academic and Home Lab Projects",
@@ -151,6 +160,8 @@ export const content = {
     }
   ],
 
+  // DATA 05 / EDUCATION
+  // school becomes h3; program becomes p; notes become list items. Rendered by app.js JS 10.
   education: [
     {
       school: "Arizona State University",
@@ -175,6 +186,8 @@ export const content = {
     }
   ],
 
+  // DATA 06 / FILTER BUTTON LABELS
+  // These labels become clickable category buttons. Each project category must match one of these labels exactly.
   projectCategories: [
     "All",
     "IT Support",
@@ -184,6 +197,8 @@ export const content = {
     "Database"
   ],
 
+  // DATA 07 / FULL PROJECT DETAILS AND REPORT LINKS
+  // title and summary appear in the popup. category and tags also appear on cards. Short card headings and paragraphs are in app.js JS 03. Keep their array order aligned.
   projects: [
     {
       title: "Active Directory Home Lab: Domain Controller, DNS, Domain Join, and File Sharing",
@@ -204,6 +219,7 @@ export const content = {
       links: [
         {
           label: "PDF Lab Report",
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
           href: "./assets/pdf/active-directory-home-lab.pdf.pdf"
         }
       ]
@@ -219,6 +235,7 @@ export const content = {
       links: [
         {
           label: "PDF Guide",
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
           href: "./assets/pdf/hyperv-windows11-vm-guide.pdf"
         }
       ]
@@ -241,6 +258,7 @@ export const content = {
       links: [
         {
           label: "PDF Guide",
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
           href: "./assets/pdf/VoIP_Network_Setup.pdf"
         }
       ]
@@ -262,7 +280,10 @@ export const content = {
       links: [
         {
           label: "PDF Write Up",
-          href: "./assets/pdf/PyRat-Mr-Robot-Publisher-THM.pdf"
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
+          href: "./assets/pdf/PyRat-Mr-Robot-Publisher-THM.pdf",
+          // Change to true after uploading this report to assets/pdf.
+          available: false
         }
       ]
     },
@@ -277,6 +298,7 @@ export const content = {
       links: [
         {
           label: "PDF Report",
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
           href: "./assets/pdf/analyzing-types-of-web-application-attacks.pdf"
         }
       ]
@@ -307,6 +329,7 @@ export const content = {
       links: [
         {
           label: "PDF Lab",
+          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
           href: "./assets/pdf/pizza-ordering-system.pdf"
         }
       ]
@@ -332,6 +355,8 @@ export const content = {
     }
   ],
 
+  // DATA 08 / ARTICLES
+  // title becomes h3; summary becomes p; href points to the article/PDF. Replace PASTE_ARTICLE_LINK when ready.
   articles: [
     {
       title: "My Troubleshooting Checklist for Common IT Issues",
@@ -371,6 +396,8 @@ export const content = {
     }
   ],
 
+  // DATA 09 / CONTACT PROFILES
+  // These URLs populate the bottom profile rows and Copy buttons. Also update the separate LinkedIn buttons in index.html if your address changes. The empty email field is retained but not rendered.
   contact: {
     email: "",
     github: "https://github.com/J8Roque",
