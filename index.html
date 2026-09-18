@@ -1,279 +1,391 @@
+<!--
+FILE: index.html | LOCATION: repository root, beside the assets and src folders.
+EDITING MAP: head = browser settings; header = visible top bar; main = sections;
+h1 = main headline; h2 = section title; h3 = card/subheading; p = paragraph;
+a = link; button = action; div = grouping; span = inline label; section = page region.
+class names connect to styles.css. id values connect to navigation and app.js.
+Some empty containers are filled by JavaScript. Their comments point to the source.
+These comments are for editing and do not appear on the webpage.
+-->
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
+  <!-- HTML 01 / PAGE SETTINGS. This head is browser metadata, not the visible header. -->
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- METADATA: UTF-8 supports punctuation and symbols. -->
+    <meta charset="UTF-8">
+
+    <!-- METADATA: controls mobile sizing. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- BROWSER TAB TITLE: edit the text between title tags. -->
     <title>J Roque | IT Portfolio</title>
-    <meta
-      name="description"
-      content="J Roque's IT portfolio featuring hands-on projects, lab write ups, networking, systems, security, and troubleshooting documentation."
-    />
 
-    <meta name="theme-color" content="#08111f" />
+    <!-- METADATA: describes the page for search engines. -->
+    <meta name="description" content="Explore J Roque's hands-on work in IT support, Windows and Linux systems, networking, and security. Projects, lab notes, and technical learning.">
 
-    <!-- Force GitHub Pages/browser to load the newest CSS -->
-    <link rel="stylesheet" href="./src/styles.css?v=20260501-2" />
+    <!-- METADATA: sets browser theme color. -->
+    <meta name="theme-color" content="#10151c">
+
+    <!-- FAVICON: the small JR icon in the browser tab. -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310151c'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23dfc397'%3EJR%3C/text%3E%3C/svg%3E">
+
+    <!-- CSS CONNECTION: styles load from src/styles.css. Keep this path matched to your folder. -->
+    <link rel="stylesheet" href="./src/styles.css?v=20260918">
+
+    <!-- EARLY THEME SCRIPT: restores the saved theme before the page is displayed. This stays inside head. -->
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('jroque-theme')||'dark'}catch{}</script>
   </head>
 
+  <!-- HTML 02 / VISIBLE PAGE START. All visible sections go inside body. -->
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="topbar" id="top">
-      <div class="container topbar-inner">
-        <a class="brand" href="#home" aria-label="Go to home">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span id="brandName">J Roque</span>
-        </a>
+    <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+    <a class="skip" href="#main">Skip to content</a>
 
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
+    <!-- HTML 03 / VISIBLE HEADER. Edit the logo, brand text, menu links, and top buttons here. -->
+    <header class="header" id="top">
+      <div class="container nav-row">
+
+        <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+        <a class="brand" href="#home" aria-label="J Roque home"><span class="brand-mark">JR<span>.</span></span><span>J ROQUE<span class="brand-caption">INFORMATION TECHNOLOGY</span></span></a>
+
+        <!-- NAVIGATION LINKS: href="#projects" jumps to the section with id="projects". Keep these paired. -->
+        <nav id="navigation" aria-label="Main navigation">
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
           <a href="#projects">Projects</a>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a href="#about">About</a>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a href="#skills">Skills</a>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a href="#experience">Experience</a>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a href="#education">Education</a>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
           <a href="#articles">Articles</a>
-          <a href="#contact">Contact</a>
         </nav>
+        <div class="nav-actions">
 
-        <div class="topbar-actions">
-          <button class="btn ghost" id="themeToggle" type="button" aria-label="Toggle theme">
-            Light
-          </button>
+          <!-- THEME BUTTON: changes light/dark mode using app.js, JS 14. -->
+          <button class="icon-button" id="themeToggle" aria-label="Switch to light theme" title="Switch theme"><span aria-hidden="true">☼</span></button>
 
-          <button class="btn ghost nav-toggle" id="navToggle" type="button" aria-label="Open menu">
-            Menu
-          </button>
-        </div>
-      </div>
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a class="button small contact-nav" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
 
-      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-        <div class="container mobile-nav-inner">
-          <div class="mobile-nav-head">
-            <span class="mobile-brand" id="mobileBrand">J Roque</span>
-
-            <button class="btn ghost" id="navClose" type="button" aria-label="Close menu">
-              Close
-            </button>
-          </div>
-
-          <div class="mobile-links">
-            <a href="#about" data-close>About</a>
-            <a href="#skills" data-close>Skills</a>
-            <a href="#experience" data-close>Experience</a>
-            <a href="#education" data-close>Education</a>
-            <a href="#projects" data-close>Projects</a>
-            <a href="#articles" data-close>Articles</a>
-            <a href="#contact" data-close>Contact</a>
-          </div>
+          <!-- MOBILE MENU BUTTON: opens/closes navigation using app.js, JS 15. -->
+          <button id="menuToggle" class="icon-button menu-toggle" aria-controls="navigation" aria-expanded="false">Menu</button>
         </div>
       </div>
     </header>
 
+    <!-- HTML 04 / MAIN CONTENT. The hero and all seven content sections are inside main. -->
     <main id="main">
-      <!-- HERO SECTION -->
-      <section class="hero" id="home">
-        <div class="container hero-grid">
-          <div class="hero-left">
-            <div class="badge" id="heroBadge">My Portfolio</div>
 
-            <h1 class="hero-title" id="heroTitle">Hi, I am J Roque</h1>
+      <!-- SECTION START: HERO / FIRST SCREEN. Search for id="home" to return here. Related CSS uses .hero. -->
+      <section class="hero container" id="home">
+        <div class="hero-copy">
 
-            <p class="hero-subtitle" id="heroSubtitle">
-              I build hands-on IT projects, write clear documentation, and share real lab work.
-            </p>
+          <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+          <p class="eyebrow"><span class="line"></span> THE PORTFOLIO OF J ROQUE</p>
 
-            <ul class="bullets" id="heroBullets">
-              <li>IT student focused on support, systems, networking, and security fundamentals</li>
-              <li>I learn by doing: labs, home projects, and step-by-step write ups</li>
-              <li>Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows</li>
-              <li>Security-minded habits: MFA, least privilege, patch hygiene, and phishing awareness</li>
-            </ul>
+          <!-- MAIN PAGE HEADING (h1). This is the large hero headline. br starts a new line; em styles the emphasized word. -->
+          <h1>People first.<br>Systems <em>minded.</em></h1>
 
-            <div class="cta-row" id="heroLinks">
-              <a href="https://github.com/J8Roque" class="btn" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jemmyroque/"
-                class="btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://www.credly.com/users/jemmyroque"
-                class="btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Credly
-              </a>
+          <!-- HERO PARAGRAPH (p.hero-description). Edit the introduction below the main headline. -->
+          <p class="hero-description">I build hands-on IT projects, solve problems, and write documentation that makes the next step clear.</p>
+          <div class="hero-actions">
+
+            <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+            <a class="button primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+
+            <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+            <a class="text-link" href="https://www.linkedin.com/in/jemmyroque/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-footnote">
+            <span>IT support</span>
+            <span>Systems</span>
+            <span>Networking & security</span>
+          </div>
+        </div>
+
+        <!-- PROFILE PANEL: edit degree, school, career focus, and location in this aside. Styles: .identity-card. -->
+        <aside class="identity-card" aria-label="Profile at a glance">
+          <div class="identity-top">
+            <span>J ROQUE / AT A GLANCE</span>
+            <span class="plus" aria-hidden="true">+</span>
+          </div>
+          <div class="identity-name">
+            Learning.
+            <br>
+            Building.
+            <br>
+            <span>Documenting.</span>
+          </div>
+          <div class="identity-divider">
+          </div>
+          <div class="identity-detail">
+            <span class="mini-label">CURRENT PATH</span>
+            <strong>BS Information Technology</strong>
+            <span>Arizona State University · In progress</span>
+          </div>
+          <div class="identity-detail">
+            <span class="mini-label">CAREER FOCUS</span>
+            <strong>IT support & systems</strong>
+            <span>Fundamentals put into practice.</span>
+          </div>
+          <div class="identity-bottom">
+            <span>CALIFORNIA, USA</span>
+
+            <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+            <a href="#about" aria-label="More about J Roque">↘</a>
+          </div>
+        </aside>
+      </section>
+      <!-- SECTION END: HERO / FIRST SCREEN -->
+
+      <!-- TOOLS STRIP: edit these span labels to change the technologies listed below the hero. -->
+      <div class="signal-strip">
+        <div class="container signal-inner">
+          <span class="mini-label">HANDS-ON WITH</span>
+          <span>Windows Server</span>
+          <span>Active Directory</span>
+          <span>Linux</span>
+          <span>Cisco Packet Tracer</span>
+          <span>SQL</span>
+        </div>
+      </div>
+
+      <!-- SECTION START: PROJECTS. Search for id="projects" to return here. Related CSS uses .section. -->
+      <section class="section container" id="projects">
+        <div class="section-heading">
+          <div>
+
+            <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+            <p class="eyebrow">01 / SELECTED WORK</p>
+
+            <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+            <h2>Built to understand.</h2>
+          </div>
+
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Real labs. Clear steps.<br>A closer look at how I learn.</p>
+        </div>
+        <div class="project-controls">
+
+          <!-- Category buttons are created in app.js at JS 04. Edit projectCategories in content.js. -->
+          <div id="filters" class="filters" role="group" aria-label="Filter projects by category">
+          </div>
+
+          <!-- SEARCH LABEL: gives the search field an accessible name. The SVG inside draws the magnifying glass. -->
+          <label class="search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.6"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="1.6"/></svg><span class="sr-only">Search projects</span><input type="search" id="projectSearch" placeholder="Search projects…"></label>
+        </div>
+
+        <!-- Empty p tag: app.js fills this with the current project count at JS 05. -->
+        <p class="result-count" id="projectCount" role="status"></p>
+
+        <!-- Project cards are inserted here by renderProjects() in app.js, JS 05. Card h3 titles and p summaries use titles and summaries in JS 03. -->
+        <div class="project-grid" id="projectsGrid">
+        </div>
+
+        <!-- NO RESULTS MESSAGE: shown by app.js when search/filter results are empty. -->
+        <div id="emptyState" class="empty-state" hidden>
+
+          <!-- SUBHEADING (h3). This labels an item or message within a section. -->
+          <h3>No matching projects</h3>
+
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Try another keyword or explore a different category.</p>
+          <button id="clearFilters" class="button">Clear filters</button>
+        </div>
+      </section>
+      <!-- SECTION END: PROJECTS -->
+
+      <!-- SECTION START: ABOUT ME. Search for id="about" to return here. Related CSS uses .section. -->
+      <section class="section about-section" id="about">
+        <div class="container split">
+          <div>
+
+            <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+            <p class="eyebrow">02 / THE PERSON BEHIND THE LABS</p>
+
+            <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+            <h2>Calm under pressure.<br><em>Curious by nature.</em></h2>
+
+            <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+            <a class="text-link" href="#contact">Get to know me <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="about-copy">
+
+            <!-- ABOUT INTRO PARAGRAPH (p.lead). Edit your opening personal introduction here. -->
+            <p class="lead">Hi, I'm J Roque. I like troubleshooting because it feels like solving a puzzle. I care just as much about helping the person on the other side of the screen.</p>
+
+            <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+            <p>I'm working toward a BS in Information Technology, with a background in IT and cybersecurity coursework. My focus is on operating systems, networking, security fundamentals, and documentation another technician can follow.</p>
+
+            <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+            <p>Most of my learning happens through labs. I build virtual machines, practice Windows and Linux skills, work through SQL exercises, and document what worked, what didn't, and what I learned.</p>
+            <div class="values">
+              <span>Patient communication</span>
+              <span>Repeatable steps</span>
+              <span>Security awareness</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION END: ABOUT ME -->
+
+      <!-- SECTION START: SKILLS. Search for id="skills" to return here. Related CSS uses .section. -->
+      <section class="section container" id="skills">
+        <div class="section-heading">
+          <div>
+
+            <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+            <p class="eyebrow">03 / MY TOOLKIT</p>
+
+            <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+            <h2>Strong fundamentals.<br>Practical skills.</h2>
+          </div>
+
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Developed through coursework,<br>home labs, and hands-on practice.</p>
+        </div>
+
+        <!-- Skill cards, h3 headings, paragraphs, and lists are created in app.js, JS 08. Edit skills.groups in content.js. -->
+        <div id="skillsGrid" class="skills-grid">
+        </div>
+      </section>
+      <!-- SECTION END: SKILLS -->
+
+      <!-- SECTION START: EXPERIENCE. Search for id="experience" to return here. Related CSS uses .section. -->
+      <section class="section container experience-section" id="experience">
+        <div class="section-heading">
+          <div>
+
+            <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+            <p class="eyebrow">04 / EXPERIENCE</p>
+
+            <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+            <h2>Learning through doing.</h2>
+          </div>
+
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Lab work and a job simulation.</p>
+        </div>
+
+        <!-- Experience headings and bullet lists are created in app.js, JS 09. Edit experience in content.js. -->
+        <div id="experienceList" class="timeline">
+        </div>
+      </section>
+      <!-- SECTION END: EXPERIENCE -->
+
+      <!-- SECTION START: EDUCATION. Search for id="education" to return here. Related CSS uses .section. -->
+      <section class="section education-section" id="education">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+
+              <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+              <p class="eyebrow">05 / EDUCATION</p>
+
+              <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+              <h2>Building the foundation.</h2>
             </div>
           </div>
 
-          <div class="hero-right">
-            <div class="avatar">
-              <img
-                id="profileImage"
-                src="./assets/img/cat2.jpg"
-                alt="Profile image"
-                loading="lazy"
-              />
-            </div>
-
-            <div class="quick-cards" id="quickCards">
-              <div class="quick-card">
-                <div class="k">Degree Path</div>
-                <div class="v">BS Information Technology in progress</div>
-              </div>
-
-              <div class="quick-card">
-                <div class="k">Background</div>
-                <div class="v">AS Information Technology and AS Cybersecurity</div>
-              </div>
-
-              <div class="quick-card">
-                <div class="k">Goal</div>
-                <div class="v">Entry level IT support and systems roles</div>
-              </div>
-            </div>
+          <!-- School h3 headings, program paragraphs, and notes are created in app.js, JS 10. Edit education in content.js. -->
+          <div class="education-grid" id="educationGrid">
           </div>
         </div>
       </section>
+      <!-- SECTION END: EDUCATION -->
 
-      <!-- ABOUT SECTION -->
-      <section class="section" id="about">
-        <div class="container">
-          <h2>About</h2>
+      <!-- SECTION START: ARTICLES. Search for id="articles" to return here. Related CSS uses .section. -->
+      <section class="section container" id="articles">
+        <div class="section-heading">
+          <div>
 
-          <div class="card about-card" id="aboutCard">
-            <p>
-              Hi, I'm J Roque. I'm building this site to show real hands-on IT work, not just class titles.
-              I like troubleshooting because it feels like solving a puzzle, and I care about staying calm
-              and clear when someone is stressed and needs help fast.
-            </p>
+            <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+            <p class="eyebrow">06 / FIELD NOTES</p>
 
-            <p>
-              My background includes Information Technology and Cybersecurity coursework, and I'm currently
-              working toward a BS in Information Technology. I'm focused on strong fundamentals: operating
-              systems, networking, security basics, and clean documentation that another tech can follow
-              without guessing.
-            </p>
-
-            <p>
-              Most of my learning happens through labs and builds. I practice Windows and Linux skills, set up
-              virtual machines, work through database and SQL exercises, and document projects like Cisco Packet
-              Tracer, Active Directory, Hyper V, and SQL database labs.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">Clear step-by-step documentation</span>
-              <span class="pill">Patient user-focused troubleshooting</span>
-              <span class="pill">Windows and Linux fundamentals</span>
-              <span class="pill">Virtualization and home lab practice</span>
-              <span class="pill">Networking and VoIP lab practice</span>
-              <span class="pill">Security awareness and safe habits</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS SECTION -->
-      <section class="section" id="skills">
-        <div class="container">
-          <h2>Skills</h2>
-
-          <div class="skills-layout">
-            <aside class="card skills-aside" id="skillsAside">
-              <p>
-                Hands-on skills developed through coursework, labs, personal projects, and technical documentation.
-              </p>
-
-              <div class="pill-row">
-                <span class="pill">Active Directory</span>
-                <span class="pill">Linux Administration</span>
-                <span class="pill">Networking Basics</span>
-                <span class="pill">Security Awareness</span>
-              </div>
-            </aside>
-
-            <div class="skills-grid" id="skillsGrid">
-              <!-- Skill groups injected by app.js -->
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- EXPERIENCE SECTION -->
-      <section class="section" id="experience">
-        <div class="container">
-          <h2>Experience</h2>
-          <div class="stack" id="experienceStack"></div>
-        </div>
-      </section>
-
-      <!-- EDUCATION SECTION -->
-      <section class="section" id="education">
-        <div class="container">
-          <h2>Education</h2>
-          <div class="stack" id="educationStack"></div>
-        </div>
-      </section>
-
-      <!-- PROJECTS SECTION -->
-      <section class="section" id="projects">
-        <div class="container">
-          <div class="section-head">
-            <h2>Projects</h2>
-
-            <div class="project-controls">
-              <div
-                class="filters filterTabs"
-                id="projectFilters"
-                role="tablist"
-                aria-label="Project filters"
-              ></div>
-
-              <label class="search">
-                <span class="sr-only">Search projects</span>
-                <input id="projectSearch" type="search" placeholder="Search projects" />
-              </label>
-            </div>
-
-            <div class="muted small" id="projectCount" aria-live="polite"></div>
+            <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+            <h2>Lessons worth sharing.</h2>
           </div>
 
-          <div class="grid" id="projectsGrid"></div>
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Notes on support, systems,<br>and safer habits.</p>
         </div>
-      </section>
 
-      <!-- ARTICLES SECTION -->
-      <section class="section" id="articles">
-        <div class="container">
-          <h2>Articles</h2>
-          <div class="grid" id="articlesGrid"></div>
+        <!-- Article h3 headings and p summaries are created in app.js, JS 11. Edit articles in content.js. -->
+        <div id="articlesList" class="articles-list">
         </div>
       </section>
+      <!-- SECTION END: ARTICLES -->
 
-      <!-- CONTACT SECTION -->
-      <section class="section" id="contact">
-        <div class="container">
-          <h2>Contact</h2>
-          <div class="card" id="contactCard"></div>
+      <!-- SECTION START: CONTACT. Search for id="contact" to return here. Related CSS uses .contact-section. -->
+      <section class="contact-section container" id="contact">
+        <div class="contact-heading">
+
+          <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
+          <p class="eyebrow">07 / LET'S CONNECT</p>
+
+          <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
+          <h2>Good IT starts with<br>a <em>conversation.</em></h2>
+
+          <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
+          <p>Interested in my projects or an entry-level IT opportunity?<br>Connect with me on LinkedIn.</p>
+
+          <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+          <a class="button primary" href="https://www.linkedin.com/in/jemmyroque/" target="_blank" rel="noopener noreferrer">Let's talk on LinkedIn <span aria-hidden="true">↗</span></a>
         </div>
+
+        <!-- Profile links and Copy buttons are created in app.js, JS 12. Edit contact in content.js. -->
+        <div class="contact-links" id="contactLinks">
+        </div>
+
+        <!-- BUTTON: copies profile links using app.js, JS 13. -->
+        <button class="text-link copy-all" id="copyAll" type="button">Copy all profile links</button>
       </section>
+      <!-- SECTION END: CONTACT -->
     </main>
 
-    <footer class="footer">
-      <div class="container footer-inner">
-        <span id="footerText">© J Roque</span>
-        <a class="muted" href="#top">Back to top</a>
-      </div>
+    <!-- HTML 11 / FOOTER. Bottom logo, copyright, and Back to top link. -->
+    <footer class="container footer">
+
+      <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+      <a class="brand-mark" href="#home" aria-label="J Roque home">JR<span>.</span></a>
+      <span>© <span id="year">2026</span> J Roque</span>
+
+      <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+      <a href="#top">Back to top ↑</a>
     </footer>
 
-    <!-- Force GitHub Pages/browser to load the newest JS -->
-    <script type="module" src="./src/app.js?v=20260501-2"></script>
+    <!-- PROJECT DETAILS POPUP: hidden until a View project button calls showModal(). -->
+    <dialog id="projectDialog" aria-labelledby="dialogTitle">
+
+      <!-- BUTTON: closes the project popup. Keep this id for the JS 07 click handler. -->
+      <button id="closeDialog" class="icon-button dialog-close" aria-label="Close project details">✕</button>
+
+      <!-- Project detail h2/h3 headings and p paragraphs are inserted here by openProject() in app.js, JS 07. -->
+      <div id="dialogBody">
+      </div>
+    </dialog>
+
+    <!-- FEEDBACK MESSAGE: app.js writes copy success/failure text here, JS 13. -->
+    <div id="toast" class="toast" role="status">
+    </div>
+
+    <!-- HTML 12 / JAVASCRIPT-OFF MESSAGE. Only shown when JavaScript is disabled. -->
+    <noscript><div class="noscript">Enable JavaScript to browse project details, skills, and education. You can still connect through the LinkedIn links above.</div></noscript>
+
+    <!-- HTML 13 / MAIN SCRIPT. type="module" lets app.js import content.js. Keep this before the closing body tag. -->
+    <script type="module" src="./src/app.js?v=20260918"></script>
   </body>
 </html>
