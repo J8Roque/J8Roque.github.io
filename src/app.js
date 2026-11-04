@@ -8,7 +8,7 @@
 /* JS 01 / DATA IMPORT
  * content.js lives in this same src folder. It holds projects, skills, education, experience, articles, and contact data.
  */
-import { content } from './content.js?v=20260918';
+import { content } from './content.js?v=20261104';
 /* JS 02 / HELPERS
  * $("projectsGrid") finds an HTML element by id. esc() protects inserted text. usableLink() checks link format and availability; it does not check whether the PDF exists.
  */

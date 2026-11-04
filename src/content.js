@@ -74,7 +74,7 @@ export const content = {
     groups: [
       {
         title: "IT Support and Systems",
-        caption: "Support habits and OS fundamentals",
+        caption: "Troubleshooting habits and operating system fundamentals",
         items: [
           { name: "Troubleshooting workflow" },
           { name: "Ticket notes and documentation" },
@@ -86,7 +86,7 @@ export const content = {
       },
       {
         title: "Networking Fundamentals",
-        caption: "Home, lab, and small network basics",
+        caption: "Small-network setup, testing, and common services",
         items: [
           { name: "IP basics" },
           { name: "DNS and DHCP basics" },
@@ -98,7 +98,7 @@ export const content = {
       },
       {
         title: "Security Fundamentals",
-        caption: "Safe habits and mindset",
+        caption: "Practical habits that lower everyday risk",
         items: [
           { name: "MFA" },
           { name: "Least privilege" },
@@ -109,7 +109,7 @@ export const content = {
       },
       {
         title: "Tools and Learning",
-        caption: "Hands on practice tools",
+        caption: "Tools I use to build, test, and document labs",
         items: [
           { name: "VirtualBox labs" },
           { name: "Hyper V labs" },
@@ -135,9 +135,9 @@ export const content = {
           title: "IT Student and Home Lab Builder",
           dates: "Ongoing",
           bullets: [
-            "Build and document labs that practice troubleshooting, operating system setup, networking fundamentals, and security basics",
-            "Write clear steps and checklists so projects are repeatable and easy to review",
-            "Practice security aware habits like MFA, least privilege, safe downloads, and clean documentation"
+            "Build and document labs covering operating system setup, networking, user access, and security basics",
+            "Write steps and checklists another technician can repeat without filling in missing details",
+            "Use MFA, least privilege, safe downloads, and clean notes as part of the lab process"
           ]
         }
       ]
@@ -151,9 +151,9 @@ export const content = {
           title: "Security Awareness and Phishing Analysis Simulation",
           dates: "Completed",
           bullets: [
-            "Reviewed phishing related results and identified groups that needed additional security awareness",
-            "Created a short security awareness presentation focused on practical user actions",
-            "Strengthened skills in communication, analysis, and security mindset"
+            "Reviewed phishing simulation results and identified groups that needed more security awareness training",
+            "Created a short presentation that turned common phishing signs into practical user actions",
+            "Summarized the findings in plain language for a nontechnical audience"
           ]
         }
       ]

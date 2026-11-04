@@ -19,14 +19,14 @@ Welcome to my IT portfolio. I am an Information Technology student and hands-on 
 Built and documented a small company VoIP network in Cisco Packet Tracer using Router0, Switch0, Cisco 7960 IP phones, DHCP Option 150, Voice VLAN 10, and CallManager Express. The lab shows how two IP phones register and call each other using extensions 1001 and 1002.
 
 **Skills:** Cisco Packet Tracer, VoIP, DHCP, Voice VLAN, CallManager Express, IP Phones  
-**Guide:** [Cisco Packet Tracer VoIP Network Setup PDF](assets/pdf/voip-network-setup.pdf)
+**Guide:** [Cisco Packet Tracer VoIP Network Setup PDF](assets/pdf/VoIP_Network_Setup.pdf)
 
 ### Active Directory Home Lab: Domain Controller, DNS, Domain Join, and Role Based File Sharing
 
 Built a Windows domain lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role based SMB shares using NTFS and share permissions.
 
 **Skills:** Active Directory, DNS, Domain Join, Group Management, NTFS permissions, SMB shares, VirtualBox networking  
-**Report:** [Active Directory Home Lab PDF](assets/pdf/active-directory-home-lab.pdf)
+**Report:** [Active Directory Home Lab PDF](assets/pdf/active-directory-home-lab.pdf.pdf)
 
 ### Hyper V Windows 11 VM Build Guide
 

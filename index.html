@@ -20,10 +20,16 @@ These comments are for editing and do not appear on the webpage.
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BROWSER TAB TITLE: edit the text between title tags. -->
-    <title>J Roque | IT Portfolio</title>
+    <title>J Roque | IT Support &amp; Systems Portfolio</title>
 
     <!-- METADATA: describes the page for search engines. -->
-    <meta name="description" content="Explore J Roque's hands-on work in IT support, Windows and Linux systems, networking, and security. Projects, lab notes, and technical learning.">
+    <meta name="description" content="J Roque's hands-on IT portfolio: Windows and Linux systems, Active Directory, networking, security labs, troubleshooting notes, and clear technical documentation.">
+
+    <meta property="og:title" content="J Roque | IT Support &amp; Systems Portfolio">
+    <meta property="og:description" content="Hands-on labs, troubleshooting practice, and documentation built for the next technician.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://j8roque.github.io/">
+    <meta property="og:image" content="https://j8roque.github.io/assets/img/systems-map.png">
 
     <!-- METADATA: sets browser theme color. -->
     <meta name="theme-color" content="#10151c">
@@ -32,7 +38,7 @@ These comments are for editing and do not appear on the webpage.
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310151c'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23dfc397'%3EJR%3C/text%3E%3C/svg%3E">
 
     <!-- CSS CONNECTION: styles load from src/styles.css. Keep this path matched to your folder. -->
-    <link rel="stylesheet" href="./src/styles.css?v=20260918">
+    <link rel="stylesheet" href="./src/styles.css?v=20261104">
 
     <!-- EARLY THEME SCRIPT: restores the saved theme before the page is displayed. This stays inside head. -->
     <script>try{document.documentElement.dataset.theme=localStorage.getItem('jroque-theme')||'dark'}catch{}</script>
@@ -94,57 +100,44 @@ These comments are for editing and do not appear on the webpage.
         <div class="hero-copy">
 
           <!-- SMALL SECTION LABEL (p.eyebrow). Edit this numbered label here; it is a paragraph, not a heading. -->
-          <p class="eyebrow"><span class="line"></span> THE PORTFOLIO OF J ROQUE</p>
+          <p class="eyebrow"><span class="line"></span> IT SUPPORT · SYSTEMS · SECURITY</p>
 
           <!-- MAIN PAGE HEADING (h1). This is the large hero headline. br starts a new line; em styles the emphasized word. -->
-          <h1>People first.<br>Systems <em>minded.</em></h1>
+          <h1>I build the lab.<br>I document the <em>fix.</em></h1>
 
           <!-- HERO PARAGRAPH (p.hero-description). Edit the introduction below the main headline. -->
-          <p class="hero-description">I build hands-on IT projects, solve problems, and write documentation that makes the next step clear.</p>
+          <p class="hero-description">I'm an IT student focused on support and systems. This portfolio shows the labs I've built, the problems I've worked through, and the steps I'd hand to the next technician.</p>
           <div class="hero-actions">
 
             <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
-            <a class="button primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="button primary" href="#projects">View selected work <span aria-hidden="true">↗</span></a>
 
             <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
-            <a class="text-link" href="https://www.linkedin.com/in/jemmyroque/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="./assets/pdf/my-troubleshooting-checklist-portfolio-2026.pdf" target="_blank" rel="noopener noreferrer">Read my checklist <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-footnote">
-            <span>IT support</span>
-            <span>Systems</span>
-            <span>Networking & security</span>
+            <span>CompTIA A+</span>
+            <span>Security+</span>
+            <span>ITF+</span>
           </div>
         </div>
 
         <!-- PROFILE PANEL: edit degree, school, career focus, and location in this aside. Styles: .identity-card. -->
-        <aside class="identity-card" aria-label="Profile at a glance">
-          <div class="identity-top">
-            <span>J ROQUE / AT A GLANCE</span>
-            <span class="plus" aria-hidden="true">+</span>
+        <aside class="identity-card identity-card--visual" aria-label="Profile at a glance">
+          <div class="signal-visual" role="img" aria-label="Abstract map of connected systems and network paths">
+            <div class="availability"><span aria-hidden="true"></span> Open to entry-level IT opportunities</div>
+            <div class="signal-caption">
+              <span>CALIFORNIA, USA</span>
+              <strong>Support that stays calm.<br>Documentation that stays useful.</strong>
+            </div>
           </div>
-          <div class="identity-name">
-            Learning.
-            <br>
-            Building.
-            <br>
-            <span>Documenting.</span>
-          </div>
-          <div class="identity-divider">
-          </div>
-          <div class="identity-detail">
-            <span class="mini-label">CURRENT PATH</span>
-            <strong>BS Information Technology</strong>
-            <span>Arizona State University · In progress</span>
-          </div>
-          <div class="identity-detail">
-            <span class="mini-label">CAREER FOCUS</span>
-            <strong>IT support & systems</strong>
-            <span>Fundamentals put into practice.</span>
+          <div class="signal-metrics" aria-label="Portfolio highlights">
+            <div><strong>8</strong><span>documented projects</span></div>
+            <div><strong>3</strong><span>CompTIA certifications</span></div>
+            <div><strong>2</strong><span>associate degrees</span></div>
           </div>
           <div class="identity-bottom">
-            <span>CALIFORNIA, USA</span>
-
-            <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
+            <span>BS INFORMATION TECHNOLOGY · IN PROGRESS</span>
             <a href="#about" aria-label="More about J Roque">↘</a>
           </div>
         </aside>
@@ -162,6 +155,21 @@ These comments are for editing and do not appear on the webpage.
           <span>SQL</span>
         </div>
       </div>
+
+      <section class="proof-strip" id="credentials" aria-labelledby="credentialsTitle">
+        <div class="container proof-inner">
+          <div>
+            <p class="eyebrow">VERIFIED FOUNDATION</p>
+            <h2 id="credentialsTitle">Certified, then put into practice.</h2>
+          </div>
+          <div class="credential-list" aria-label="Certifications">
+            <span>CompTIA A+</span>
+            <span>CompTIA Security+</span>
+            <span>CompTIA ITF+</span>
+          </div>
+          <a class="text-link" href="https://www.credly.com/users/jemmyroque" target="_blank" rel="noopener noreferrer">View credentials <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
 
       <!-- SECTION START: PROJECTS. Search for id="projects" to return here. Related CSS uses .section. -->
       <section class="section container" id="projects">
@@ -217,7 +225,7 @@ These comments are for editing and do not appear on the webpage.
             <p class="eyebrow">02 / THE PERSON BEHIND THE LABS</p>
 
             <!-- SECTION HEADING (h2). Edit its visible text here. Most section titles use this tag. -->
-            <h2>Calm under pressure.<br><em>Curious by nature.</em></h2>
+            <h2>Good support is technical.<br><em>It is also human.</em></h2>
 
             <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
             <a class="text-link" href="#contact">Get to know me <span aria-hidden="true">↗</span></a>
@@ -225,17 +233,17 @@ These comments are for editing and do not appear on the webpage.
           <div class="about-copy">
 
             <!-- ABOUT INTRO PARAGRAPH (p.lead). Edit your opening personal introduction here. -->
-            <p class="lead">Hi, I'm J Roque. I like troubleshooting because it feels like solving a puzzle. I care just as much about helping the person on the other side of the screen.</p>
+            <p class="lead">Hi, I'm J Roque. Troubleshooting clicks for me because each symptom is a clue. I like finding the cause, but I also care about keeping the person waiting on the answer informed.</p>
 
             <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
-            <p>I'm working toward a BS in Information Technology, with a background in IT and cybersecurity coursework. My focus is on operating systems, networking, security fundamentals, and documentation another technician can follow.</p>
+            <p>I'm working toward a BS in Information Technology after completing associate degrees in IT and cybersecurity. I focus on operating systems, networking, security fundamentals, and documentation another technician can follow without guessing.</p>
 
             <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
-            <p>Most of my learning happens through labs. I build virtual machines, practice Windows and Linux skills, work through SQL exercises, and document what worked, what didn't, and what I learned.</p>
+            <p>Most of my learning happens in labs. I build virtual machines, configure Windows and Linux systems, work through networking and SQL exercises, and write down what worked, what failed, and how I fixed it.</p>
             <div class="values">
-              <span>Patient communication</span>
-              <span>Repeatable steps</span>
-              <span>Security awareness</span>
+              <span>Calm user support</span>
+              <span>Clear ticket notes</span>
+              <span>Safe defaults</span>
             </div>
           </div>
         </div>
@@ -340,7 +348,7 @@ These comments are for editing and do not appear on the webpage.
           <h2>Good IT starts with<br>a <em>conversation.</em></h2>
 
           <!-- PARAGRAPH (p). Edit the text between these tags. CSS controls its size, color, and spacing. -->
-          <p>Interested in my projects or an entry-level IT opportunity?<br>Connect with me on LinkedIn.</p>
+          <p>Hiring for an entry-level IT support or systems role?<br>Take a look at my work, then connect with me on LinkedIn.</p>
 
           <!-- LINK (a). href is the destination; the text inside is the label. target="_blank" opens a new tab when present. -->
           <a class="button primary" href="https://www.linkedin.com/in/jemmyroque/" target="_blank" rel="noopener noreferrer">Let's talk on LinkedIn <span aria-hidden="true">↗</span></a>
@@ -386,6 +394,6 @@ These comments are for editing and do not appear on the webpage.
     <noscript><div class="noscript">Enable JavaScript to browse project details, skills, and education. You can still connect through the LinkedIn links above.</div></noscript>
 
     <!-- HTML 13 / MAIN SCRIPT. type="module" lets app.js import content.js. Keep this before the closing body tag. -->
-    <script type="module" src="./src/app.js?v=20260918"></script>
+    <script type="module" src="./src/app.js?v=20261104"></script>
   </body>
 </html>

@@ -979,6 +979,178 @@ dialog::backdrop {
 .scroll-lock {
   overflow:hidden
 }
+
+/* 2026 portfolio refresh */
+.header {
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px)
+}
+.hero {
+  grid-template-columns:minmax(0,1.08fr) minmax(410px,.92fr);
+  gap:64px;
+  min-height:calc(100svh - 97px)
+}
+.hero-copy {
+  position:relative;
+  z-index:1
+}
+.hero-description {
+  max-width:610px
+}
+.identity-card--visual {
+  padding:0;
+  overflow:hidden;
+  min-height:570px;
+  display:flex;
+  flex-direction:column;
+  box-shadow:none;
+  background:var(--surface-alt)
+}
+.signal-visual {
+  min-height:365px;
+  padding:25px;
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  justify-content:space-between;
+  background:linear-gradient(180deg,rgba(9,13,18,.04) 20%,rgba(9,13,18,.92) 100%),url('../assets/img/systems-map.png') 63% center/cover no-repeat;
+  color:#f4f2ec
+}
+.availability {
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 12px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  background:rgba(10,14,19,.58);
+  backdrop-filter:blur(10px);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.35px
+}
+.availability span {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#8ed4a6;
+  box-shadow:0 0 0 5px rgba(142,212,166,.12)
+}
+.signal-caption {
+  display:flex;
+  flex-direction:column;
+  gap:10px
+}
+.signal-caption>span {
+  font-size:11px;
+  letter-spacing:1.8px;
+  color:rgba(255,255,255,.68)
+}
+.signal-caption strong {
+  max-width:390px;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(25px,2.2vw,34px);
+  font-weight:400;
+  line-height:1.2;
+  letter-spacing:-.7px
+}
+.signal-metrics {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)
+}
+.signal-metrics>div {
+  min-width:0;
+  padding:18px 17px;
+  display:flex;
+  flex-direction:column;
+  gap:2px
+}
+.signal-metrics>div+div {
+  border-left:1px solid var(--line)
+}
+.signal-metrics strong {
+  font-size:27px;
+  line-height:1;
+  color:var(--gold)
+}
+.signal-metrics span {
+  font-size:11px;
+  line-height:1.35;
+  color:var(--muted)
+}
+.identity-card--visual .identity-bottom {
+  border-top:0;
+  padding:15px 20px
+}
+.proof-strip {
+  border-bottom:1px solid var(--line)
+}
+.proof-inner {
+  display:grid;
+  grid-template-columns:minmax(250px,.95fr) minmax(420px,1.45fr) auto;
+  align-items:center;
+  gap:38px;
+  padding-block:35px
+}
+.proof-inner .eyebrow {
+  margin-bottom:7px
+}
+.proof-inner h2 {
+  font-size:clamp(23px,2.2vw,31px);
+  letter-spacing:-.8px
+}
+.credential-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px
+}
+.credential-list span {
+  padding:10px 13px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--surface);
+  font-size:13px;
+  font-weight:600
+}
+.project-card {
+  overflow:hidden
+}
+.project-card:before {
+  content:'';
+  position:absolute;
+  inset:0 auto 0 0;
+  width:2px;
+  background:var(--gold);
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform .22s ease
+}
+.project-card:hover:before,.project-card:focus-within:before {
+  transform:scaleY(1)
+}
+.project-card.featured:after {
+  content:'01';
+  position:absolute;
+  right:25px;
+  bottom:-28px;
+  font-size:150px;
+  font-weight:700;
+  letter-spacing:-12px;
+  line-height:1;
+  color:color-mix(in srgb,var(--gold) 7%,transparent);
+  pointer-events:none
+}
+.project-card.featured>* {
+  position:relative;
+  z-index:1
+}
+.about-section {
+  background:linear-gradient(115deg,color-mix(in srgb,var(--surface-alt) 94%,transparent),var(--surface-alt)),radial-gradient(circle at 14% 30%,color-mix(in srgb,var(--gold) 9%,transparent),transparent 35%)
+}
 [hidden] {
   display:none!important
 }
@@ -1002,6 +1174,9 @@ dialog::backdrop {
 }
 :root[data-theme=light] .identity-card {
   box-shadow:12px 12px 0 -1px var(--bg),12px 12px 0 0 var(--line)
+}
+:root[data-theme=light] .identity-card--visual {
+  box-shadow:none
 }
 /* CSS 22 / RESPONSIVE LAYOUT
  * Rules below adjust desktop, tablet, and mobile sizes. Edit the matching breakpoint for device-specific changes.
@@ -1031,7 +1206,15 @@ dialog::backdrop {
     display:none
   }
   .hero {
-    gap:45px
+    grid-template-columns:1.05fr .95fr;
+    gap:40px
+  }
+  .proof-inner {
+    grid-template-columns:1fr 1.4fr;
+    gap:25px
+  }
+  .proof-inner>.text-link {
+    grid-column:2
   }
   .skills-grid {
     gap:20px
@@ -1085,9 +1268,10 @@ dialog::backdrop {
     padding-inline:13px
   }
   .hero {
-    grid-template-columns:1.25fr 1fr;
+    grid-template-columns:1fr;
     gap:30px;
-    padding-block:65px
+    padding-block:65px;
+    min-height:0
   }
   .hero h1 {
     font-size:55px;
@@ -1098,6 +1282,20 @@ dialog::backdrop {
   }
   .identity-card {
     padding:23px
+  }
+  .identity-card--visual {
+    padding:0;
+    min-height:520px
+  }
+  .signal-visual {
+    min-height:330px
+  }
+  .proof-inner {
+    grid-template-columns:1fr;
+    align-items:start
+  }
+  .proof-inner>.text-link {
+    grid-column:auto
   }
   .identity-name {
     font-size:34px
@@ -1197,6 +1395,36 @@ dialog::backdrop {
   .identity-card {
     margin-right:10px;
     padding:25px
+  }
+  .identity-card--visual {
+    margin-right:0;
+    padding:0;
+    min-height:0
+  }
+  .signal-visual {
+    min-height:310px;
+    padding:20px;
+    background-position:68% center
+  }
+  .signal-caption strong {
+    font-size:27px
+  }
+  .signal-metrics>div {
+    padding:15px 12px
+  }
+  .signal-metrics strong {
+    font-size:23px
+  }
+  .proof-inner {
+    gap:22px;
+    padding-block:30px
+  }
+  .credential-list {
+    gap:7px
+  }
+  .credential-list span {
+    padding:8px 11px;
+    font-size:12px
   }
   .identity-name {
     font-size:36px;
