@@ -9,15 +9,15 @@
  */
 :root {
   color-scheme:dark;
-  --bg:#10151c;
-  --surface:#171e27;
-  --surface-alt:#131a22;
-  --text:#f1f2f4;
-  --muted:#a8b0bd;
-  --gold:#dfc397;
-  --gold-ink:#191813;
-  --line:#303843;
-  --soft:#202a35;
+  --bg:#0b1220;
+  --surface:#121d2f;
+  --surface-alt:#17243a;
+  --text:#f4f7fb;
+  --muted:#a8b5c8;
+  --gold:#63b3ff;
+  --gold-ink:#07111f;
+  --line:#293851;
+  --soft:#1d2b42;
   --max:1240px;
   font-family:Inter,'Segoe UI',Arial,sans-serif
 }
@@ -182,7 +182,7 @@ button:disabled {
   border-color:var(--gold)
 }
 .button.primary:hover {
-  background:#efd3a7
+  background:#8ac8ff
 }
 .button.small {
   padding:9px 16px;
@@ -1014,7 +1014,7 @@ dialog::backdrop {
   flex:1;
   flex-direction:column;
   justify-content:space-between;
-  background:linear-gradient(180deg,rgba(9,13,18,.04) 20%,rgba(9,13,18,.92) 100%),url('../assets/img/systems-map.png') 63% center/cover no-repeat;
+  background:linear-gradient(135deg,rgba(23,105,170,.23),rgba(11,18,32,.08) 55%),linear-gradient(180deg,rgba(9,13,18,.04) 20%,rgba(9,13,18,.92) 100%),url('../assets/img/systems-map.png') 63% center/cover no-repeat;
   color:#f4f2ec
 }
 .availability {
@@ -1159,18 +1159,18 @@ dialog::backdrop {
  */
 :root[data-theme=light] {
   color-scheme:light;
-  --bg:#fafbfc;
+  --bg:#f5f8fc;
   --surface:#fff;
-  --surface-alt:#f0f3f6;
-  --text:#172331;
-  --muted:#526171;
-  --gold:#80602c;
+  --surface-alt:#eaf1f9;
+  --text:#142033;
+  --muted:#586a82;
+  --gold:#1769aa;
   --gold-ink:#fff;
-  --line:#d3dbe3;
-  --soft:#e9eef3
+  --line:#d2deeb;
+  --soft:#e6eef8
 }
 :root[data-theme=light] .button.primary:hover {
-  background:#6f5122
+  background:#0f548c
 }
 :root[data-theme=light] .identity-card {
   box-shadow:12px 12px 0 -1px var(--bg),12px 12px 0 0 var(--line)
