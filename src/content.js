@@ -1,412 +1,307 @@
 // PDF names must match assets/pdf exactly, including capitals and extensions.
-// ===================================
-// FILE: content.js
-// PURPOSE: All portfolio data lives here
-// ===================================
+// All portfolio data lives here so the visible cards can be edited without
+// changing the rendering code in app.js.
 
 export const content = {
-  // DATA 01 / LEGACY SITE SETTINGS
-  // Retained from your original portfolio. This redesigned app does not render content.site. Edit the hero, logo, profile panel, navigation, and footer directly in index.html.
   site: {
     name: "J Roque",
-    badge: "My Portfolio",
-    title: "Hi, I am J Roque",
+    badge: "IT portfolio",
+    title: "Technology. Problem solving. People.",
     subtitle:
-      "I build hands on IT projects, write clear documentation, and share real lab work.",
-
-    bullets: [
-      "IT student focused on support, systems, networking, and security fundamentals",
-      "I learn by doing: labs, home projects, and step by step write ups",
-      "Comfortable with Windows and Linux basics, virtualization, and troubleshooting workflows",
-      "Security minded habits: MFA, least privilege, patch hygiene, phishing awareness"
-    ],
-
+      "I'm J Roque, a CompTIA-certified IT professional with a background in healthcare operations and hands-on practice through systems, networking, cybersecurity, and database labs. I care about practical troubleshooting, clear documentation, and technology that supports people.",
     profileImage: "./assets/img/cat2.jpg",
-
-    quickCards: [
-      { key: "Degree path", value: "BS Information Technology in progress" },
-      { key: "Background", value: "AS Information Technology and AS Cybersecurity" },
-      { key: "Goal", value: "Entry level IT support and systems roles" }
-    ],
-
     links: [
-      { label: "GitHub", href: "https://github.com/J8Roque", style: "primary" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/jemmyroque/", style: "default" },
-      { label: "Credly", href: "https://www.credly.com/users/jemmyroque", style: "default" }
+      { label: "GitHub", href: "https://github.com/J8Roque" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/jemmyroque/" },
+      { label: "Credly", href: "https://www.credly.com/users/jemmyroque" }
     ],
-
     footerText: "© J Roque"
   },
 
-  // DATA 02 / LEGACY ABOUT TEXT
-  // Retained original data, not rendered by this redesigned app. Edit visible About paragraphs inside index.html section id="about".
   about: {
     paragraphs: [
-      "Hi, I’m J Roque. I’m building this site to show real hands on IT work, not just class titles. I like troubleshooting because it feels like solving a puzzle, and I care about staying calm and clear when someone is stressed and needs help fast.",
-      "My background includes Information Technology and Cybersecurity coursework, and I’m currently working toward a BS in Information Technology. I’m focused on strong fundamentals: operating systems, networking, security basics, and clean documentation that another tech can follow without guessing.",
-      "Most of my learning happens through labs and builds. I practice Windows and Linux skills, set up virtual machines, work through database and SQL exercises, and document projects like Cisco Packet Tracer, Active Directory, Hyper V, and SQL database labs. Everything here is meant to be practical and easy to review."
+      "Troubleshooting clicks for me because each symptom is a clue. I like finding the cause, but I also care about keeping the person waiting on the answer informed.",
+      "My healthcare operations background taught me to communicate calmly, document details carefully, and work with people in complex environments. I'm building on those habits through IT coursework, certifications, and hands-on labs.",
+      "I'm working toward a BS in Information Technology after completing associate degrees in IT and cybersecurity. My focus is on operating systems, networking, security fundamentals, and documentation another technician can follow without guessing."
     ],
     highlights: [
-      "Clear step by step documentation",
-      "Patient user focused troubleshooting",
-      "Windows and Linux fundamentals",
-      "Virtualization and home lab practice",
-      "Networking and VoIP lab practice",
-      "Security awareness and safe habits"
+      "Calm user communication",
+      "Repeatable troubleshooting",
+      "Clear technical documentation",
+      "Security-minded habits"
     ]
   },
 
-  // DATA 03 / SKILLS
-  // Visible cards use skills.groups below. Each title becomes h3, caption becomes p, and items become li. introTitle, introText, and featured are retained original fields that this app does not render.
+  certifications: [
+    { name: "CompTIA A+", note: "IT support and hardware fundamentals" },
+    { name: "CompTIA Security+", note: "Core security concepts and practices" },
+    { name: "CompTIA ITF+", note: "Foundational IT knowledge" }
+  ],
+
   skills: {
-    introTitle: "Core strengths",
-    introText:
-      "I focus on repeatable fundamentals: clear troubleshooting steps, clean ticket notes, networking basics, and safe habits. I keep everything simple and practical.",
-
-    featured: [
-      { name: "Troubleshooting workflow" },
-      { name: "Windows fundamentals" },
-      { name: "Linux fundamentals" },
-      { name: "Networking basics" },
-      { name: "Security awareness" }
-    ],
-
     groups: [
       {
-        title: "IT Support and Systems",
-        caption: "Troubleshooting habits and operating system fundamentals",
-        items: [
-          { name: "Troubleshooting workflow" },
-          { name: "Ticket notes and documentation" },
-          { name: "Windows basics" },
-          { name: "Linux basics" },
-          { name: "Remote support habits" },
-          { name: "User communication" }
-        ]
+        title: "IT Support",
+        icon: "support",
+        caption: "Troubleshooting with the user and the next technician in mind",
+        items: ["Troubleshooting workflow", "Technical documentation", "Ticket communication", "User support", "Remote support habits"]
       },
       {
-        title: "Networking Fundamentals",
-        caption: "Small-network setup, testing, and common services",
-        items: [
-          { name: "IP basics" },
-          { name: "DNS and DHCP basics" },
-          { name: "WiFi troubleshooting" },
-          { name: "Switch and router basics" },
-          { name: "Cisco Packet Tracer" },
-          { name: "Voice VLAN and VoIP basics" }
-        ]
+        title: "Systems Administration",
+        icon: "server",
+        caption: "Operating systems, identity, and virtual lab environments",
+        items: ["Windows Server", "Active Directory", "Windows 10 and 11", "Linux", "Hyper-V", "VirtualBox"]
       },
       {
-        title: "Security Fundamentals",
-        caption: "Practical habits that lower everyday risk",
-        items: [
-          { name: "MFA" },
-          { name: "Least privilege" },
-          { name: "Patch hygiene" },
-          { name: "Phishing awareness" },
-          { name: "Basic incident mindset" }
-        ]
+        title: "Networking",
+        icon: "network",
+        caption: "Small-network services, configuration, and testing",
+        items: ["DNS", "DHCP", "TCP/IP fundamentals", "Cisco Packet Tracer", "VLANs", "VoIP"]
       },
       {
-        title: "Tools and Learning",
-        caption: "Tools I use to build, test, and document labs",
-        items: [
-          { name: "VirtualBox labs" },
-          { name: "Hyper V labs" },
-          { name: "PowerShell basics" },
-          { name: "Python basics" },
-          { name: "Bash basics" },
-          { name: "SQL basics" },
-          { name: "GitHub basics" }
-        ]
+        title: "Cybersecurity",
+        icon: "shield",
+        caption: "Practical habits and safe training environments",
+        items: ["MFA", "Least privilege", "Security awareness", "Web security labs", "Vulnerability fundamentals"]
+      },
+      {
+        title: "Programming and Databases",
+        icon: "code",
+        caption: "Coursework and projects used to build and automate",
+        items: ["Java", "Python basics", "Bash basics", "PowerShell basics", "SQL", "HTML", "CSS", "JavaScript"]
       }
     ]
   },
 
-  // DATA 04 / EXPERIENCE
-  // org is the organization; roles.title becomes h3; roles.bullets become list items. Rendered by app.js JS 09.
   experience: [
     {
+      kind: "Academic and independent projects",
       org: "Academic and Home Lab Projects",
       location: "California, USA",
       dates: "Ongoing",
       roles: [
         {
           title: "IT Student and Home Lab Builder",
-          dates: "Ongoing",
           bullets: [
-            "Build and document labs covering operating system setup, networking, user access, and security basics",
-            "Write steps and checklists another technician can repeat without filling in missing details",
-            "Use MFA, least privilege, safe downloads, and clean notes as part of the lab process"
+            "Build and document labs covering operating system setup, networking, user access, and security basics.",
+            "Write steps and checklists another technician can repeat without filling in missing details.",
+            "Use MFA, least privilege, safe downloads, and clean notes as part of the lab process."
           ]
         }
       ]
     },
     {
+      kind: "Virtual job simulation",
       org: "Mastercard Forage Job Simulation",
       location: "Remote",
       dates: "Completed",
       roles: [
         {
           title: "Security Awareness and Phishing Analysis Simulation",
-          dates: "Completed",
           bullets: [
-            "Reviewed phishing simulation results and identified groups that needed more security awareness training",
-            "Created a short presentation that turned common phishing signs into practical user actions",
-            "Summarized the findings in plain language for a nontechnical audience"
+            "Reviewed phishing simulation results and identified groups that needed more security awareness training.",
+            "Created a short presentation that turned common phishing signs into practical user actions.",
+            "Summarized the findings in plain language for a nontechnical audience."
           ]
         }
       ]
     }
   ],
 
-  // DATA 05 / EDUCATION
-  // school becomes h3; program becomes p; notes become list items. Rendered by app.js JS 10.
   education: [
     {
       school: "Arizona State University",
+      logo: "./assets/img/ASU logo.webp",
+      logoAlt: "Arizona State University logo",
       dates: "In progress",
       program: "Bachelor of Science in Information Technology",
       notes: [
         "ASU Online, Ira A. Fulton Schools of Engineering",
-        "Focus: systems, networking, security fundamentals, and IT support skills",
         "Expected graduation: 2027 estimate",
-        "Coursework highlights: OS Architecture, Networking, System Security, UNIX Utilities, Java, Information Modeling and Retrieval"
+        "Coursework includes OS Architecture, Networking, System Security, UNIX Utilities, Java, and Information Modeling and Retrieval"
       ]
     },
     {
       school: "Coastline College",
+      logo: "./assets/img/CCC logo.jpg",
+      logoAlt: "Coastline College logo",
       dates: "Completed 2025",
       program: "Associate of Science in Information Technology and Associate of Science in Cybersecurity",
       notes: [
-        "Hands on labs and technical coursework",
-        "Focused on IT support fundamentals, networking, Windows and Linux basics, and security awareness",
-        "Built repeatable lab reports with screenshots, troubleshooting steps, and clear ticket style documentation"
+        "Hands-on labs and technical coursework",
+        "IT support, networking, Windows and Linux fundamentals, and security awareness",
+        "Lab reports with screenshots, troubleshooting steps, and ticket-style documentation"
       ]
     }
   ],
 
-  // DATA 06 / FILTER BUTTON LABELS
-  // These labels become clickable category buttons. Each project category must match one of these labels exactly.
-  projectCategories: [
-    "All",
-    "IT Support",
-    "Systems",
-    "Networking",
-    "Security",
-    "Database"
-  ],
+  projectCategories: ["All", "IT Support", "Systems", "Networking", "Security", "Database"],
 
-  // DATA 07 / FULL PROJECT DETAILS AND REPORT LINKS
-  // title and summary appear in the popup. category and tags also appear on cards. Short card headings and paragraphs are in app.js JS 03. Keep their array order aligned.
   projects: [
     {
+      shortTitle: "Active Directory home lab",
       title: "Active Directory Home Lab: Domain Controller, DNS, Domain Join, and File Sharing",
       category: "Systems",
-      role: "Windows System Lab Builder",
+      icon: "server",
+      projectType: "Independent home lab",
+      role: "Windows system lab builder",
       dates: "Feb 2026",
-      summary:
-        "Built an Active Directory lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role based SMB shares using NTFS and share permissions.",
-      tags: [
-        "Windows Server",
-        "Active Directory",
-        "DNS",
-        "VirtualBox",
-        "Domain Join",
-        "NTFS",
-        "SMB"
-      ],
-      links: [
-        {
-          label: "PDF Lab Report",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/active-directory-home-lab.pdf.pdf"
-        }
-      ]
+      summary: "Built an Active Directory lab in VirtualBox by configuring AD DS and DNS, creating OUs, users, and security groups, joining a Windows 10 client to the domain, and setting up role-based SMB shares using NTFS and share permissions.",
+      cardSummary: "Configured a domain controller, DNS, organizational units, and role-based file sharing, then joined a Windows client to the domain.",
+      objective: "Practice the core steps behind a small Windows domain and role-based access to shared files.",
+      implementation: "Configured AD DS and DNS, created organizational units, users, and groups, joined a Windows 10 client, and applied NTFS and share permissions.",
+      result: "The lab documents a working domain join and role-based SMB file access. The report records the setup in repeatable steps.",
+      tags: ["Windows Server", "Active Directory", "DNS", "VirtualBox", "Domain Join", "NTFS", "SMB"],
+      links: [{ label: "Open lab report", href: "./assets/pdf/active-directory-home-lab.pdf.pdf", available: true }]
     },
     {
-      title: "Hyper V Windows 11 VM Build Guide",
+      shortTitle: "Windows 11 in Hyper-V",
+      title: "Hyper-V Windows 11 VM Build Guide",
       category: "Systems",
-      role: "Builder / Author",
+      icon: "server",
+      projectType: "Independent technical guide",
+      role: "Builder and author",
       dates: "Jan 2026",
-      summary:
-        "Created a Windows 11 Generation 2 virtual machine in Hyper V, configured a virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, disk, and system settings inside the VM.",
-      tags: ["Hyper V", "Windows 11", "Virtualization", "Networking"],
-      links: [
-        {
-          label: "PDF Guide",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/hyperv-windows11-vm-guide.pdf"
-        }
-      ]
+      summary: "Created a Windows 11 Generation 2 virtual machine in Hyper-V, configured a virtual switch for network access, installed Windows 11 from an ISO, and verified CPU, memory, disk, and system settings inside the VM.",
+      cardSummary: "Built a Generation 2 Windows 11 virtual machine and verified its network, memory, storage, and system settings.",
+      objective: "Create a repeatable Windows 11 virtual machine build in Hyper-V and verify the finished configuration.",
+      implementation: "Configured the VM, a virtual switch, installation media, CPU, memory, and storage, then checked the installed system settings.",
+      result: "The lab build is represented, but its repository PDF is corrupted and cannot be opened.",
+      tags: ["Hyper-V", "Windows 11", "Virtualization", "Networking"],
+      links: [{ label: "PDF guide", href: "./assets/pdf/hyperv-windows11-vm-guide.pdf", available: false, note: "Documentation unavailable: the existing PDF is a 2-byte invalid file." }]
     },
     {
+      shortTitle: "Small-company VoIP network",
       title: "Cisco Packet Tracer VoIP Network Setup",
       category: "Networking",
-      role: "Network Lab Builder / Author",
+      icon: "network",
+      projectType: "Technical networking lab",
+      role: "Network lab builder and author",
       dates: "2026",
-      summary:
-        "Built and documented a small company VoIP network in Cisco Packet Tracer using Router0, Switch0, Cisco 7960 IP phones, DHCP Option 150, Voice VLAN 10, and CallManager Express. The lab shows how two IP phones register and call each other using extensions 1001 and 1002.",
-      tags: [
-        "Cisco Packet Tracer",
-        "VoIP",
-        "DHCP",
-        "Voice VLAN",
-        "CallManager Express",
-        "IP Phones"
-      ],
-      links: [
-        {
-          label: "PDF Guide",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/VoIP_Network_Setup.pdf"
-        }
-      ]
+      summary: "Built and documented a small-company VoIP network in Cisco Packet Tracer using Router0, Switch0, Cisco 7960 IP phones, DHCP Option 150, Voice VLAN 10, and CallManager Express. The lab shows how two IP phones register and call each other using extensions 1001 and 1002.",
+      cardSummary: "Connected two IP phones using Voice VLAN 10, DHCP Option 150, and CallManager Express.",
+      objective: "Configure the services a small VoIP lab needs for two Cisco IP phones to register and call each other.",
+      implementation: "Configured the router, switch, voice VLAN, DHCP Option 150, telephony service, and extensions 1001 and 1002 in Packet Tracer.",
+      result: "The documented lab shows both phones registering and completing a call between the two extensions.",
+      tags: ["Cisco Packet Tracer", "VoIP", "DHCP", "Voice VLAN", "CallManager Express", "IP Phones"],
+      links: [{ label: "Open setup guide", href: "./assets/pdf/VoIP_Network_Setup.pdf", available: true }]
     },
     {
+      shortTitle: "TryHackMe security labs",
       title: "TryHackMe Labs: PyRat, Mr Robot, and Publisher",
       category: "Security",
+      icon: "shield",
+      projectType: "Legal training labs",
       role: "Student",
       dates: "Oct 2025",
-      summary:
-        "Completed three legal training labs in TryHackMe to practice reconnaissance, web enumeration, credential discovery, post exploitation, and privilege escalation. Wrote a clear report with screenshots and lessons learned.",
-      tags: [
-        "TryHackMe",
-        "Web Security",
-        "Linux",
-        "Enumeration",
-        "Privilege Escalation"
-      ],
-      links: [
-        {
-          label: "PDF Write Up",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/PyRat-Mr-Robot-Publisher-THM.pdf",
-          // Change to true after uploading this report to assets/pdf.
-          available: false
-        }
-      ]
+      summary: "Completed three legal training labs in TryHackMe to practice reconnaissance, web enumeration, credential discovery, post-exploitation, and privilege escalation. A report was planned with screenshots and lessons learned.",
+      cardSummary: "Practiced reconnaissance, enumeration, and privilege escalation in legal training environments.",
+      objective: "Practice a structured security-testing workflow in authorized TryHackMe environments.",
+      implementation: "Worked through PyRat, Mr Robot, and Publisher exercises covering reconnaissance, enumeration, credential discovery, post-exploitation, and privilege escalation.",
+      result: "The labs remain represented here. The referenced write-up is not present in this repository.",
+      tags: ["TryHackMe", "Web Security", "Linux", "Enumeration", "Privilege Escalation"],
+      links: [{ label: "PDF write-up", href: "./assets/pdf/PyRat-Mr-Robot-Publisher-THM.pdf", available: false, note: "Documentation unavailable: the referenced report is missing from the repository." }]
     },
     {
+      shortTitle: "Web application attack analysis",
       title: "Analyzing Types of Web Application Attacks",
       category: "Security",
-      role: "Student / Analyst",
+      icon: "shield",
+      projectType: "Academic lab report",
+      role: "Student and analyst",
       dates: "2025",
-      summary:
-        "Created a lab report analyzing common web application attack patterns using safe training environments. Documented observations, traffic behavior, and key security takeaways with clear notes and screenshots.",
-      tags: ["Web Security", "Lab", "HTTP", "Security Fundamentals"],
-      links: [
-        {
-          label: "PDF Report",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/analyzing-types-of-web-application-attacks.pdf"
-        }
-      ]
+      summary: "Created a lab report analyzing common web application attack patterns using safe training environments. Documented observations, traffic behavior, and key security takeaways with notes and screenshots.",
+      cardSummary: "Analyzed common attack patterns in safe training environments and documented the findings.",
+      objective: "Recognize common web application attack patterns and record observable behavior in a safe lab.",
+      implementation: "Reviewed attack scenarios in training environments and documented traffic behavior, observations, and security takeaways.",
+      result: "The report preserves the analysis, screenshots, and lessons from the lab.",
+      tags: ["Web Security", "HTTP", "Security Fundamentals", "Lab Documentation"],
+      links: [{ label: "Open lab report", href: "./assets/pdf/analyzing-types-of-web-application-attacks.pdf", available: true }]
     },
     {
+      shortTitle: "Phishing awareness presentation",
       title: "Phishing Awareness Mini Presentation",
       category: "Security",
+      icon: "shield",
+      projectType: "Virtual job simulation deliverable",
       role: "Creator",
       dates: "2025",
-      summary:
-        "Created a short security awareness presentation focused on spotting phishing patterns and safer habits.",
-      tags: ["Security", "Awareness", "Communication"],
-      links: [
-        {
-          label: "Slides",
-          href: "PASTE_SLIDES_LINK"
-        }
-      ]
+      summary: "Created a short security awareness presentation focused on spotting phishing patterns and safer habits.",
+      cardSummary: "Turned common phishing patterns into practical security advice that users can act on.",
+      objective: "Explain common phishing warning signs in plain language for a nontechnical audience.",
+      implementation: "Converted findings from a phishing analysis simulation into a short awareness presentation with practical user actions.",
+      result: "The project remains represented, but a public slide link has not been provided.",
+      tags: ["Security Awareness", "Phishing", "Communication"],
+      links: [{ label: "Presentation slides", href: "PASTE_SLIDES_LINK", available: false, note: "Presentation unavailable: no approved public slide link is configured." }]
     },
     {
+      shortTitle: "Pizza ordering SQL database",
       title: "Pizza Ordering SQL Database",
       category: "Database",
-      role: "Student / Developer",
+      icon: "database",
+      projectType: "Academic database project",
+      role: "Student and developer",
       dates: "Feb 2026",
-      summary:
-        "Designed and built a relational database for a pizza ordering system, created tables with keys and constraints, and practiced CRUD operations. Documented results with screenshots and query outputs.",
+      summary: "Designed and built a relational database for a pizza ordering system, created tables with keys and constraints, and practiced CRUD operations. Documented results with screenshots and query outputs.",
+      cardSummary: "Designed relational tables, keys, and constraints, then practiced SQL queries and CRUD operations.",
+      objective: "Model a pizza ordering workflow as a relational database and practice common data operations.",
+      implementation: "Created related tables with keys and constraints, then ran create, read, update, and delete queries.",
+      result: "The report includes the schema work, query outputs, and screenshots from the project.",
       tags: ["MySQL", "SQL", "Database Design", "CRUD", "Foreign Keys"],
-      links: [
-        {
-          label: "PDF Lab",
-          // PDF LOCATION: repository root > assets > pdf. Match spelling, capitals, and extension.
-          href: "./assets/pdf/pizza-ordering-system.pdf"
-        }
-      ]
+      links: [{ label: "Open database report", href: "./assets/pdf/pizza-ordering-system.pdf", available: true }]
     },
     {
+      shortTitle: "IT Message Writer",
       title: "IT Message Writer",
       category: "IT Support",
+      icon: "support",
+      projectType: "Independent web project",
       role: "Builder",
       dates: "2026",
-      summary:
-        "Built a simple web tool that creates clean support emails, chats, and ticket updates that can be copied and reused. The project focuses on clear IT communication and safe handling of sensitive information.",
+      summary: "Built a simple web tool that creates clean support emails, chats, and ticket updates that can be copied and reused. The project focuses on clear IT communication and safe handling of sensitive information.",
+      cardSummary: "Built a browser tool for writing clear support emails, chats, and ticket updates.",
+      objective: "Make routine IT support messages easier to draft consistently without including sensitive information.",
+      implementation: "Built a lightweight HTML, CSS, and JavaScript interface that formats reusable support messages and copies them to the clipboard.",
+      result: "The tool is available as a live project, and its source is published in a separate GitHub repository.",
       tags: ["JavaScript", "HTML", "CSS", "IT Support"],
       links: [
-        {
-          label: "Live Tool",
-          href: "https://j8roque.github.io/it-message-writer/"
-        },
-        {
-          label: "Repo",
-          href: "https://github.com/J8Roque/it-message-writer"
-        }
+        { label: "Open live tool", href: "https://j8roque.github.io/it-message-writer/", available: true },
+        { label: "View repository", href: "https://github.com/J8Roque/it-message-writer", available: true }
       ]
     }
   ],
 
-  // DATA 08 / ARTICLES
-  // title becomes h3; summary becomes p; href points to the article/PDF. Replace PASTE_ARTICLE_LINK when ready.
   articles: [
     {
       title: "My Troubleshooting Checklist for Common IT Issues",
-      source: "Portfolio",
       date: "2026",
-      readTime: "3 min",
-      summary:
-        "A practical checklist I follow for login, WiFi, printing, and slow device issues, plus what to document in the ticket.",
+      summary: "A practical checklist I follow for login, Wi-Fi, printing, and slow-device issues, plus what to document in the ticket.",
       tags: ["IT Support", "Troubleshooting", "Documentation", "Workflow"],
       href: "./assets/pdf/my-troubleshooting-checklist-portfolio-2026.pdf",
-      target: "_blank",
-      rel: "noopener noreferrer"
+      available: true
     },
     {
       title: "What I Learned Setting Up a Home Lab",
-      source: "Portfolio",
       date: "2026",
-      readTime: "4 min",
-      summary:
-        "How I set up my lab environment, what I tested first, and the small habits that saved me time later.",
+      summary: "How I set up my lab environment, what I tested first, and the small habits that saved me time later.",
       tags: ["Systems", "Learning"],
       href: "PASTE_ARTICLE_LINK",
-      target: "_blank",
-      rel: "noopener noreferrer"
+      available: false
     },
     {
       title: "Phishing Red Flags I Watch For",
-      source: "Portfolio",
       date: "2025",
-      readTime: "3 min",
-      summary:
-        "A short guide to common phishing patterns and what actions reduce risk quickly.",
+      summary: "A short guide to common phishing patterns and the actions that reduce risk quickly.",
       tags: ["Security", "Awareness"],
       href: "PASTE_ARTICLE_LINK",
-      target: "_blank",
-      rel: "noopener noreferrer"
+      available: false
     }
   ],
 
-  // DATA 09 / CONTACT PROFILES
-  // These URLs populate the bottom profile rows and Copy buttons. Also update the separate LinkedIn buttons in index.html if your address changes. The empty email field is retained but not rendered.
   contact: {
     email: "",
     github: "https://github.com/J8Roque",
     linkedin: "https://www.linkedin.com/in/jemmyroque/",
-    other: [
-      {
-        label: "Credly",
-        href: "https://www.credly.com/users/jemmyroque"
-      }
-    ]
+    other: [{ label: "Credly", href: "https://www.credly.com/users/jemmyroque" }]
   }
 };
